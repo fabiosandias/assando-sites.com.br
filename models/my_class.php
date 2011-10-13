@@ -32,7 +32,7 @@ class MyClass extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $order = array('MyClass.start' => 'DESC');
+	public $order = array('MyClass.status_id' => 'ASC', 'MyClass.start' => 'DESC');
 	
 	/**
 	 * Campos virtuais
@@ -60,5 +60,12 @@ class MyClass extends AppModel {
 	 * @var array
 	 */
 	public $hasMany = array('Lesson', 'MyFile');
+	
+	/**
+	 * Turmas contém e pertencem à muitos...
+	 * 
+	 * @var array
+	 */
+	public $hasAndBelongsToMany = array('Student');
 	
 }

@@ -71,6 +71,7 @@
 </div>
 		
 	<div class="actions">
-		<?php echo $this->Form->submit('Salvar', array('class' => 'btn primary')) ?>			
+		<?php echo $this->Form->submit('Salvar', array('class' => 'btn primary', 'div' => false)) ?>	
+		<?php echo $this->Html->link('Deletar aluno', array('action' => 'delete', (int)$this->data['Student']['id']), array('class' => 'red right'), 'Deseja realmente deletar este aluno? Toda as informações relacionadas serão apagadas!') ?>			
 	</div>
 <?php echo $this->Form->end() ?>

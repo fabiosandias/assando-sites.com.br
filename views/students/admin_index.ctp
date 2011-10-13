@@ -6,7 +6,7 @@
 	<tr>
 		<th>#</th>
 		<th>Nome</th>
-		<th>Contatos</th>
+		<th>Email</th>
 		<th>Status</th>
 		<th>Cadastro</th>
 	</tr>
@@ -38,7 +38,7 @@
 			<?php echo $this->Html->tag('span', $class['code'], array('class' => 'label')) ?>
 			<?php endforeach ?>
 		</td>
-		<td><?php echo $this->Time->format('d/m ~ H:i', $Student['created']) ?></td>
+		<td class="center"><?php echo $this->Time->format('d/m ~ H:i', $Student['created']) ?></td>
 	</tr>
 	<?php endforeach ?>
 </tbody>

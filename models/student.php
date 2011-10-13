@@ -41,7 +41,11 @@ class Student extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $hasOne = array('Information');
+	public $hasOne = array(
+		'Information' => array(
+			'dependent' => true
+		)
+	);
 	
 	/**
 	 * Alunos pertencem à...

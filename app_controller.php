@@ -21,6 +21,8 @@ class AppController extends Controller {
 	 * Troca o layout do admin 
 	 */
 	public function beforeFilter() {
+		
+		
 						
 		// Troca o layout das telas de admin
 		if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
