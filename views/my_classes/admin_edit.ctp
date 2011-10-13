@@ -44,7 +44,18 @@
 			<div class="input">
 				<div class="input-prepend">
 					<span class="add-on">R$</span>
-					<?php echo $this->Form->input('price', array('class' => 'small')) ?>
+					<?php echo $this->Form->input('price', array('class' => 'small', 'autocomplete' => 'off')) ?>
+					<span class="help-inline">Desconto de <?php echo $this->Html->tag('strong', Configure::read('Inscricao.Desconto.porcentagem') . '%') ?> até <?php echo $this->Html->tag('strong', (int)abs(Configure::read('Inscricao.Desconto.limite')) . ' dias') ?> antes do início das aulas</span>
+				</div>
+			</div>			
+		</div>
+		
+		<div class="clearfix">
+			<?php echo $this->Form->label('desconto', 'Valor com desconto') ?>
+			<div class="input">
+				<div class="input-prepend">
+					<span class="add-on">R$</span>
+					<?php echo $this->Form->input('desconto', array('class' => 'small', 'readonly' => true)) ?>
 				</div>
 			</div>			
 		</div>
@@ -56,3 +67,16 @@
 		<?php if (isset($this->data['MyClass']['id']) && !empty($this->data['MyClass']['id'])) echo $this->Html->link('Deletar turma', array('action' => 'delete', (int)$this->data['MyClass']['id']), array('class' => 'red right'), 'Deseja realmente deletar esta turma? Toda as informações relacionadas serão apagadas!') ?>			
 	</div>
 <?php echo $this->Form->end() ?>
+
+<script type="text/javascript">
+$('#MyClassPrice').keyup(function() {
+	var valor = (this.value) ? parseFloat(this.value) : 0;
+	var desconto = <?php echo Configure::read('Inscricao.Desconto.porcentagem') ?> / 100;
+
+	var valor_com_desconto = Math.ceil(valor - (valor * desconto)).toFixed(2);
+
+	$('#MyClassDesconto').val(valor_com_desconto);	
+});
+
+$('#MyClassPrice').trigger('keyup');
+</script>

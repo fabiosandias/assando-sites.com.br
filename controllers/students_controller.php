@@ -80,7 +80,7 @@ class StudentsController extends AppController {
 		}
 		
 		$this->set(array(
-			'title_for_layout' => 'Editando Aluno',
+			'title_for_layout' => 'Editando aluno',
 			'subtitle_for_layout' => $this->data['Student']['fullname'],
 		
 			'Status' => $this->Student->Status->find('list', array('conditions' => array('Status.type' => 'Student'))),

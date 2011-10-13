@@ -8,6 +8,8 @@
 		
 	<!--[if lt IE 9]><?php echo $this->Html->script('http://html5shim.googlecode.com/svn/trunk/html5.js') ?><![endif]-->
 	
+	<?php echo $this->Html->script('https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js') ?>
+	
 	<meta name="robots" content="noindex, nofollow" />
 </head>
 <body>
@@ -28,7 +30,7 @@
 	
 	<?php echo $this->element('sql_dump') ?>
 	
-	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', 'http://twitter.github.com/bootstrap/1.3.0/bootstrap-dropdown.js')) ?>
+	<?php echo $this->Html->script(array('http://twitter.github.com/bootstrap/1.3.0/bootstrap-dropdown.js')) ?>
 
 </body>
 </html>

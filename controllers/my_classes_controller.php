@@ -54,4 +54,56 @@ class MyClassesController extends AppController {
 		
 	}
 	
+	/**
+	 * Editar turma
+	 * 
+	 * @param integer $id
+	 */
+	public function admin_edit($id) {
+		$this->MyClass->id = $id;
+				
+		// Houve submit
+		if (!empty($this->data)) {
+			// Salva os dados
+			if ($this->MyClass->saveAll($this->data)) {
+				$this->Session->setFlash('Turma atualizada com sucesso', 'admin/alerts/inline', array('class' => 'success'));
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('Verifique os dados', 'admin/alerts/inline', array('class' => 'error'));				
+			}
+		}
+		
+		$this->data = $this->MyClass->read();
+		
+		// Registro não encontrado
+		if (empty($this->data)) {
+			$this->Session->setFlash('Registro não encontrado', 'admin/alerts/inline', array('class' => 'error'));
+			$this->redirect(array('action' => 'index'));			
+		}
+		
+		$this->set(array(
+			'title_for_layout' => 'Editando turma',
+			'subtitle_for_layout' => $this->data['MyClass']['shortname'],
+		
+			'Status' => $this->MyClass->Status->find('list', array('conditions' => array('Status.type' => 'Class'))),
+		));		
+	}
+	
+	/**
+	 * Deletar turma
+	 * 
+	 * @param integer $id
+	 */
+	public function admin_delete($id) {
+				
+		// Deleta o aluno
+		if ($this->MyClass->delete((int)$id)) {
+			$this->Session->setFlash('Turma deletada com sucesso', 'admin/alerts/inline', array('class' => 'success'));
+		} else {
+			$this->Session->setFlash('Registro não encontrado', 'admin/alerts/inline', array('class' => 'error'));				
+		}
+		
+		$this->redirect(array('action' => 'index'));
+	}
+	
 }
