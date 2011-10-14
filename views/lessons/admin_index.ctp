@@ -35,4 +35,4 @@ $this->Bootstrap->addCrumb('Aulas');
 
 <?php echo $this->element('admin/pagination') ?>
 
-<?php } else echo $this->element('admin/alerts/inline', array('class' => 'warning', 'message' => 'Nenhum aluno encontrado')) ?>
+<?php } else echo $this->element('admin/alerts/inline', array('class' => 'warning', 'message' => 'Nenhuma aula encontrada')) ?>

@@ -90,4 +90,21 @@ class LessonsController extends AppController {
 
 	}
 	
+	/**
+	 * Deletar aula
+	 * 
+	 * @param integer $id
+	 */
+	public function admin_delete($id) {
+				
+		// Deleta o aluno
+		if ($this->Lesson->delete((int)$id)) {
+			$this->Session->setFlash('Aula deletada com sucesso', 'admin/alerts/inline', array('class' => 'success'));
+		} else {
+			$this->Session->setFlash('Registro não encontrado', 'admin/alerts/inline', array('class' => 'error'));				
+		}
+		
+		$this->redirect(array('action' => 'index'));
+	}
+	
 }
