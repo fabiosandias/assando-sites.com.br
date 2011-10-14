@@ -32,6 +32,10 @@ class Lesson extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $belongsTo = array('MyClass');
+	public $belongsTo = array(
+		'MyClass' => array(
+			'foreignKey' => 'class_id'
+		)
+	);
 	
 }

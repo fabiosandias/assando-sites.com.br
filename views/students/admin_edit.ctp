@@ -1,3 +1,8 @@
+<?php 
+$this->Bootstrap->addCrumb('Alunos', array('action' => 'index'));
+$this->Bootstrap->addCrumb($this->data['Student']['fullname']);
+?>
+
 <?php echo $this->Form->create('Student', array('inputDefaults' => array('div' => false, 'label' => false))) ?>
 <div class="row">
 	<div class="span9">

@@ -1,4 +1,8 @@
-<?php $this->set('subtitle_for_layout', '&ndash; ' . $this->Paginator->counter(array('format' => '%count%')) . ' turmas') ?>
+<?php
+$this->set('subtitle_for_layout', '&ndash; ' . $this->Paginator->counter(array('format' => '%count%')) . ' turmas');
+
+$this->Bootstrap->addCrumb('Turmas');
+?>
 
 <?php if (!empty($data)) { ?>
 <table class="zebra-striped">

@@ -35,3 +35,5 @@ a.red { color: red }
 
 .right { float: right }
 .actions a.right { margin: 8px 5px 0 0 }
+
+#LessonDatetimeHour { margin-left: 10px }

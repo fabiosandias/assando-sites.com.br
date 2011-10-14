@@ -1,3 +1,8 @@
+<?php
+$this->Bootstrap->addCrumb('Turmas', array('action' => 'index'));
+$this->Bootstrap->addCrumb(isset($this->data['MyClass']['id']) ? $this->data['MyClass']['title'] : 'Criar nova turma');
+?>
+
 <?php echo $this->Form->create('MyClass', array('inputDefaults' => array('div' => false, 'label' => false))) ?>
 
 	<fieldset>

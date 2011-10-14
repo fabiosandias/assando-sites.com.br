@@ -1,4 +1,9 @@
-<?php $this->set('subtitle_for_layout', '&ndash; ' . $this->Paginator->counter(array('format' => '%count%')) . ' alunos') ?>
+<?php
+$this->set('subtitle_for_layout', '&ndash; ' . $this->Paginator->counter(array('format' => '%count%')) . ' alunos');
+
+$this->Bootstrap->addCrumb('Alunos');
+?>
+
 
 <?php if (!empty($data)) { ?>
 <table class="zebra-striped">

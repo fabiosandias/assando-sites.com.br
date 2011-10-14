@@ -16,7 +16,7 @@ App::import('Sanitize');
 class StudentsController extends AppController {
 	
 	public function admin_dashboard() {
-		
+		$this->redirect(array('action' => 'index'));
 	}
 	
 	/**
