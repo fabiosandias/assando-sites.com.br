@@ -19,6 +19,13 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
+App::uses('PhpReader', 'Configure');
+Configure::config('PhpReader', new PhpReader());
+
+// Carrega arquivos do projeto
+Configure::load('config', 'PhpReader');
+Configure::load('safe', 'PhpReader');
+
 /**
  * CakePHP Debug Level:
  *
@@ -184,12 +191,12 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'YhG93b0qyJfIxfs2guVoDUubWwvniR2G0FgaC9mi');
+	#Configure::write('Security.salt', 'YhG93b0qyJfIxfs2guVoDUubWwvniR2G0FgaC9mi');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '09657453542496749676859383645');
+	#Configure::write('Security.cipherSeed', '09657453542496749676859383645');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
@@ -330,7 +337,3 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
-
-App::uses('PhpReader', 'Configure');
-Configure::config('default', new PhpReader());
-Configure::load('config', 'default');

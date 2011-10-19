@@ -17,3 +17,6 @@
 /tmp/sessions/*
 /tmp/tests/*
 /tmp/*_test*
+
+# Protected files
+/Config/safe.php
