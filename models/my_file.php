@@ -43,7 +43,9 @@ class MyFile extends AppModel {
 		'Status' => array(
 			'conditions' => array('Status.type' => null)
 		),
-		'MyClass'
+		'MyClass' => array(
+			'foreignKey' => 'class_id'
+		)
 	);
 	
 }

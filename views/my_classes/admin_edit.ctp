@@ -26,7 +26,7 @@ $this->Bootstrap->addCrumb(isset($this->data['MyClass']['id']) ? $this->data['My
 		
 		<div class="clearfix">
 			<?php echo $this->Form->label('status_id', 'Status') ?>
-			<div class="input"><?php echo $this->Form->input('status_id', array('options' => $Status, 'empty' => false)) ?></div>			
+			<div class="input"><?php echo $this->Form->input('status_id', array('options' => $Status, 'empty' => false, 'class' => 'span3')) ?></div>			
 		</div>
 		
 	</fieldset>

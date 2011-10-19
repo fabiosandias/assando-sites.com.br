@@ -24,10 +24,10 @@ $this->Bootstrap->addCrumb('Aulas');
 	<tr>
 		<td><?php echo $Lesson['id'] ?></td>
 		<td><?php echo $this->Html->link($Lesson['title'], array('action' => 'edit', $Lesson['id'])) ?></td>
-		<td><?php echo $Lesson['description'] ?></td>
+		<td><?php echo $this->Text->truncate($Lesson['description'], 30) ?></td>
 		<td><?php echo $MyClass['shortname'] ?></td>
 		<td><?php echo $MyClass['code'] ?></td>
-		<td><?php echo $this->Time->format('d/m ~H:i', $Lesson['datetime']) ?></td>
+		<td class="center"><?php echo $this->Time->format('d/m ~ H:i', $Lesson['datetime']) ?></td>
 	</tr>
 	<?php endforeach ?>
 </tbody>

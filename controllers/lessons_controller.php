@@ -2,7 +2,7 @@
 /**
  * Controller de aulas
  * 
- * @author			Thiago Belem <contato@thiagobelem.net>
+ * @author		Thiago Belem <contato@thiagobelem.net>
  * 
  * @package		AssandoSites
  * @subpackage		Controller
@@ -55,7 +55,7 @@ class LessonsController extends AppController {
 	}
 	
 	/**
-	 * Cadastro de aula
+	 * Edição de aula
 	 */
 	public function admin_edit($id) {
 		$this->Lesson->id = $id;
@@ -85,9 +85,6 @@ class LessonsController extends AppController {
 		
 			'MyClass' => $this->Lesson->MyClass->find('list'),
 		));
-		
-		$this->render('admin_edit');
-
 	}
 	
 	/**

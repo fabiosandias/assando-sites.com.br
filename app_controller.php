@@ -13,7 +13,7 @@
  */
 class AppController extends Controller {
 	
-	public $helpers = array('Html', 'Form', 'Session', 'Time', 'Bootstrap');
+	public $helpers = array('Html', 'Form', 'Session', 'Time', 'Text', 'Bootstrap');
 	
 	/**
 	 * Antes de filtrar as actions da aplicação
