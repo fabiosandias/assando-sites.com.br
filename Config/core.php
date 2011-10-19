@@ -191,12 +191,12 @@ Configure::load('safe', 'PhpReader');
 /**
  * A random string used in security hashing methods.
  */
-	#Configure::write('Security.salt', 'YhG93b0qyJfIxfs2guVoDUubWwvniR2G0FgaC9mi');
+	#Configure::write('Security.salt', '');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	#Configure::write('Security.cipherSeed', '09657453542496749676859383645');
+	#Configure::write('Security.cipherSeed', '');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).
