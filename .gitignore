@@ -16,3 +16,4 @@
 /tmp/logs/*
 /tmp/sessions/*
 /tmp/tests/*
+/tmp/*_test*
