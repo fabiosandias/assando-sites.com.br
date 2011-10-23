@@ -51,7 +51,7 @@
 					<?php echo $this->element('menu') ?>
 				</nav>
 
-				<p>O <a href="http://cakephp.org/" target="_blank">CakePHP</a>&trade; é de propriedade da <a href="http://cakefoundation.org/" target="_blank">CakePHP Software Foundation</a>&reg; e este curso não tem relação com a mesma</p>
+				<p>O <a href="http://cakephp.org/" target="_blank">CakePHP</a>&trade; é de propriedade da <a href="http://cakefoundation.org/" target="_blank"><abbr title="CakePHP Software Foundation">CSF</abbr></a>&reg; e a mesma não tem relação com este curso ou seu conteúdo</p>
 			</div>
 		</div>
 	</footer>
