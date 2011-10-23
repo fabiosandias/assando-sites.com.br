@@ -1,3 +1,5 @@
+<h2 class="grid_12">Veja as vantagens do curso</h2>
+
 <article class="grid_3">
 	<?php echo $this->Html->image('pictures/clock.jpg', array('width' => 200, 'height' => 128)) ?>
 	<h3>Coloque um site no ar em menos de três horas</h3>

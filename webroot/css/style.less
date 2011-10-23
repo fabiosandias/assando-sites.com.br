@@ -24,6 +24,14 @@
 	-moz-border-radius: @radius;
 }
 
+.rotate(@rotation: 45deg) {
+  -webkit-transform: rotate(@rotation);
+     -moz-transform: rotate(@rotation);
+      -ms-transform: rotate(@rotation);
+       -o-transform: rotate(@rotation);
+          transform: rotate(@rotation);
+}
+
 .clear { clear: both; display: block }
 
 body {
@@ -66,6 +74,18 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; color: #333; font-family: @title_f
 			.gradient(#5e9d6d, #7cb489);
 		}	
 	}
+	
+	&.menor {
+		font-size: 1.3em;
+		padding: 10px 15px;
+		border-width: 4px;
+	}
+}
+
+.avatar {
+	background: white;
+	padding: 5px;	
+	border: 1px solid #fff - 20%;
 }
 
 #topo {
@@ -109,6 +129,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; color: #333; font-family: @title_f
 
 			strong {
 				color: #333;
+				font-family: Delius, Ubuntu, cursive;
 			}
 		}
 
@@ -158,6 +179,8 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; color: #333; font-family: @title_f
 	}
 }
 
+
+
 body.home #topo li a.home,
 body.sobre #topo li a.sobre,
 body.inscricao #topo li a.inscricao {
@@ -165,6 +188,12 @@ body.inscricao #topo li a.inscricao {
 	color: #FFF;
 
 	.radius(3px);
+}
+
+body.home #rodape li a.home,
+body.sobre #rodape li a.sobre,
+body.inscricao #rodape li a.inscricao {
+	color: @rosa;
 }
 
 #conteudo {
@@ -197,6 +226,55 @@ body.inscricao #topo li a.inscricao {
 			h3 { font-weight: bold; margin: 20px 0 10px; font-size: 1.2em; }
 
 			p { color: #7f7f7f; line-height: 1.4em }
+		}
+	}
+	
+	.depoimentos {
+		h2 { margin-top: 50px }
+				
+		article {
+			margin-bottom: 30px;
+			
+			&:nth-child(2n) {
+				clear: left;
+			}	
+			
+			h3 {
+				float: right;
+				font-size: .9em;
+				margin: 5px 10px 0 0;
+			}
+			
+			.avatar {
+				float: left;
+				margin-right: 20px
+			}
+			
+			cite {
+				position: relative;
+				display: block;
+				margin-left: 100px;
+				line-height: 1.25em;
+				font-size: .95em;
+				background: white;
+				padding: 15px;
+				box-shadow: 0 0 6px 1px #DDD;
+				
+				.radius;
+				
+				&:before {
+					content: " ";
+					position: absolute;
+					width: 16px;
+					height: 16px;
+					display: block;
+					background: white;
+					.rotate(45deg); 
+					
+					left: -8px;
+					top: 20px;
+				}
+			}
 		}
 	}
 
@@ -261,9 +339,6 @@ body.inscricao #topo li a.inscricao {
 		.avatar {
 			float: left;
 			margin: 0 20px 70px 0;
-			background: white;
-			padding: 5px;	
-			border: 1px solid #fff - 20%;
 		}
 
 		h5 {
@@ -287,7 +362,8 @@ body.inscricao #topo li a.inscricao {
 			text-transform: lowercase;
 
 			strong {
-				color: #333
+				color: #333;
+				font-family: Delius, Ubuntu, cursive;
 			}
 		}
 		
@@ -339,22 +415,26 @@ body.inscricao #topo li a.inscricao {
 		p {
 			display: block;
 			clear: both;
-			font-size: .9em;
-			padding: 5px 60px 5px 0;
+			font-size: .8em;
+			margin-bottom: 25px;
 			
-			background: transparent url('../img/layout/cakephp-logo-footer.png') right center no-repeat;
+			&.cakephp {
+				height: 42px;
+				padding: 8px 60px 0 0;
+				
+				background: transparent url('../img/layout/cakephp-logo-footer.png') right center no-repeat;
+			}
 		}
 	}
 }
 
-/* ======================= SOBRE */
+/* ======================= PÁGINAS ESTÁTITCAS */
 
 body.page {
 	#topo {
 		padding-bottom: 0;
 		
 		.container_12 {
-			background: transparent url('../img/layout/gnomo-cereja.png') right bottom no-repeat;
 			padding-bottom: 40px;	
 		}
 		
@@ -369,6 +449,10 @@ body.page {
 	#conteudo {
 		.conteudo {
 			margin-bottom: 50px;
+			
+			h3 {
+				small { font-size: .7em; }
+			}
 		
 			h4 {
 				margin: 40px 0 15px;
@@ -382,13 +466,172 @@ body.page {
 			}
 		}
 		
-		.vantagens {
+		.sidebar {
 			float: right;
 			margin-bottom: 50px;
 			
+			h2 { display: none }
+						
 			article {
 				border-right: none;
-				margin-bottom: 20px
+				margin-bottom: 20px;
+				
+				h3 { margin-top: 10px }
+			}
+			
+			&.sobre {
+				h3 {
+					font-size: 1.4em;
+					margin: 0 0 10px;
+					line-height: 20px;
+				}
+				
+				p {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+	
+	&.sobre #topo .container_12 {			
+		background: transparent url('../img/layout/gnomo-cereja.png') right bottom no-repeat;
+	}
+	
+	&.inscricao #topo .container_12 {			
+		background: transparent url('../img/layout/gnomo-blueprint.png') right bottom no-repeat;
+	}
+	
+	article.turma {
+		clear: both;
+		position: relative;
+		margin-top: 20px;
+		background: #b0d9ba;
+		padding: 20px 20px 15px;
+		.radius(3px);
+		
+		input {
+			float: left;
+			margin: 0 10px 0 0;
+		}
+		
+		h3 {
+			margin: 0 0 10px 0;
+			font-size: 1.4em;
+			font-weight: bold;
+		}
+		
+		p {
+			color: #666;
+			margin-bottom: 0;
+			font-family: Delius, Ubuntu, cursive;
+		}
+		
+		aside.preco {
+			position: absolute;
+			top: 6px;
+			right: 10px;
+			padding: 10px;
+			width: 130px;
+			height: auto;
+			text-align: center;
+			vertical-align: middle;
+			
+			border: 4px solid #9bcca7;
+			.gradient(#7cb489, #5e9d6d);
+			.radius;
+			
+			font-family: Delius, Ubuntu, cursive;
+			color: #fff;
+			font-size: 1.4em;
+			
+			span {
+				color: #CB001A - 30%;
+				font-size: .55em;
+				display: block;
+				margin-bottom: 5px;
+				
+				strike {
+					color: #CB001A + 10%;
+				}
+			}
+		}
+		
+		span.limite {
+			position: absolute;
+			bottom: 8px;
+			right: 10px;
+			width: 130px + 28px;
+			text-align: center;
+			display: block;
+			font-size: .9em;
+			color: #333;
+			
+			strong {
+				font-family: Delius, Ubuntu, cursive;
+			}
+		}
+		
+		&:hover {
+			cursor: pointer;
+			background: #b0d9ba + 10%;
+		
+			aside.preco {
+				.gradient(#5e9d6d, #7cb489);			
+			}
+		}
+	}
+	
+	&.inscricao {
+		.gnomo-aponta { display: none }
+		
+		&.aluno article.turma { margin-bottom: 20px }
+		
+		&.aluno article.turma:hover {
+			cursor: inherit;
+			background: #b0d9ba;
+		
+			aside.preco {
+				.gradient(#7cb489, #5e9d6d);			
+			}
+		}
+		
+		&.aluno .atencao {
+			margin-top: 10px;
+			clear: both;
+			position: relative;
+			background: #F0EBB4 + 5%;
+			padding: 10px 20px;
+			.radius(3px);
+			
+			text-align: center;
+			color: #333;
+			font-size: .9em;
+			font-family: Delius, Ubuntu, cursive;
+		}
+	}
+	
+	.form {
+		margin: 30px 0 20px;
+		
+		h3 {
+			font-size: 1.3em;
+			margin: 30px 0 20px;
+			clear: both;
+		}
+		
+		label { display: block; margin-bottom: 5px }
+		div { margin-bottom: 20px }
+		
+		.text {
+			font: normal normal 16px Rosario, Ubuntu, Helvetica, sans-serif;
+			padding: 10px 15px;
+			font-size: 16px;
+			border: 1px solid #fff - 20%;
+			.radius(3px);
+			width: 80%;
+			
+			&.small {
+				width: 20px;
 			}
 		}
 	}

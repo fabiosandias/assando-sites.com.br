@@ -51,10 +51,14 @@
 					<?php echo $this->element('menu') ?>
 				</nav>
 
-				<p>O <a href="http://cakephp.org/" target="_blank">CakePHP</a>&trade; é de propriedade da <a href="http://cakefoundation.org/" target="_blank"><abbr title="CakePHP Software Foundation">CSF</abbr></a>&reg; e a mesma não tem relação com este curso ou seu conteúdo</p>
+				<p class="cakephp">O <a href="http://cakephp.org/" rel="external">CakePHP</a>&trade; é de propriedade da <a href="http://cakefoundation.org/" rel="external"><abbr title="CakePHP Software Foundation">CSF</abbr></a>&reg; e a mesma não tem relação com este curso ou seu conteúdo</p>
+				
+				<p>Design por <?php echo $this->Html->link('Bernard De Luna', 'http://bernarddeluna.com/', array('rel' => 'external')) ?> e ilustrações por <?php echo $this->Html->link('Eddie Souza', 'http://eddiesouza.com.br/', array('rel' => 'external')) ?></p>
 			</div>
 		</div>
 	</footer>
+	
+	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
 		
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -64,9 +68,6 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
-	<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-	{lang: 'pt-BR'}
-	</script>
-	<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'scripts.js', 'https://apis.google.com/js/plusone.js', 'http://platform.twitter.com/widgets.js')) ?>
 </body>
 </html>

@@ -5,15 +5,16 @@ $this->set(array(
 ))
 ?>
 		<section class="container_12 vantagens">
-			<h2 class="grid_12">Veja as vantagens do curso</h2>
-
-			<?php echo $this->element('advantages') ?>
-			
+			<?php echo $this->element('advantages') ?>			
+		</section>
+		
+		<section class="container_12 depoimentos">
+			<?php echo $this->element('testmonials') ?>			
 		</section>
 
 		<section class="container_12">
 			<form class="faixa verde grid_12">
-				<h4 class="grid_5 suffix_1">Saiba sobre promoções e novas turmas para o curso de CakePHP</h4>
+				<h4 class="grid_5 suffix_1">Quer ser avisado sobre as promoções e novas turmas do Assando Sites?</h4>
 
 				<label for="email">Email</label>
 				<input type="email" name="email" id="email" placeholder="digite seu email" />

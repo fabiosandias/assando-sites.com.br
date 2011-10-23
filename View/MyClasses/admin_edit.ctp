@@ -50,7 +50,7 @@ $this->Bootstrap->addCrumb(isset($this->data['MyClass']['id']) ? $this->data['My
 				<div class="input-prepend">
 					<span class="add-on">R$</span>
 					<?php echo $this->Form->input('price', array('class' => 'small', 'autocomplete' => 'off')) ?>
-					<span class="help-inline">Desconto de <?php echo $this->Html->tag('strong', Configure::read('Inscricao.Desconto.porcentagem') . '%') ?> até <?php echo $this->Html->tag('strong', (int)abs(Configure::read('Inscricao.Desconto.limite')) . ' dias') ?> antes do início das aulas</span>
+					<span class="help-inline">Desconto de <?php echo $this->Html->tag('strong', Configure::read('Inscricao.Desconto.0.porcentagem') . '%') ?> até <?php echo $this->Html->tag('strong', (int)abs(Configure::read('Inscricao.Desconto.0.limite')) . ' dias') ?> antes do início das aulas</span>
 				</div>
 			</div>			
 		</div>
@@ -76,7 +76,7 @@ $this->Bootstrap->addCrumb(isset($this->data['MyClass']['id']) ? $this->data['My
 <script type="text/javascript">
 $('#MyClassPrice').keyup(function() {
 	var valor = (this.value) ? parseFloat(this.value) : 0;
-	var desconto = <?php echo Configure::read('Inscricao.Desconto.porcentagem') ?> / 100;
+	var desconto = <?php echo Configure::read('Inscricao.Desconto.0.porcentagem') ?> / 100;
 
 	var valor_com_desconto = Math.ceil(valor - (valor * desconto)).toFixed(2);
 

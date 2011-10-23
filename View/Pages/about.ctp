@@ -69,16 +69,15 @@ $this->set(array(
 	
 			<h4>8. Publicação e versionamento</h4>
 			<ul>
-				<li>Publicação via <strong>FTP</strong></li>
-				<li>Versionamento de arquivos utilizndo <strong>Git</strong></li>
-				<li>Deploy automatizado utiliznado <strong>Git Hooks</strong></li>
+				<li>Publicação do site via <strong>FTP</strong></li>
+				<li>Versionamento de arquivos utilizando <strong>Git</strong> no GitHub</li>
 			</ul>
 	
-			<p>Gostou? Então <a href="/inscreva-se">inscreva-se</a> na próxima turma!</p>
+			<p>Gostou? Então <?php echo $this->Html->link('inscreva-se', array('controller' => 'my_classes', 'action' => 'index')) ?> na próxima turma!</p>
 		
 		</section>
 
-		<section class="vantagens grid_3">
+		<section class="grid_3 sidebar vantagens">
 
 			<?php echo $this->element('advantages') ?>
 			

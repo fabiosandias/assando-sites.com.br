@@ -15,6 +15,26 @@ App::import('Sanitize');
  */
 class StudentsController extends AppController {
 	
+	/**
+	 * Inscrição de aluno
+	 */
+	public function signup() {			
+		// Veio da selação de turma
+		if (isset($this->data['MyClass']['id'])) {
+			$this->Session->write('Student.MyClass.id', (int)$this->data['MyClass']['id']);
+		}
+			
+		$this->set(array(
+			'title_for_layout' => 'Inscreva-se - Cadastro',
+			'body_class' => 'page inscricao aluno',
+		
+			'MyClass' => $this->Student->MyClass->findById($this->Session->read('Student.MyClass.id'))
+		));
+	}
+	
+	/**
+	 * Dashboard do painel de controle
+	 */
 	public function admin_dashboard() {
 		$this->redirect(array('action' => 'index'));
 	}

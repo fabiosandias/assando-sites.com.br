@@ -13,7 +13,19 @@
  */
 class AppController extends Controller {
 	
-	public $helpers = array('Html', 'Form', 'Session', 'Time', 'Text', 'Bootstrap');
+	/**
+	 * Components da aplicação
+	 * 
+	 * @var array
+	 */
+	public $components = array('Session', 'RequestHandler'/*, 'Security'*/);
+	
+	/**
+	 * Helpers da aplicação
+	 * 
+	 * @var array
+	 */
+	public $helpers = array('Html', 'Form', 'Session', 'Time', 'Text', 'Number', 'Bootstrap');
 	
 	/**
 	 * Antes de filtrar as actions da aplicação
@@ -21,7 +33,7 @@ class AppController extends Controller {
 	 * Troca o layout do admin 
 	 */
 	public function beforeFilter() {
-		parent::beforeFilter();		
+		parent::beforeFilter();
 						
 		// Troca o layout das telas de admin
 		if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {

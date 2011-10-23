@@ -9,8 +9,14 @@ $config = array(
 	),
 	'Inscricao' => array(
 		'Desconto' => array(
-			'porcentagem' => 15,
-			'limite' => '-30 days' // Antes do início das aulas
+			array(
+				'porcentagem' => 20,
+				'limite' => '-30 days'			
+			),
+			array(
+				'porcentagem' => 10,
+				'limite' => '-15 days'
+			)
 		)
 	)
 );
