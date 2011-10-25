@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
-	<title>Assando Sites</title>
+	<title><?php echo empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title') ?></title>
 
 	<?php echo $this->Html->css(array('reset.css', '960.css', 'http://fonts.googleapis.com/css?family=Delius|Rosario')) ?>
 	

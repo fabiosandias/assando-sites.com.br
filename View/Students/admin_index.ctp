@@ -22,13 +22,13 @@ $this->Bootstrap->addCrumb('Alunos');
 		extract($row);
 		
 		switch ($Status['id']) {
-			case Status::STATUS_STUDENT_INSCRICAO_PENDENTE:
+			case STATUS_STUDENT_INSCRICAO_PENDENTE:
 				$labelClass = 'warning';
 				break;
-			case Status::STATUS_STUDENT_INSCRICAO_CONFIRMADA:
+			case STATUS_STUDENT_INSCRICAO_CONFIRMADA:
 				$labelClass = 'success';
 				break;
-			case Status::STATUS_STUDENT_DELETADO:
+			case STATUS_STUDENT_DELETADO:
 				$labelClass = 'important';
 				break;
 		}

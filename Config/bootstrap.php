@@ -70,3 +70,19 @@ Inflector::rules('plural', array(
  *
  */
 
+
+	
+/**
+ * Status de alunos
+ */
+define('STATUS_STUDENT_INSCRICAO_PENDENTE', 8);
+define('STATUS_STUDENT_INSCRICAO_CONFIRMADA', 9);
+define('STATUS_STUDENT_DELETADO', 10);
+
+/**
+ * Status de turmas
+ */
+define('STATUS_CLASS_PENDENTE', 4);
+define('STATUS_CLASS_INSCRICOES_ABERTAS', 5);
+define('STATUS_CLASS_INSCRICOES_FECHADAS', 6);
+define('STATUS_CLASS_ENCERRADA', 7);

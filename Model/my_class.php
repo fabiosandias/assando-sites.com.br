@@ -82,7 +82,7 @@ class MyClass extends AppModel {
 				'MyClass.start >=' => date('Y-m-d', strtotime('-1 day')),
 		
 				// Status => Inscrições abertas
-				'MyClass.status_id' => Status::STATUS_CLASS_INSCRICOES_ABERTAS
+				'MyClass.status_id' => STATUS_CLASS_INSCRICOES_ABERTAS
 			),
 			'order' => array(
 				'MyClass.start' => 'ASC'

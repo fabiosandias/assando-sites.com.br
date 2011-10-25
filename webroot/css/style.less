@@ -620,7 +620,6 @@ body.page {
 		}
 		
 		label { display: block; margin-bottom: 5px }
-		div { margin-bottom: 20px }
 		
 		.text {
 			font: normal normal 16px Rosario, Ubuntu, Helvetica, sans-serif;
@@ -632,6 +631,36 @@ body.page {
 			
 			&.small {
 				width: 20px;
+			}
+		}
+		
+		div { margin-bottom: 20px }
+		
+		div.alpha {
+			clear: left;
+		}
+		
+		div.error {
+			
+			.text {
+				border: 1px solid #DBCCD0;
+				background: #FFF0F4;
+			}
+		
+			div.error-message {
+				background: transparent url('../img/icons/error-small.png') left center no-repeat;
+				padding-left: 20px;
+				font-family: Delius, Ubuntu, cursive;
+				margin: 5px 0 0 0;
+				color: #AA0000;
+				font-size: .9em;
+			}		
+		}
+		
+		div.required {
+			label:after {
+				content: ' *';
+				color: #cb001a;
 			}
 		}
 	}

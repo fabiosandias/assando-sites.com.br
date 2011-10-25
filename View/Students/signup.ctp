@@ -5,7 +5,7 @@
 			
 			<?php echo $this->Form->create('Student', array('action' => 'signup', 'class' => 'form')) ?>
 				
-				<?php $MyClass = $MyClass['MyClass'] ?>
+			<?php $MyClass = $MyClass['MyClass'] ?>
 				<h3 class="grid_8 alpha omega">Turma escolhida <small>&ndash; <?php echo $this->Html->link('Escolha outra turma', array('controller' => 'my_classes', 'action' => 'index')) ?></small></h3>
 				<article class="turma" data-turma-id="<?php echo $MyClass['id'] ?>">
 					<h3><?php echo $MyClass['title'] ?></h3>
@@ -37,11 +37,14 @@
 			
 				<h3 class="grid_8 alpha omega">Outras informações</h3>
 				
-				<?php echo $this->Form->input('phone', array('label' => 'Celular', 'placeholder' => '(21) 8888-8888', 'class' => 'text', 'type' => 'tel', 'div' => array('class' => 'grid_2 alpha'))) ?>			
-				<?php echo $this->Form->input('state', array('label' => 'Estado', 'placeholder' => 'RJ', 'class' => 'text small', 'div' => array('class' => 'grid_1'))) ?>			
-				<?php echo $this->Form->input('city', array('label' => 'Cidade', 'placeholder' => 'Rio de Janeiro', 'class' => 'text', 'div' => array('class' => 'grid_4 suffix_1 omega'))) ?>
+				<?php echo $this->Form->input('Information.phone', array('label' => 'Celular', 'placeholder' => '(21) 8888-8888', 'class' => 'text', 'type' => 'tel', 'div' => array('class' => 'grid_2 alpha'))) ?>
+				<?php echo $this->Form->input('Information.twitter', array('label' => 'Perfil do Twitter', 'placeholder' => '@TiuTalk', 'class' => 'text', 'div' => array('class' => 'grid_2 suffix_4 omega'))) ?>			
+				<?php echo $this->Form->input('Information.state', array('label' => 'Estado', 'placeholder' => 'RJ', 'class' => 'text small', 'div' => array('class' => 'grid_1 alpha'))) ?>			
+				<?php echo $this->Form->input('Information.city', array('label' => 'Cidade', 'placeholder' => 'Rio de Janeiro', 'class' => 'text', 'div' => array('class' => 'grid_4 suffix_3 omega'))) ?>
+				
+				<div class="atencao">Caso você tenha algum problema durante a inscrição ou já fez o curso e quer se inscrever em uma nova turma, envie um email para <?php echo $this->Html->link('thiago.belem@assando-sites.com.br', 'mailto:thiago.belem@assando-sites.com.br') ?></div>
 					
-				<?php echo $this->Form->submit('Inscrever', array('class' => 'botao vermelho menor')) ?>
+				<?php echo $this->Form->submit('Inscrever', array('class' => 'botao vermelho menor', 'div' => array('class' => 'grid_8 alpha'))) ?>
 				
 			<?php echo $this->Form->end() ?>
 		</section>

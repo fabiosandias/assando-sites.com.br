@@ -18,7 +18,7 @@ class MyClassesController extends AppController {
 	 */
 	public function index() {			
 		$this->set(array(
-			'title_for_layout' => 'Inscreva-se - Escolha uma turma',
+			'title_for_layout' => 'Inscrição: seleção de turma',
 			'body_class' => 'page inscricao turmas',
 		
 			'data' => $this->MyClass->openSignup(),

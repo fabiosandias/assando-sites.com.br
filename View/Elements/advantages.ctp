@@ -6,10 +6,10 @@
 	<p>Não tem conversa! É só fazer a primeira aula e você já tem um site no ar utilizando CakePHP</p>
 </article>
 
-<article class="grid_3">
-	<?php echo $this->Html->image('pictures/hands.jpg', array('width' => 200, 'height' => 128)) ?>
-	<h3>Networking garantido</h3>
-	<p>Conheça profissionais que aprenderão a mesma coisa que você e encontre parceiros para qualquer tipo de projeto</p>
+<article class="grid_3 omega">
+	<?php echo $this->Html->image('pictures/cakephp.jpg', array('width' => 200, 'height' => 128)) ?>
+	<h3>CakePHP 2.0+</h3>
+	<p>O conteúdo do curso foi reformulado para ensinar tudo sobre a <strong>última versão</strong>, e você não vai ficar pra trás</p>
 </article>
 
 <article class="grid_3">
@@ -18,8 +18,8 @@
 	<p>Participe de uma comunidade mundial e garanta o sucesso e a manutenabilidade dos projetos</p>
 </article>
 
-<article class="grid_3 omega">
-	<?php echo $this->Html->image('pictures/help.jpg', array('width' => 200, 'height' => 128)) ?>
-	<h3>Mantenha-se atualizado</h3>
-	<p>Saiu uma versão nova? Não tem problema! Você sempre terá alguém pra te ajudar com as mudanças</p>
+<article class="grid_3">
+	<?php echo $this->Html->image('pictures/hands.jpg', array('width' => 200, 'height' => 128)) ?>
+	<h3>Networking garantido</h3>
+	<p>Conheça profissionais que aprenderão a mesma coisa que você e encontre parceiros para qualquer tipo de projeto</p>
 </article>

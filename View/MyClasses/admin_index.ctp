@@ -21,14 +21,14 @@ $this->Bootstrap->addCrumb('Turmas');
 		extract($row);
 		
 		switch ($Status['id']) {	
-			case Status::STATUS_CLASS_PENDENTE:
+			case STATUS_CLASS_PENDENTE:
 				$labelClass = 'warning';
 				break;			
-			case Status::STATUS_CLASS_INSCRICOES_ABERTAS:
+			case STATUS_CLASS_INSCRICOES_ABERTAS:
 				$labelClass = 'success';
 				break;
-			case Status::STATUS_CLASS_ENCERRADA:				
-			case Status::STATUS_CLASS_INSCRICOES_FECHADAS:
+			case STATUS_CLASS_ENCERRADA:				
+			case STATUS_CLASS_INSCRICOES_FECHADAS:
 				$labelClass = 'important';
 				break;
 		}

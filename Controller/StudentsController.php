@@ -22,10 +22,28 @@ class StudentsController extends AppController {
 		// Veio da selação de turma
 		if (isset($this->data['MyClass']['id'])) {
 			$this->Session->write('Student.MyClass.id', (int)$this->data['MyClass']['id']);
+			
+		// Salva os dados do aluno
+		} else if (isset($this->data['Student'])) {
+			
+			// Inclui a classe e status padrão
+			$this->request->data['MyClass'] = array('id' => (int)$this->Session->read('Student.MyClass.id'));
+			$this->request->data['Student']['status_id'] = STATUS_STUDENT_INSCRICAO_PENDENTE;
+			
+			$this->Student->create();
+			if ($this->Student->saveAll($this->data)) {
+				// Envia o email e redireciona pra tela de pagamento
+				
+				
+				// Redireciona o aluno pra tela de pagamento
+				$token = sha1($this->data['Student']['name'] . $this->data['Student']['email']);
+				$this->redirect(array('action' => 'payment', 'token' => $token));
+				
+			}
 		}
 			
 		$this->set(array(
-			'title_for_layout' => 'Inscreva-se - Cadastro',
+			'title_for_layout' => 'Inscrição: cadastro de aluno',
 			'body_class' => 'page inscricao aluno',
 		
 			'MyClass' => $this->Student->MyClass->findById($this->Session->read('Student.MyClass.id'))
