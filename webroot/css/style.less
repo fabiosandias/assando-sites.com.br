@@ -193,7 +193,7 @@ body.inscricao #topo li a.inscricao {
 body.home #rodape li a.home,
 body.sobre #rodape li a.sobre,
 body.inscricao #rodape li a.inscricao {
-	color: @rosa;
+	color: #b0d9ba;
 }
 
 #conteudo {
@@ -237,17 +237,20 @@ body.inscricao #rodape li a.inscricao {
 			
 			&:nth-child(2n) {
 				clear: left;
-			}	
+			}
+			
+			.avatar {
+				float: left;
+				margin-right: 20px;
+				
+				&.rotate-left { .rotate(-3deg) }
+				&.rotate-right { .rotate(3deg) }
+			}
 			
 			h3 {
 				float: right;
 				font-size: .9em;
 				margin: 5px 10px 0 0;
-			}
-			
-			.avatar {
-				float: left;
-				margin-right: 20px
 			}
 			
 			cite {
@@ -498,7 +501,7 @@ body.page {
 	}
 	
 	&.inscricao #topo .container_12 {			
-		background: transparent url('../img/layout/gnomo-blueprint.png') right bottom no-repeat;
+		background: transparent url('../img/layout/gnomo-papeis.png') right bottom no-repeat;
 	}
 	
 	article.turma {

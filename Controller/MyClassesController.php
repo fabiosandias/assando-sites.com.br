@@ -16,12 +16,17 @@ class MyClassesController extends AppController {
 	/**
 	 * Lista de turmas pro aluno se inscrever
 	 */
-	public function index() {			
+	public function index() {
+		$data = $this->MyClass->openSignup();
+		
+		if (isset($this->request->params['requested']) && $this->request->params['requested'])
+			return $data;
+		
 		$this->set(array(
 			'title_for_layout' => 'Inscrição: seleção de turma',
 			'body_class' => 'page inscricao turmas',
 		
-			'data' => $this->MyClass->openSignup(),
+			'data' => $data,
 			'ids' => $this->MyClass->openSignup('list')
 		));
 	}

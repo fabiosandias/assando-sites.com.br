@@ -23,4 +23,10 @@
 	$('section.depoimentos').append($depoimentos);
 	$('section.depoimentos article:gt(3)').hide();
 	
+	$('section.depoimentos .avatar').each(function() {
+		$(this).addClass(function() {
+			return (Math.random() > 0.5) ? 'rotate-left' : 'rotate-right';
+		});
+	});
+	
 })(jQuery);

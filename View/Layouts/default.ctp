@@ -3,11 +3,23 @@
 <head>
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
 	<title><?php echo empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title') ?></title>
-
-	<?php echo $this->Html->css(array('reset.css', '960.css', 'http://fonts.googleapis.com/css?family=Delius|Rosario')) ?>
 	
-	<link rel="stylesheet/less" type="text/css" href="<?php echo $this->Html->url('/css/style.less') ?>" />	
+	<?php echo $this->Html->meta('description', Configure::read('Meta.description')) . PHP_EOL ?>
+	<?php echo $this->Html->meta('keywords', Configure::read('Meta.keywords')) . PHP_EOL ?>
+	
+	<?php if (Configure::read('debug')) echo $this->Html->meta(array('name' => 'robots', 'content' => 'noindex,nofollow')); ?>	
+	
+	<?php echo $this->Html->meta('icon') ?><link rel="apple-touch-icon" href="<?php echo $this->Html->url('/apple-touch-icon.png') ?>" />
+
+
+	<!-- CSS --><?php echo $this->Html->css(array('reset.css', '960.css', 'http://fonts.googleapis.com/css?family=Delius|Rosario')) ?>	
+	<link rel="stylesheet/less" type="text/css" href="<?php echo $this->Html->url('/css/style.less') ?>" />
+		
+	<!-- JS -->
 	<?php echo $this->Html->script('libs/less.min.js') . PHP_EOL ?>
+
+	
+	<?php foreach (Configure::read('Google.webmasters') AS $code) echo $this->Html->meta(array('name' => 'google-site-verification', 'content' => $code)); ?>	
 </head>
 <body class="<?php if (isset($body_class)) echo $body_class ?>">
 	<header id="topo">
@@ -41,9 +53,9 @@
 		<div class="container_12">
 
 			<div class="pagamento grid_6">
-				<h5>Formas de pagamento</h5>
-				<p>Você pode pagar com Visa, MasterCard, Diners, American Express, Hipercard, Aura, Bradesco, Itaú, Banco do Brasil, Banrisul, Oi Paggo, saldo em conta PagSeguro e boleto</p>
-				<?php echo $this->Html->image('icons/opcoes-pagamento-pagseguro.png', array('alt' => 'Formas de Pagamento')) ?>
+				<h5>Formas de pagamento, via PagSeguro</h5>
+				<p>Você pode pagar com Visa, MasterCard, Diners, American Express, Hipercard, Aura, Bradesco, Itaú, Banco do Brasil, Banrisul, Oi Paggo, saldo em conta PagSeguro ou boleto bancário</p>
+				<?php echo $this->Html->image('layout/opcoes-pagamento.png', array('alt' => 'Formas de Pagamento')) ?>
 			</div>
 
 			<div class="creditos grid_5 prefix_1">
@@ -57,9 +69,13 @@
 			</div>
 		</div>
 	</footer>
-	
+
 	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
-		
+	
+	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'scripts.js', 'https://apis.google.com/js/plusone.js', 'http://platform.twitter.com/widgets.js')) ?>
+	
+	<?php if (!Configure::read('debug')) echo $this->element('google-analytics', array('account' => Configure::read('Google.analytics')))	?>
+	
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) {return;}
@@ -67,7 +83,5 @@
 	  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
-	
-	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'scripts.js', 'https://apis.google.com/js/plusone.js', 'http://platform.twitter.com/widgets.js')) ?>
 </body>
 </html>

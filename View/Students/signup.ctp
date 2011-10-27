@@ -24,7 +24,7 @@
 				</article>
 				
 				<?php if ($MyClass['price_discount'] < $MyClass['price']) { ?>
-				<div class="atencao"><strong>Atenção:</strong> O valor acima é um valor promocional que poderá ser alterado sem aviso prévio</div>
+				<div class="atencao"><strong>Atenção:</strong> Este valor é promocional e poderá ser alterado sem aviso prévio</div>
 				<?php } ?>
 							
 				<h3 class="grid_8 alpha omega">Dados pessoais</h3>
