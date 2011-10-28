@@ -12,7 +12,7 @@ $this->set(array(
 			<a rel="reference external" href="http://pt.wikipedia.org/wiki/Rapid_Application_Development">desenvolvimento rápido</a>
 			para <a rel="reference external" href="http://www.php.net/">PHP</a>, <a rel="reference external" href="http://pt.wikipedia.org/wiki/Licença_MIT">livre</a>
 			e de
-			<a rel="reference external" href="http://pt.wikipedia.org/wiki/Código_aberto">Código aberto</a>. Seu principal
+			<a rel="reference external" href="http://pt.wikipedia.org/wiki/Código_aberto">código aberto</a>. Seu principal
 			objetivo é permitir que você trabalhe de forma estruturada e rápida sem perder a
 			flexibilidade.</p>
 			
