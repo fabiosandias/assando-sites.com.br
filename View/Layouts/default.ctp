@@ -12,7 +12,7 @@
 	<?php echo $this->Html->meta('icon') ?><link rel="apple-touch-icon" href="<?php echo $this->Html->url('/apple-touch-icon.png') ?>" />
 
 
-	<!-- CSS --><?php echo $this->Html->css(array('reset.css', '960.css', 'http://fonts.googleapis.com/css?family=Delius|Rosario')) ?>	
+	<!-- CSS --><?php echo $this->Html->css(array('reset.css', '960.css', 'animate-custom.css', 'http://fonts.googleapis.com/css?family=Delius|Rosario')) ?>	
 	<link rel="stylesheet/less" type="text/css" href="<?php echo $this->Html->url('/css/style.less') ?>" />
 		
 	<!-- JS -->
