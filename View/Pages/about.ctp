@@ -7,7 +7,7 @@ $this->set(array(
 		<section class="conteudo grid_9">
 			<h2>Objetivos do curso</h2>
 			<p>Ensinar tudo que você precisa para criar um site de forma <strong>rápida</strong> e <strong>segura</strong>:</p>
-			
+
 			<h4>1. Introdução e conceitos gerais</h4>
 			<ul>
 				<li>História do PHP</li>

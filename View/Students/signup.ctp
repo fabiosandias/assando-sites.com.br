@@ -4,6 +4,12 @@
 			<p>Preencha o formulário à seguir com os seus dados para dar início à sua inscrição</p>
 			
 			<?php echo $this->Form->create('Student', array('action' => 'signup', 'class' => 'form')) ?>
+			
+			<?php
+			$errors = array_filter($this->validationErrors);
+			if (!empty($errors)) { ?>
+			<div class="atencao erro">Verifique os campos marcados em <strong>vermelho</strong> e tente novamente</div>
+			<?php } ?>
 				
 			<?php $MyClass = $MyClass['MyClass'] ?>
 				<h3 class="grid_8 alpha omega">Turma escolhida <small>&ndash; <?php echo $this->Html->link('Escolha outra turma', array('controller' => 'my_classes', 'action' => 'index')) ?></small></h3>
@@ -39,8 +45,8 @@
 				
 				<?php echo $this->Form->input('Information.phone', array('label' => 'Celular', 'placeholder' => '(21) 8888-8888', 'class' => 'text', 'type' => 'tel', 'div' => array('class' => 'grid_2 alpha'))) ?>
 				<?php echo $this->Form->input('Information.twitter', array('label' => 'Perfil do Twitter', 'placeholder' => '@TiuTalk', 'class' => 'text', 'div' => array('class' => 'grid_2 suffix_4 omega'))) ?>			
-				<?php echo $this->Form->input('Information.state', array('label' => 'Estado', 'placeholder' => 'RJ', 'class' => 'text small', 'div' => array('class' => 'grid_1 alpha'))) ?>			
-				<?php echo $this->Form->input('Information.city', array('label' => 'Cidade', 'placeholder' => 'Rio de Janeiro', 'class' => 'text', 'div' => array('class' => 'grid_4 suffix_3 omega'))) ?>
+				<?php echo $this->Form->input('Information.city', array('label' => 'Cidade', 'placeholder' => 'Rio de Janeiro', 'class' => 'text', 'div' => array('class' => 'grid_4 alpha omega'))) ?>
+				<?php echo $this->Form->input('Information.state', array('label' => 'Estado', 'placeholder' => 'RJ', 'class' => 'text small', 'div' => array('class' => 'grid_3 omega'))) ?>			
 				
 				<div class="atencao">Caso você tenha algum problema durante a inscrição ou já fez o curso e quer se inscrever em uma nova turma, envie um email para <?php echo $this->Html->link('thiago.belem@assando-sites.com.br', 'mailto:thiago.belem@assando-sites.com.br') ?></div>
 					
@@ -58,8 +64,11 @@
 			<p>Após cada aula você receberá os slides e um <strong>vídeo</strong> da aula.</p>
 			<p>Temos também uma <strong>ferramenta para você tirar dúvidas</strong> e compartilhar o seu progresso com os outros participantes.</p>
 
-			<h3 style="margin-top: 30px">O que acontece após a inscrição?</h3>
+			<h3 style="margin-top: 30px">O que eu preciso pra participar?</h3>			
+			<p>Você precisa conhecer os conceitos da <strong>Orientação à Objetos</strong> e utilizar um navegador atualizado com a última versão do <em>Adobe Flash</em> instalada.</p>
 			
+
+			<h3 style="margin-top: 30px">O que acontece após a inscrição?</h3>			
 			<p>Após a inscrição você será direcionado para o efetuar o pagamento no <strong>PagSeguro</strong>.</p>
 			<p>Assim que o pagamento for confirmado, sua vaga estará garantida!</p>
 			

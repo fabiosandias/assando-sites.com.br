@@ -84,4 +84,17 @@ class AppModel extends Model {
 		return in_array($estado, array_keys($this->estadosBrasil));
 	}
 	
+	/**
+	 * Compara dois campos
+	 * 
+	 * @param array $data
+	 * 
+	 * @return boolean
+	 */
+	public function equalToField($data, $field) {
+		$data = array_shift($data);
+		
+		return isset($this->data[$this->alias][$field]) && ($data == $this->data[$this->alias][$field]);
+	}
+	
 }

@@ -31,8 +31,8 @@
 			</nav>			
 
 			<div class="titulo grid_6 suffix_6">
-				<h1>Desenvolver com <strong>CakePHP</strong> é tão fácil como assar um bolo</h1>
-				<p><strong>Assando Sites</strong> é um curso prático onde você vai aprender a desenvolver sites e portais de forma rápida e eficiente.</p>
+				<h1>Desenvolver com <strong>CakePHP</strong> é tão fácil quanto assar um bolo</h1>
+				<p><strong>Assando Sites</strong> é um curso prático de <?php echo $this->Html->link('CakePHP', array('controller' => 'pages', 'action' => 'display', 'cakephp')) ?> onde você vai aprender a desenvolver sites e portais de forma rápida e eficiente.</p>
 				<p>As aulas são <strong>on-line</strong>, através de uma ferramenta com áudio, vídeo, chat e apresentação de slides... Você aprende sem sair de casa!</p>
 			</div>
 			

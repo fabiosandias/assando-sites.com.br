@@ -101,7 +101,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; color: #333; font-family: @title_f
 		margin-bottom: 45px;
 
 		h1 {
-			font-size: 2.2em;
+			font-size: 2.1em;
 			line-height: 1.15em;
 			margin-bottom: 20px;
 			
@@ -112,6 +112,10 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; color: #333; font-family: @title_f
 			color: #777;
 			line-height: 1.4em;
 			margin-bottom: 10px;
+			
+			a {
+				color: @rosa;
+			}
 		}
 	}
 
@@ -183,6 +187,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; color: #333; font-family: @title_f
 
 body.home #topo li a.home,
 body.sobre #topo li a.sobre,
+body.cakephp #topo li a.cakephp,
 body.inscricao #topo li a.inscricao {
 	background: @rosa;
 	color: #FFF;
@@ -192,6 +197,7 @@ body.inscricao #topo li a.inscricao {
 
 body.home #rodape li a.home,
 body.sobre #rodape li a.sobre,
+body.cakephp #rodape li a.cakephp,
 body.inscricao #rodape li a.inscricao {
 	color: #b0d9ba;
 }
@@ -234,15 +240,26 @@ body.inscricao #rodape li a.inscricao {
 				
 		article {
 			margin-bottom: 30px;
+			position: relative;
 			
 			&:nth-child(2n) {
 				clear: left;
+			}
+				
+			&:after {
+				content: ' ';
+				width: 20px;
+				height: 20px;
+				background: url('../img/icons/pin.png') no-repeat;
+				
+				position: absolute;
+				left: 38px;
+				top: -15px;
 			}
 			
 			.avatar {
 				float: left;
 				margin-right: 20px;
-				
 				&.rotate-left { .rotate(-3deg) }
 				&.rotate-right { .rotate(3deg) }
 			}
@@ -467,6 +484,10 @@ body.page {
 				
 				li { margin-bottom: 5px }
 			}
+			
+			p {
+				margin-bottom: 20px;
+			}
 		}
 		
 		.sidebar {
@@ -500,8 +521,36 @@ body.page {
 		background: transparent url('../img/layout/gnomo-cereja.png') right bottom no-repeat;
 	}
 	
+	&.cakephp #topo .container_12 {			
+		background: transparent url('../img/layout/gnomo-cereja.png') right bottom no-repeat;
+	}
+	
 	&.inscricao #topo .container_12 {			
 		background: transparent url('../img/layout/gnomo-papeis.png') right bottom no-repeat;
+	}
+	
+	
+	.atencao {
+		margin-top: 10px;
+		clear: both;
+		position: relative;
+		background: #F0EBB4 + 5%;
+		padding: 10px 20px;
+		.radius(3px);
+			
+		text-align: center;
+		color: #333;
+		font-size: .9em;
+		font-family: Delius, Ubuntu, cursive;
+			
+		&.erro {
+			background-color: #F0B4B4 + 40%;
+			background-image: url('../img/icons/error-small.png'), url('../img/icons/error-small.png');
+			background-position: 2% center, 98% center;
+			background-repeat: no-repeat;
+				
+			strong { color: #cb001a }
+		}
 	}
 	
 	article.turma {
@@ -525,7 +574,7 @@ body.page {
 		
 		p {
 			color: #666;
-			margin-bottom: 0;
+			margin-bottom: 0 !important;
 			font-family: Delius, Ubuntu, cursive;
 		}
 		
@@ -597,20 +646,11 @@ body.page {
 				.gradient(#7cb489, #5e9d6d);			
 			}
 		}
-		
-		&.aluno .atencao {
-			margin-top: 10px;
-			clear: both;
-			position: relative;
-			background: #F0EBB4 + 5%;
-			padding: 10px 20px;
-			.radius(3px);
-			
-			text-align: center;
-			color: #333;
-			font-size: .9em;
-			font-family: Delius, Ubuntu, cursive;
-		}
+	}
+	
+	&.pagamento {
+		p { margin-bottom: 10px }
+		.submit { margin: 40px auto; width: 205px; display: block; box-shadow: 3px 3px 8px rgba(0,0,0,.2) }
 	}
 	
 	.form {
@@ -666,5 +706,17 @@ body.page {
 				color: #cb001a;
 			}
 		}
+	}
+}
+
+#conteudo .gist {
+	font-size: .9em;
+	
+	.gist-file { 
+	 
+		.gist-data { border-bottom: none }
+		
+		.gist-meta { display: none }
+		
 	}
 }

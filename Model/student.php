@@ -78,22 +78,26 @@ class Student extends AppModel {
 		'name' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'O nome não pode ser vazio',	
+				'message' => 'Campo obrigatório',	
 				'required' => true
 			),
 		),
 		'surname' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'O sobrenome não pode ser vazio',	
+				'message' => 'Campo obrigatório',	
 				'required' => true
 			),
 		),
 		'email' => array(
-			'email' => array(
-				'rule' => 'email',
-				'message' => 'O email precisa ser válido',	
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Campo obrigatório',	
 				'required' => true
+			),
+			'email' => array(
+				'rule' => array('email', true),
+				'message' => 'O email precisa ser válido'
 			),
 			'minLength' => array(
 				'rule' => array('minLength', 8),
@@ -108,13 +112,21 @@ class Student extends AppModel {
 		'password' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Digite uma senha',	
+				'message' => 'Campo obrigatório',	
 				'required' => true,
 				'on' => 'create'
 			),	
 			'minLength' => array(
 				'rule' => array('minLength', 6),
 				'message' => 'Digite uma senha com mais de 5 caracteres'
+			),
+		),
+		'password_verify' => array(
+			'equalToField' => array(
+				'rule' => array('equalToField', 'password'),
+				'message' => 'As senhas não conferem',	
+				'required' => true,
+				'on' => 'create'
 			),
 		),
 	);

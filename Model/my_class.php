@@ -99,16 +99,23 @@ class MyClass extends AppModel {
 	 * 
 	 * @return array
 	 */
-	public function afterFind($results) {
+	public function afterFind($results, $primary) {
+				
 		foreach ($results AS &$result) {
-			if (!isset($result['MyClass']) || !isset($result['MyClass']['id']))
+			
+			if ($primary)
+				$data = &$result[$this->alias];
+			else
+				$data = &$result;
+			
+			if (!isset($data) || !isset($data['id']))
 				continue;
 				
-			$this->id = $result['MyClass']['id']; 
-			$result['MyClass']['price_discount'] = $this->calculatePrice();
+			$this->id = $data['id']; 
+			$data['price_discount'] = $this->calculatePrice();
 			
-			if (isset($result['MyClass']['start']))
-				$result['MyClass']['signup_limit'] = strtotime('-1 week', strtotime($result['MyClass']['start']));
+			if (isset($data['start']))
+				$data['signup_limit'] = strtotime('-1 week', strtotime($data['start']));
 		}
 		
 		return $results;

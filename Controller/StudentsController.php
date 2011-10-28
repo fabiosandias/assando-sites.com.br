@@ -38,7 +38,6 @@ class StudentsController extends AppController {
 				// Redireciona o aluno pra tela de pagamento
 				$token = sha1($this->data['Student']['name'] . $this->data['Student']['email']);
 				$this->redirect(array('action' => 'payment', 'token' => $token));
-				
 			}
 		}
 			
@@ -48,6 +47,33 @@ class StudentsController extends AppController {
 		
 			'MyClass' => $this->Student->MyClass->findById($this->Session->read('Student.MyClass.id'))
 		));
+	}
+	
+	/**
+	 * Confirmação de cadastro e botão de pagamento
+	 */
+	public function payment() {
+		
+		// Adiciona o helper
+		$this->helpers[] = 'PagSeguro';
+		
+		// Dados do aluno e turma
+		$Student = $this->Student->find('first', array(
+			'conditions' => array(
+				'SHA1(CONCAT(Student.name, Student.email))' => $this->params['named']['token']
+			),
+			'contain' => array('MyClass')
+		));
+		$MyClass = array_pop($Student['MyClass']);
+			
+		$this->set(array(
+			'title_for_layout' => 'Inscrição: pagamento',
+			'body_class' => 'page inscricao pagamento',
+		
+			'Student' => $Student,
+			'MyClass' => $MyClass
+		));
+
 	}
 	
 	/**

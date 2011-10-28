@@ -23,9 +23,11 @@
 				<?php } ?>
 			</article>
 			<?php } ?>
-			<?php echo $this->Form->radio('id', $ids) ?>
+			<?php echo $this->Form->radio('id', $ids, array('legend' => false)) ?>
 			<?php echo $this->Form->submit('Enviar', array('class' => 'botao vermelho menor', 'div' => false)) ?>
 			<?php echo $this->Form->end() ?>
+			
+			<div class="atencao">Curso voltado para <strong>Desenvolvedores</strong> e <strong>Programadores</strong> que trabalham com PHP e conhecem os conceitos da <em>Orientação à Objetos</em></div>
 		
 		</section>
 

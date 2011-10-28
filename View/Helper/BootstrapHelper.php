@@ -8,7 +8,7 @@
  * @package		AssandoSites
  * @subpackage		Helper
  */
-App::uses('AppHelper', 'View/Helper');
+#App::uses('AppHelper', 'View/Helper');
 
 /**
  * Bootstrap Helper

@@ -32,7 +32,7 @@ class Information extends AppModel {
 		'twitter' => array(
 			'format' => array(
 				'rule' => '/^@?[a-z0-9_]{2,}$/i',
-				'message' => 'Perfil válido',
+				'message' => 'Perfil inválido',
 				'allowEmpty' => true,	
 				'required' => false
 			),
@@ -47,7 +47,7 @@ class Information extends AppModel {
 		'phone' => array(
 			'format' => array(
 				'rule' => '/^\(?0?[0-9]{2}\)?\s?[0-9]{4}-?[0-9]{4}$/i',
-				'message' => 'Telefone válido',
+				'message' => 'Telefone inválido',
 				'allowEmpty' => false,	
 				'required' => true
 			),
@@ -55,7 +55,7 @@ class Information extends AppModel {
 		'state' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'O estado não pode ser vazio',	
+				'message' => 'Digite o estado',	
 				'required' => true
 			),
 			'estadoBrasil' => array(
