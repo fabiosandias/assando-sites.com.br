@@ -74,6 +74,11 @@ class Student extends AppModel {
 	 */
 	public $hasAndBelongsToMany = array('MyClass', 'Lesson');
 	
+	/**
+	 * Validação de dados
+	 * 
+	 * @var array
+	 */
 	public $validate = array(
 		'name' => array(
 			'notEmpty' => array(

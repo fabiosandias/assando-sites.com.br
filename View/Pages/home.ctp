@@ -13,14 +13,15 @@ $this->set(array(
 		</section>
 
 		<section class="container_12">
-			<form class="faixa verde grid_12">
+			<?php echo $this->Form->create('Newsletter', array('action' => 'signup', 'class' => 'faixa verde grid_12')) ?>
 				<h4 class="grid_5 suffix_1">Quer ser avisado sobre as promoções e novas turmas do Assando Sites?</h4>
 
-				<label for="email">Email</label>
-				<input type="email" name="email" id="email" placeholder="digite seu email" />
-
-				<input type="submit" value="OK" class="botao verde" />
-			</form>
+				<?php echo $this->Form->input('name', array('label' => 'Nome', 'placeholder' => 'digite seu nome', 'div' => false)) ?>
+				<?php echo $this->Form->input('email', array('label' => 'Email', 'placeholder' => 'digite seu email', 'type' => 'email', 'div' => false)) ?>
+				
+				<?php echo $this->Form->submit('OK', array('class' => 'botao verde', 'div' => false)) ?>				
+				<?php echo $this->Html->image('icons/loading-green.gif', array('alt' => 'Carregando...', 'class' => 'loading')) ?>
+			<?php echo $this->Form->end() ?>
 		</section>
 
 		<section class="container_12">

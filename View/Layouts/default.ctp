@@ -18,8 +18,8 @@
 	<!-- JS -->
 	<?php echo $this->Html->script('libs/less.min.js') . PHP_EOL ?>
 
-	
-	<?php foreach (Configure::read('Google.webmasters') AS $code) echo $this->Html->meta(array('name' => 'google-site-verification', 'content' => $code)); ?>	
+		
+	<?php foreach (Configure::read('Google.webmasters') AS $code) echo $this->Html->meta(array('name' => 'google-site-verification', 'content' => $code)); ?>
 </head>
 <body class="<?php if (isset($body_class)) echo $body_class ?>">
 	<header id="topo">

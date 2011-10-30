@@ -20,6 +20,11 @@ class Information extends AppModel {
 	 */
 	public $belongsTo = array('Student');
 	
+	/**
+	 * Validação de dados
+	 * 
+	 * @var array
+	 */
 	public $validate = array(
 		'cpf' => array(
 			'format' => array(
