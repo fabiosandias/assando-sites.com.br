@@ -20,3 +20,4 @@
 
 # Protected files
 /Config/safe.php
+deploy.sh
