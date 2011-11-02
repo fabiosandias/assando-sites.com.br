@@ -4,10 +4,13 @@
 			
 			<?php echo $this->Form->create('MyClass', array('url' => array('controller' => 'students', 'action' => 'signup'))) ?>
 			<?php
+			#App::import('Inflector');
 			foreach ($data AS $class) {
-				$MyClass = $class['MyClass'];					
+				$MyClass = $class['MyClass'];
+
+				$class = Inflector::slug(strtolower(preg_replace('/[0-9]/', '', $MyClass['title'])), ' ');
 			?>
-			<article class="turma" data-turma-id="<?php echo $MyClass['id'] ?>">
+			<article class="<?php echo $class ?>" data-turma-id="<?php echo $MyClass['id'] ?>">
 				<h3><?php echo $MyClass['title'] ?></h3>
 				<p><?php echo $MyClass['description'] ?></p>
 				

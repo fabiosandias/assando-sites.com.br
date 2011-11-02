@@ -11,9 +11,12 @@
 			<div class="atencao erro">Verifique os campos marcados em <strong>vermelho</strong> e tente novamente</div>
 			<?php } ?>
 				
-			<?php $MyClass = $MyClass['MyClass'] ?>
+			<?php
+			$MyClass = $MyClass['MyClass'];
+			$class = Inflector::slug(strtolower(preg_replace('/[0-9]/', '', $MyClass['title'])), ' ');
+			?>
 				<h3 class="grid_8 alpha omega">Turma escolhida <small>&ndash; <?php echo $this->Html->link('Escolha outra turma', array('controller' => 'my_classes', 'action' => 'index')) ?></small></h3>
-				<article class="turma" data-turma-id="<?php echo $MyClass['id'] ?>">
+				<article class="<?php echo $class ?>" data-turma-id="<?php echo $MyClass['id'] ?>">
 					<h3><?php echo $MyClass['title'] ?></h3>
 					<p><?php echo $MyClass['description'] ?></p>
 					
