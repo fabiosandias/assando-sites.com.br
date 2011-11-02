@@ -33,6 +33,7 @@
 	
 	# Páginas estáticas
 	Router::connect('/conteudo-do-curso', array('controller' => 'pages', 'action' => 'display', 'about'));
+	Router::connect('/conteudo-do-curso-avancado', array('controller' => 'pages', 'action' => 'display', 'about-advanced'));
 	Router::connect('/sobre-o-cakephp', array('controller' => 'pages', 'action' => 'display', 'cakephp'));
 	
 	# Inscrição
