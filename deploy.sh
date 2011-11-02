@@ -13,3 +13,10 @@ if [ "$?" -eq "0" ]; then
 	c=$(ls -lah webroot/css/aluno.css | awk '{ print $5}')
 	echo "aluno.less >> aluno.css - $c"
 fi
+
+echo "Atualizando o Git"
+
+git add webroot/css/style.css
+git add webroot/css/aluno.css
+git commit -a -m "CSS update"
+git push
