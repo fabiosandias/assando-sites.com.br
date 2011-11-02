@@ -1,0 +1,81 @@
+@rosa: #f08c94;
+
+.radius(@radius: 6px) {
+	border-radius: @radius;
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+}
+
+
+body.dashboard #topo li a.dashboard,
+body.perfil #topo li a.perfil,
+body.arquivos #topo li a.arquivos {
+	background: @rosa;
+	color: #FFF;
+
+	.radius(3px);
+}
+
+#topo {
+	.container_12 { background: none; padding-bottom: 10px }
+	.titulo { margin-top: 0; margin-bottom: 0 }
+	h1 a { color: #333 }	
+}
+	
+#conteudo {
+	.gnomo-aponta { display: none }
+	
+	h3 { font-size: 1.3em; margin: 30px 0 20px }
+	
+	.aulas {
+		background: #b0d9ba;
+		padding: 15px 5px;
+		.radius;
+		overflow: hidden;
+	
+		article {			
+			min-height: 90px;
+			
+			&.grid_2 {
+				width: 170px;
+			}
+			
+			&:last-child {
+				border-right: none;
+				margin-right: 0;
+				padding-right: 0;
+			}
+			
+			&.futuro:first-child {
+				background: rgba(255, 255, 255, .2)
+			}
+			
+			datetime {
+				font-family: Delius, Ubuntu, cursive;
+				background: #b0d9ba - 10%;
+				padding: 5px 0;
+				font-size: 1.1em;
+				display: block;
+				text-align: center;
+				color: white;
+				margin-bottom: 8px;
+			}
+			
+			h4 { margin: 0 5px 3px; font-weight: bold; display: none }
+			
+			p {
+				margin: 0 10px 5px;
+				color: #444;
+				font-size: .9em;
+			}
+			
+			&.passado {
+				opacity: .5;
+			}
+		}
+	}
+}
+
+#rodape {
+	display: none;
+}

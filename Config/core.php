@@ -117,7 +117,7 @@ Configure::load('safe', 'PhpReader');
  *	`manager_index()` and `/manager/controller/index`
  *
  */
-	Configure::write('Routing.prefixes', array('admin'));
+	Configure::write('Routing.prefixes', array('admin', 'aluno'));
 
 /**
  * Turn off all caching application-wide.

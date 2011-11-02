@@ -93,5 +93,14 @@ class EmailConfig {
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
+	
+	public function __construct() {
+		$this->smtp['from'] = array_flip(Configure::read('Email.from'));
+		
+		$this->smtp['host'] = Configure::read('SMTP.host');
+		$this->smtp['port'] = Configure::read('SMTP.port');
+		$this->smtp['username'] = Configure::read('SMTP.username');
+		$this->smtp['password'] = Configure::read('SMTP.password');
+	}
 
 }

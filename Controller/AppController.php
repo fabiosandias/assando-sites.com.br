@@ -41,4 +41,14 @@ class AppController extends Controller {
 		}
 	}
 	
+	/**
+	 * Antes de renderizar as actions da aplicação
+	 */
+	public function beforeRender() {
+		parent::beforeRender();
+		
+		$this->set('isPainelAdmin', isset($this->params['prefix']) && $this->params['prefix'] == 'admin');
+		$this->set('isPainelAluno', isset($this->params['prefix']) && $this->params['prefix'] == 'aluno');
+	}
+	
 }

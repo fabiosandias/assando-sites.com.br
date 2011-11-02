@@ -62,6 +62,11 @@ $this->Bootstrap->addCrumb($this->data['Student']['fullname']);
 			<div class="input"><?php echo $this->Form->input('Information.city', array('class' => 'span4')) ?></div>			
 		</div>
 		
+		<div class="clearfix">
+			<?php echo $this->Form->label('Information.state', 'Estado') ?>
+			<div class="input"><?php echo $this->Form->input('Information.state', array('class' => 'span4')) ?></div>			
+		</div>
+		
 	</fieldset>
 	</div>
 	

@@ -32,7 +32,7 @@ class MyClass extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $order = array('MyClass.status_id' => 'ASC', 'MyClass.start' => 'DESC');
+	public $order = array('MyClass.start' => 'DESC');
 	
 	/**
 	 * Campos virtuais
@@ -59,7 +59,15 @@ class MyClass extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $hasMany = array('Lesson', 'MyFile');
+	public $hasMany = array(
+		'Lesson' => array(
+			'order' => array('Lesson.datetime' => 'ASC'),
+			'dependent' => true
+		),
+		'MyFile' => array(
+			'dependent' => true
+		)
+	);
 	
 	/**
 	 * Turmas contém e pertencem à muitos...
@@ -116,6 +124,10 @@ class MyClass extends AppModel {
 			
 			if (isset($data['start']))
 				$data['signup_limit'] = strtotime('-1 week', strtotime($data['start']));
+				
+			if (empty($data['description']) && isset($data['start']) && isset($data['end']))
+				$data['description'] = sprintf('Aulas de <strong>%s</strong> até <strong>%s</strong>',
+					date('d/m', strtotime($data['start'])), date('d/m', strtotime($data['end'])));
 		}
 		
 		return $results;

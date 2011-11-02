@@ -27,13 +27,13 @@ $this->Bootstrap->addCrumb(isset($this->data['Lesson']['id']) ? $this->data['Les
 		
 		<div class="clearfix">
 			<?php echo $this->Form->label('datetime', 'Hora da aula') ?>
-			<div class="input"><?php echo $this->Form->input('datetime', array('dateFormat' => 'DMYHS', 'separator' => ' de ', 'minYear' => date('Y') - 1, 'maxYear' => date('Y') + 1, 'timeFormat' => 24, 'interval' => 15, 'class' => 'mini')) ?></div>			
+			<div class="input"><?php echo $this->Form->input('datetime', array('dateFormat' => 'DMYHS', 'separator' => ' de ', 'minYear' => date('Y') - 1, 'maxYear' => date('Y') + 1, 'timeFormat' => 24, 'interval' => 15, 'class' => 'mini', 'default' => date('Y-m-d 15:00', strtotime('sunday')))) ?></div>			
 		</div>
 		
 		<div class="clearfix">
 			<?php echo $this->Form->label('length', 'Duração') ?>
 			<div class="input">
-				<?php echo $this->Form->input('length', array('class' => 'mini')) ?>
+				<?php echo $this->Form->input('length', array('class' => 'mini', 'default' => '180')) ?>
 				<span class="help-inline">minutos</span>			
 			</div>
 		</div>

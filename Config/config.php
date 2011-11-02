@@ -29,6 +29,11 @@ $config = array(
 			'uEgQR49boaOpdbRkFLCLCJVecO7nNWYtX9nNUb9H2pU',
 		)
 	),
+	
+	'Email' => array(
+		'from' => array('Thiago Belem' => 'thiago.belem@assando-sites.com.br'),
+		'replyTo' => array('Thiago Belem' => 'thiago.belem@assando-sites.com.br')
+	)
 );
 
 ?>

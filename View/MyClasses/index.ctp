@@ -5,7 +5,7 @@
 			<?php echo $this->Form->create('MyClass', array('url' => array('controller' => 'students', 'action' => 'signup'))) ?>
 			<?php
 			foreach ($data AS $class) {
-				$MyClass = $class['MyClass'];
+				$MyClass = $class['MyClass'];					
 			?>
 			<article class="turma" data-turma-id="<?php echo $MyClass['id'] ?>">
 				<h3><?php echo $MyClass['title'] ?></h3>

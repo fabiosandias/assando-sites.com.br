@@ -1,0 +1,14 @@
+body.dashboard #topo li a.dashboard,body.perfil #topo li a.perfil,body.arquivos #topo li a.arquivos{background:#f08c94;color:#FFF;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+#topo .container_12{background:none;padding-bottom:10px;}
+#topo .titulo{margin-top:0;margin-bottom:0;}
+#topo h1 a{color:#333333;}
+#conteudo .gnomo-aponta{display:none;}
+#conteudo h3{font-size:1.3em;margin:30px 0 20px;}
+#conteudo .aulas{background:#b0d9ba;padding:15px 5px;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;overflow:hidden;}#conteudo .aulas article{min-height:90px;}#conteudo .aulas article.grid_2{width:170px;}
+#conteudo .aulas article:last-child{border-right:none;margin-right:0;padding-right:0;}
+#conteudo .aulas article.futuro:first-child{background:rgba(255, 255, 255, 0.2);}
+#conteudo .aulas article datetime{font-family:Delius, Ubuntu, cursive;background:#a6cfb0;padding:5px 0;font-size:1.1em;display:block;text-align:center;color:white;margin-bottom:8px;}
+#conteudo .aulas article h4{margin:0 5px 3px;font-weight:bold;display:none;}
+#conteudo .aulas article p{margin:0 10px 5px;color:#444;font-size:.9em;}
+#conteudo .aulas article.passado{opacity:.5;}
+#rodape{display:none;}

@@ -151,4 +151,29 @@ class Student extends AppModel {
 		return true;
 	}
 	
+	/**
+	 * Busca as turmas de um aluno
+	 * 
+	 * @return array
+	 */
+	public function getClasses($params = array()) {
+		$this->id = 98; // Substituir
+		
+		// Bind on the fly (HABTM)
+		$this->MyClass->bindModel(array('hasOne' => array('ClassesStudent')));
+		
+		// Parâmetros de busca
+		$params = array_merge(array(
+			'conditions' => array(
+				'ClassesStudent.student_id' => $this->id,
+				'MyClass.status_id !=' => STATUS_CLASS_PENDENTE,
+				#'MyClass.status_id' => array(STATUS_CLASS_INSCRICOES_FECHADAS, STATUS_CLASS_ENCERRADA)
+			),
+			'order' => array('MyClass.start' => 'DESC'),
+			'contain' => array('ClassesStudent', 'Lesson')
+		), $params);
+		
+		return $this->MyClass->find('all', $params);
+	}
+	
 }

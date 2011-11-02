@@ -27,14 +27,24 @@
  * to use (in this case, /app/views/pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
-/**
- * ...and connect the rest of 'Pages' controller's urls.
- */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+	
+	# Redirects
+	Router::redirect('/inscreva-se/*', array('controller' => 'my_classes', 'action' => 'index'));
+	
+	# Páginas estáticas
+	Router::connect('/conteudo-do-curso', array('controller' => 'pages', 'action' => 'display', 'about'));
+	Router::connect('/sobre-o-cakephp', array('controller' => 'pages', 'action' => 'display', 'cakephp'));
+	
+	# Inscrição
+	Router::connect('/inscricao/turma', array('controller' => 'my_classes', 'action' => 'index'));
+	Router::connect('/inscricao/cadastro', array('controller' => 'students', 'action' => 'signup'));
+	Router::connect('/inscricao/pagamento', array('controller' => 'students', 'action' => 'payment'));
+	Router::connect('/inscricao/pagamento/:token', array('controller' => 'students', 'action' => 'payment'), array('token' => '[a-zA-Z0-9]{40}'));
 
-	/**
-	 * Rotas do painel de controle
-	 */
+	# Rotas do painel do aluno
+	Router::connect('/aluno', array('controller' => 'students', 'action' => 'dashboard', 'aluno' => true));
+
+	# Rotas do painel de controle
 	Router::connect('/admin', array('controller' => 'students', 'action' => 'dashboard', 'admin' => true));
 
 /**

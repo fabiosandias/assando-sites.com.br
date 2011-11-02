@@ -15,10 +15,12 @@ App::import('Sanitize');
  */
 class StudentsController extends AppController {
 	
+	public $components = array('EmailQueue');
+	
 	/**
 	 * Inscrição de aluno
 	 */
-	public function signup() {			
+	public function signup() {		
 		// Veio da selação de turma
 		if (isset($this->data['MyClass']['id'])) {
 			$this->Session->write('Student.MyClass.id', (int)$this->data['MyClass']['id']);
@@ -33,7 +35,7 @@ class StudentsController extends AppController {
 			$this->Student->create();
 			if ($this->Student->saveAll($this->data)) {
 				// Envia o email e redireciona pra tela de pagamento
-				
+				$this->__emailSignup($this->Student->id);
 				
 				// Redireciona o aluno pra tela de pagamento
 				$token = sha1($this->data['Student']['name'] . $this->data['Student']['email']);
@@ -60,7 +62,7 @@ class StudentsController extends AppController {
 		// Dados do aluno e turma
 		$Student = $this->Student->find('first', array(
 			'conditions' => array(
-				'SHA1(CONCAT(Student.name, Student.email))' => $this->params['named']['token']
+				'SHA1(CONCAT(Student.name, Student.email))' => $this->params['token']
 			),
 			'contain' => array('MyClass')
 		));
@@ -74,6 +76,20 @@ class StudentsController extends AppController {
 			'MyClass' => $MyClass
 		));
 
+	}
+	
+	/**
+	 * Dashboard do painel do aluno
+	 */
+	public function aluno_dashboard() {
+		$MyClasses = $this->Student->getClasses();
+					
+		$this->set(array(
+			'title_for_layout' => 'Painel do Aluno',
+			'body_class' => 'painel-aluno dashboard',
+		
+			'MyClasses' => $MyClasses
+		));
 	}
 	
 	/**
@@ -168,6 +184,27 @@ class StudentsController extends AppController {
 		}
 		
 		$this->redirect(array('action' => 'index'));
+	}
+	
+	public function __emailSignup($student_id) {
+		
+		$Student = $this->Student->find('first', array(
+			'conditions' => array('Student.id' => (int)$student_id),
+			'contain' => array('MyClass')
+		));
+		extract($Student);
+		
+		$this->EmailQueue->to = array($Student['fullname'] => $Student['email']);
+		$this->EmailQueue->bcc = Configure::read('Email.from');
+		
+		$this->EmailQueue->subject = 'Assando Sites - Confirmação de Inscrição';
+		
+		$this->EmailQueue->view = 'signup';
+		$this->EmailQueue->set('Student', $Student);
+		$this->EmailQueue->set('MyClass', $MyClass[0]);
+		$this->EmailQueue->set('token', sha1($Student['name'] . $Student['email']));
+		
+		$this->EmailQueue->queue();
 	}
 	
 }
