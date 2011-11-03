@@ -74,6 +74,34 @@ body.arquivos #topo li a.arquivos {
 			}
 		}
 	}
+	
+	.arquivos {
+	
+		article {
+			width: 430px;
+			
+			padding: 15px 20px;
+			.radius;
+			margin-bottom: 20px;
+			
+			background-color: #b0d9ba;
+			background-position: 15px center;
+			background-repeat: no-repeat;
+						
+			&:nth-child(2n-1) { margin-left: 0; clear: left }
+			&:nth-child(2n) { margin-right: 0 }
+			
+			h4, p { margin-left: 40px }
+			
+			h4 { font-size: 1.2em; margin-bottom: 5px }
+			h4 a { color: #333 }
+			p { color: #666; font-size: .9em }
+			
+			&.file-pdf { background-image: url('../img/icons/mime/pdf.png') }
+			&.file-7z { background-image: url('../img/icons/mime/7zip.png') }
+		}
+	
+	}
 }
 
 #rodape {

@@ -157,7 +157,7 @@ class Student extends AppModel {
 	 * @return array
 	 */
 	public function getClasses($params = array()) {
-		$this->id = 98; // Substituir
+		$this->id = AuthComponent::user('id');
 		
 		// Bind on the fly (HABTM)
 		$this->MyClass->bindModel(array('hasOne' => array('ClassesStudent')));

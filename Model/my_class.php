@@ -65,7 +65,8 @@ class MyClass extends AppModel {
 			'dependent' => true
 		),
 		'MyFile' => array(
-			'dependent' => true
+			'dependent' => true,
+			'order' => array('MyFile.created' => 'DESC')
 		)
 	);
 	

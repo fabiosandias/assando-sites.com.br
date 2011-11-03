@@ -73,6 +73,13 @@ Inflector::rules('plural', array(
 
 	
 /**
+ * Status gerais
+ */
+define('STATUS_ATIVO', 1);
+define('STATUS_INATIVO', 2);
+define('STATUS_DELETADO', 3);
+	
+/**
  * Status de alunos
  */
 define('STATUS_STUDENT_INSCRICAO_PENDENTE', 8);

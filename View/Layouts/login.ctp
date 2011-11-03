@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
-	<title><?php echo $title_for_layout ?> - Painel de Controle</title>
+	<title><?php echo $title_for_layout ?></title>
 	
 	<?php echo $this->Html->css(array('http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css', 'admin/style.css')) . PHP_EOL ?>
 		
@@ -12,25 +12,20 @@
 	
 	<meta name="robots" content="noindex, nofollow" />
 </head>
-<body>
-	
-	<?php echo $this->element('admin/topbar') ?>
+<body class="login">
 	
 	<div class="container">
 		<div class="content">
 			<div class="page-header">
-				<h1><?php echo $title_for_layout ?> <?php if (isset($subtitle_for_layout) && !empty($subtitle_for_layout)) echo $this->Html->tag('small', $subtitle_for_layout) ?></h1>
+				<h1><?php echo $title_for_layout ?></h1>
 			</div>
 			
-			<?php $this->Bootstrap->getCrumbs('/', 'Dashboard', '/admin'); ?>
-			
 			<?php echo $this->Session->flash() ?>
+			<?php echo $this->Session->flash('auth') ?>
 			
 			<?php echo $content_for_layout ?>
 		</div>
 	</div>
-	
-	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
 	
 	<?php echo $this->Html->script(array('http://twitter.github.com/bootstrap/1.3.0/bootstrap-dropdown.js', 'admin/script.js')) ?>
 

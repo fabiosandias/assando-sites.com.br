@@ -8,7 +8,7 @@
  * @subpackage		Controller
  */
 
-App::import('Sanitize');
+App::uses('Sanitize', 'Utility');
 
 /**
  * Controller de alunos
@@ -16,6 +16,8 @@ App::import('Sanitize');
 class StudentsController extends AppController {
 	
 	public $components = array('EmailQueue');
+	
+	public $paginate = array();
 	
 	/**
 	 * Inscrição de aluno
@@ -79,10 +81,46 @@ class StudentsController extends AppController {
 	}
 	
 	/**
+	 * Login de alunos
+	 */
+	public function aluno_login() {
+		$this->layout = 'login';
+		
+		if ($this->request->is('post')) {
+			if ($this->Auth->login()) {
+				$this->Session->write($this->Auth->sessionKey, $this->Auth->user());
+				
+				return $this->redirect($this->Auth->redirect());
+			} else {
+				$this->Session->setFlash('Dados incorretos', 'admin/alerts/inline', array('class' => 'error'), 'auth');
+	        }
+	    }
+		
+		$this->set(array(
+			'title_for_layout' => 'Painel do Aluno'
+		));
+	}
+	
+	/**
+	 * Logout de alunos
+	 */
+	public function aluno_logout() {
+		$this->Session->delete($this->Auth->sessionKey);
+		
+		$this->redirect($this->Auth->logout());
+	}
+	
+	/**
 	 * Dashboard do painel do aluno
 	 */
 	public function aluno_dashboard() {
-		$MyClasses = $this->Student->getClasses();
+		$MyClasses = $this->Student->getClasses(array(
+			'contain' => array(
+				'ClassesStudent',
+				'Lesson',
+				'MyFile' => array('conditions' => array('MyFile.status_id' => STATUS_ATIVO))
+			)
+		));
 					
 		$this->set(array(
 			'title_for_layout' => 'Painel do Aluno',
@@ -105,7 +143,6 @@ class StudentsController extends AppController {
 	public function admin_index() {
 		$this->paginate = array(
 			'contain' => array('Status', 'MyClass'),
-			'conditions' => array(),
 			'order' => array('Student.created' => 'DESC')
 		);
 		
@@ -115,9 +152,9 @@ class StudentsController extends AppController {
 			
 		// Busca aluno por nome/email
 		if (isset($this->params['named']['search'])) {
-			$search = Sanitize::clean($this->params['named']['search']);
+			$search = Sanitize::escape(urldecode($this->params['named']['search']));
 			
-			$this->paginate['conditions'] += array(
+			$this->paginate['conditions'] = array(
 				'OR' => array(
 					'Student.name LIKE' => "%{$search}%",
 					'Student.surname LIKE' => "%{$search}%",

@@ -90,6 +90,8 @@
 		</div>
 	</footer>
 	
+	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
+	
 	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'scripts.js', 'https://apis.google.com/js/plusone.js', 'http://platform.twitter.com/widgets.js')) ?>
 	
 	<?php if (!Configure::read('debug') && !$isPainelAluno) echo $this->element('google-analytics', array('account' => Configure::read('Google.analytics')))	?>

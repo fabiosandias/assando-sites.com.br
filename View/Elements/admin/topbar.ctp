@@ -31,7 +31,7 @@
 			
 			<ul class="nav secondary-nav">
 				<li class="dropdown">
-					<?php echo $this->Html->link('Thiago Belem', array('controller' => 'users', 'action' => 'index'), array('class' => 'dropdown-toggle')) ?>
+					<?php echo $this->Html->link(AuthComponent::user('name'), array('controller' => 'users', 'action' => 'index'), array('class' => 'dropdown-toggle')) ?>
 					<ul class="dropdown-menu">
 						<li><?php echo $this->Html->link('Meu perfil', array('controller' => 'users', 'action' => 'edit')) ?></li>
 						<li class="divider"><!--  --></li>

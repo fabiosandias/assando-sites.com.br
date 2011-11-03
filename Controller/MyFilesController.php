@@ -14,6 +14,31 @@
 class MyFilesController extends AppController {
 	
 	/**
+	 * Download de arquivo
+	 */
+	public function aluno_download() {
+		$ids = array();
+		
+		$MyClasses = $this->Student->getClasses(array('contain' => array('ClassesStudent')));
+		foreach ($MyClasses AS $class)
+			$ids[] = $class['MyClass']['id'];
+		
+		$arquivo = $this->MyFile->find('first', array(
+			'conditions' => array(
+				'MyFile.class_id' => $ids,
+				'MyFile.status_id' => STATUS_ATIVO,
+				'SHA1(MyFile.location)' => $this->params['token']
+			)
+		));
+		
+		if (empty($arquivo))
+			throw new NotFoundException('Arquivo não encontrado');
+		
+		// Redireciona o aluno pro download
+		$this->redirect($arquivo['MyFile']['location'], 302);
+	}
+	
+	/**
 	 * Lista de aulas
 	 */
 	public function admin_index() {

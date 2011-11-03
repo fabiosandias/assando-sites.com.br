@@ -7,7 +7,7 @@ TRUNCATE `assando-sites`.`students`;
 TRUNCATE `assando-sites`.`classes`;
 
 -- Turmas
-INSERT INTO `assando-sites`.`classes` (`id`, `code`, `title`, `start`, `end`, `price`, `status_id`, `created`, `updated`) SELECT t.id, t.codigo, t.nome, t.inicio, t.fim, t.valor, IF (inscricoes, 5, 6), created, updated FROM `curso-cakephp`.`turmas` AS t;
+INSERT INTO `assando-sites`.`classes` (`id`, `code`, `title`, `start`, `end`, `price`, `status_id`, `created`, `updated`) SELECT t.id, t.codigo, t.nome, t.inicio, t.fim, t.valor, IF (t.inscricoes, 5, IF (t.inicio > NOW(), 4, IF (t.fim < NOW(), 7, 6))), t.created, t.updated FROM `curso-cakephp`.`turmas` AS t;
 
 -- Alunos
 INSERT INTO `assando-sites`.`students` (`id`, `name`, `surname`, `email`, `password`, `status_id`, `created`, `updated`) SELECT a.id, a.nome, a.sobrenome, a.email, a.senha, IF (status_id = 1, 9, 8), created, updated FROM `curso-cakephp`.`alunos` AS a WHERE a.status_id <= 2;
