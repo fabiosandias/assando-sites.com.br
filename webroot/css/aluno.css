@@ -11,4 +11,12 @@ body.dashboard #topo li a.dashboard,body.perfil #topo li a.perfil,body.arquivos 
 #conteudo .aulas article h4{margin:0 5px 3px;font-weight:bold;display:none;}
 #conteudo .aulas article p{margin:0 10px 5px;color:#444;font-size:.9em;}
 #conteudo .aulas article.passado{opacity:.5;}
+#conteudo .arquivos article{width:430px;padding:15px 20px;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;margin-bottom:20px;background-color:#b0d9ba;background-position:15px center;background-repeat:no-repeat;}#conteudo .arquivos article:nth-child(2n-1){margin-left:0;clear:left;}
+#conteudo .arquivos article:nth-child(2n){margin-right:0;}
+#conteudo .arquivos article h4,#conteudo .arquivos article p{margin-left:40px;}
+#conteudo .arquivos article h4{font-size:1.2em;margin-bottom:5px;}
+#conteudo .arquivos article h4 a{color:#333333;}
+#conteudo .arquivos article p{color:#666;font-size:0.9em;}
+#conteudo .arquivos article.file-pdf{background-image:url('../img/icons/mime/pdf.png');}
+#conteudo .arquivos article.file-7z{background-image:url('../img/icons/mime/7zip.png');}
 #rodape{display:none;}
