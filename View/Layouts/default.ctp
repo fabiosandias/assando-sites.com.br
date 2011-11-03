@@ -94,11 +94,27 @@
 	
 	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
 	
-	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'scripts.js', 'https://apis.google.com/js/plusone.js', 'http://platform.twitter.com/widgets.js')) ?>
+	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'scripts.js')) ?>
 	
 	<?php if (!Configure::read('debug') && !$isPainelAluno) echo $this->element('google-analytics', array('account' => Configure::read('Google.analytics')))	?>
 	
-	<script>(function(d, s, id) {
+	<script>
+	// Google plus
+	(function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/plusone.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
+
+	// Twitter
+	(function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'http://platform.twitter.com/widgets.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
+
+	// Facebook
+	(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) {return;}
 	  js = d.createElement(s); js.id = id;
