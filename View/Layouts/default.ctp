@@ -96,12 +96,15 @@
 	
 	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'scripts.min.js')) ?>
 	
-	<?php if (!Configure::read('debug') && !$isPainelAluno) echo $this->element('google-analytics', array('account' => Configure::read('Google.analytics')))	?>
-	
 	<script>	
-	loadAssync('https://apis.google.com/js/plusone.js');
+	loadAssync('//apis.google.com/js/plusone.js');
 	loadAssync('//platform.twitter.com/widgets.js');
 	loadAssync('//connect.facebook.net/pt_BR/all.js#xfbml=1');
+
+<?php if (true || !Configure::read('debug')) { ?>
+	var _gaq = [['_setAccount', '<?php echo Configure::read('Google.analytics') ?>'], ['_trackPageview']];
+	loadAssync('//google-analytics.com/ga.js');
+<?php } ?>
 	</script>
 </body>
 </html>
