@@ -94,7 +94,7 @@
 	
 	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
 	
-	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 'scripts.js')) ?>
+	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'scripts.min.js')) ?>
 	
 	<?php if (!Configure::read('debug') && !$isPainelAluno) echo $this->element('google-analytics', array('account' => Configure::read('Google.analytics')))	?>
 	
