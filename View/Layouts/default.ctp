@@ -22,7 +22,7 @@
 	
 	<?php echo $this->Html->script('libs/less.min.js') . PHP_EOL ?>
 <?php } else { ?>
-	<?php echo $this->Html->css(array('base.css', 'style.css')) ?>
+	<?php echo $this->Html->css('style.min.css') ?>
 	<?php if ($isPainelAluno) echo $this->Html->css('aluno') ?>
 <?php } ?>
 		
