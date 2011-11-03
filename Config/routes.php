@@ -52,6 +52,7 @@
 	Router::connect('/admin', array('controller' => 'students', 'action' => 'dashboard', 'admin' => true));
 	
 	# Redirects
+	Router::redirect('/alunos/inscricao', array('controller' => 'my_classes', 'action' => 'index'));
 	Router::redirect('/inscreva-se/*', array('controller' => 'my_classes', 'action' => 'index'));
 
 /**
