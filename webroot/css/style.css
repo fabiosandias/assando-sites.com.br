@@ -36,7 +36,7 @@ body.home #rodape li a.home,body.sobre #rodape li a.sobre,body.cakephp #rodape l
 #conteudo .faixa input{font:normal normal 16px Rosario,Ubuntu,Helvetica,sans-serif;padding:15px 20px;font-size:18px;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}#conteudo .faixa input[type=text],#conteudo .faixa input[type=email]{border:none;width:140px;}#conteudo .faixa input[type=text][type=email],#conteudo .faixa input[type=email][type=email]{width:160px;margin-left:5px;}
 #conteudo .faixa input.error{background:#FFF0F4;}
 #conteudo .faixa .loading{display:none;position:absolute;right:55px;top:25px;}
-#conteudo .faixa:before,#conteudo .faixa:after{content:"";display:block;width:63px;height:78px;position:absolute;bottom:-10px;background:transparent url('../img/layout/pontas-faixa') no-repeat;}
+#conteudo .faixa:before,#conteudo .faixa:after{content:"";display:block;width:63px;height:78px;position:absolute;bottom:-10px;background:transparent url('../img/layout/pontas-faixa.png') no-repeat;}
 #conteudo .faixa:before{left:-36px;}
 #conteudo .faixa:after{background-position:-63px 0px;width:58px;right:-31px;}
 #conteudo .widgets{clear:both;}
