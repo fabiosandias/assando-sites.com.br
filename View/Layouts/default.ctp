@@ -12,15 +12,17 @@
 	<?php echo $this->Html->meta('icon') ?><link rel="apple-touch-icon" href="<?php echo $this->Html->url('/apple-touch-icon.png') ?>" />
 
 
-	<!-- CSS --><?php echo $this->Html->css(array('reset.css', '960.css', 'animate-custom.css', 'http://fonts.googleapis.com/css?family=Delius|Rosario')) ?>
+	<?php echo $this->Html->css('http://fonts.googleapis.com/css?family=Delius|Rosario') ?>
 <?php if (Configure::read('debug')) { ?>	
+	<?php echo $this->Html->css(array('reset.css', '960.css', 'animate-custom.css')) ?>
+
 	<link rel="stylesheet/less" type="text/css" href="<?php echo $this->Html->url('/css/style.less') ?>" />
 	<?php if ($isPainelAluno) { ?><link rel="stylesheet/less" type="text/css" href="<?php echo $this->Html->url('/css/aluno.less') ?>" /><?php } ?>
 		
-	<!-- JS -->
+	
 	<?php echo $this->Html->script('libs/less.min.js') . PHP_EOL ?>
 <?php } else { ?>
-	<?php echo $this->Html->css('style') ?>
+	<?php echo $this->Html->css(array('base.css', 'style.css')) ?>
 	<?php if ($isPainelAluno) echo $this->Html->css('aluno') ?>
 <?php } ?>
 		
