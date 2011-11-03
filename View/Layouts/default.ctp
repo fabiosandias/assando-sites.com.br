@@ -101,7 +101,7 @@
 	loadAssync('//platform.twitter.com/widgets.js');
 	loadAssync('//connect.facebook.net/pt_BR/all.js#xfbml=1');
 
-<?php if (true || !Configure::read('debug')) { ?>
+<?php if (!Configure::read('debug')) { ?>
 	var _gaq = [['_setAccount', '<?php echo Configure::read('Google.analytics') ?>'], ['_trackPageview']];
 	loadAssync('//google-analytics.com/ga.js');
 <?php } ?>
