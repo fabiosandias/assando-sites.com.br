@@ -64,10 +64,16 @@ class StudentsController extends AppController {
 		// Dados do aluno e turma
 		$Student = $this->Student->find('first', array(
 			'conditions' => array(
-				'SHA1(CONCAT(Student.name, Student.email))' => $this->params['token']
+				'SHA1(CONCAT(Student.name, Student.email))' => $this->params['token'],
+				'Student.status_id' => STATUS_STUDENT_INSCRICAO_PENDENTE
 			),
 			'contain' => array('MyClass')
 		));
+		
+		if (empty($Student))
+			$this->redirect('/');		
+		
+		// Dados da turma
 		$MyClass = array_pop($Student['MyClass']);
 			
 		$this->set(array(
