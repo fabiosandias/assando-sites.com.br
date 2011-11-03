@@ -28,9 +28,8 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 	
-	# Redirects
-	Router::redirect('/inscreva-se/confirmacao/*', array('controller' => 'students', 'action' => 'payment'), array('persist' => true));
-	Router::redirect('/inscreva-se/*', array('controller' => 'my_classes', 'action' => 'index'));
+	# Rotas antigas
+	Router::connect('/inscreva-se/confirmacao/:token', array('controller' => 'students', 'action' => 'payment'), array('token' => '[a-zA-Z0-9]{40}'));
 	
 	# Páginas estáticas
 	Router::connect('/conteudo-do-curso', array('controller' => 'pages', 'action' => 'display', 'about'));
@@ -51,6 +50,9 @@
 
 	# Rotas do painel de controle
 	Router::connect('/admin', array('controller' => 'students', 'action' => 'dashboard', 'admin' => true));
+	
+	# Redirects
+	Router::redirect('/inscreva-se/*', array('controller' => 'my_classes', 'action' => 'index'));
 
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
