@@ -49,7 +49,7 @@
 				<?php echo $this->Form->input('Information.phone', array('label' => 'Celular', 'placeholder' => '(21) 8888-8888', 'class' => 'text', 'type' => 'tel', 'div' => array('class' => 'grid_2 alpha'))) ?>
 				<?php echo $this->Form->input('Information.twitter', array('label' => 'Perfil do Twitter', 'placeholder' => '@TiuTalk', 'class' => 'text', 'div' => array('class' => 'grid_2 suffix_4 omega'))) ?>			
 				<?php echo $this->Form->input('Information.city', array('label' => 'Cidade', 'placeholder' => 'Rio de Janeiro', 'class' => 'text', 'div' => array('class' => 'grid_4 alpha omega'))) ?>
-				<?php echo $this->Form->input('Information.state', array('label' => 'Estado', 'placeholder' => 'RJ', 'class' => 'text small', 'div' => array('class' => 'grid_3 omega'))) ?>			
+				<?php echo $this->Form->input('Information.state', array('label' => 'Estado', 'type' => 'select', 'options' => $States, 'class' => 'text', 'style' => 'background: white; width: 90%', 'div' => array('class' => 'grid_3 omega'))) ?>			
 				
 				<div class="atencao">Caso você tenha algum problema durante a inscrição ou já fez o curso e quer se inscrever em uma nova turma, envie um email para <?php echo $this->Html->link('thiago.belem@assando-sites.com.br', 'mailto:thiago.belem@assando-sites.com.br') ?></div>
 					

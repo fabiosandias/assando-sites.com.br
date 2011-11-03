@@ -49,7 +49,8 @@ class StudentsController extends AppController {
 			'title_for_layout' => 'Inscrição: cadastro de aluno',
 			'body_class' => 'page inscricao aluno',
 		
-			'MyClass' => $this->Student->MyClass->findById($this->Session->read('Student.MyClass.id'))
+			'MyClass' => $this->Student->MyClass->findById($this->Session->read('Student.MyClass.id')),
+			'States' => $this->Student->estadosBrasil
 		));
 	}
 	
