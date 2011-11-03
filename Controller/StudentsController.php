@@ -64,7 +64,10 @@ class StudentsController extends AppController {
 		// Dados do aluno e turma
 		$Student = $this->Student->find('first', array(
 			'conditions' => array(
-				'SHA1(CONCAT(Student.name, Student.email))' => $this->params['token'],
+				'OR' => array(
+					'SHA1(Student.email)' => $this->params['token'],
+					'SHA1(CONCAT(Student.name, Student.email))' => $this->params['token'],
+				),
 				'Student.status_id' => STATUS_STUDENT_INSCRICAO_PENDENTE
 			),
 			'contain' => array('MyClass')

@@ -29,6 +29,7 @@
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 	
 	# Redirects
+	Router::redirect('/inscreva-se/inscreva-se/confirmacao/*', array('controller' => 'students', 'action' => 'payment'), array('persist' => true));
 	Router::redirect('/inscreva-se/*', array('controller' => 'my_classes', 'action' => 'index'));
 	
 	# Páginas estáticas
