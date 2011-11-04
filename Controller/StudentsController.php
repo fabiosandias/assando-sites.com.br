@@ -20,6 +20,17 @@ class StudentsController extends AppController {
 	public $paginate = array();
 	
 	/**
+	 * Antes de filtrar as actions do aluno 
+	 */
+	public function beforeFilter() {
+		parent::beforeFilter();
+		
+		// Esqueci minah senha
+		$this->Auth->allow('aluno_reset_password');
+		
+	}
+	
+	/**
 	 * Inscrição de aluno
 	 */
 	public function signup() {		
@@ -118,6 +129,44 @@ class StudentsController extends AppController {
 		$this->Session->delete($this->Auth->sessionKey);
 		
 		$this->redirect($this->Auth->logout());
+	}
+	
+	/**
+	 * Esqueci minha senha
+	 */
+	public function aluno_reset_password() {
+		$this->layout = 'login';
+		
+		if ($this->request->is('post')) {
+				
+			// Encontra o aluno pelo email + status
+			$Student = $this->Student->find('first', array(
+				'conditions' => array(
+					'Student.email' => $this->request->data['Student']['email'],
+					'Student.status_id' => STATUS_STUDENT_INSCRICAO_CONFIRMADA
+				)
+			));
+			
+			if (!empty($Student)) {
+				$password = $this->Student->generatePassword();				
+				
+				$this->Student->id = (int)$Student['Student']['id'];
+				$this->Student->saveField('password', $password);
+				
+				// Envia o email com a nova senha
+				$this->__emailPasswordReset($this->Student->id, $password);
+				
+				$this->Session->setFlash('Uma nova senha será enviada para o seu email', 'admin/alerts/inline', array('class' => 'success'), 'auth');
+				return $this->redirect(array('action' => 'login'));
+			} else {
+				$this->Session->setFlash('Aluno não encontrado', 'admin/alerts/inline', array('class' => 'error'), 'auth');
+	        }
+	    }
+		
+		$this->set(array(
+			'title_for_layout' => 'Painel do Aluno',
+			'subtitle_for_layout' => 'Resetar senha'
+		));
 	}
 	
 	/**
@@ -233,6 +282,11 @@ class StudentsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
+	/**
+	 * Email de confirmação de cadastro
+	 * 
+	 * @param int $student_id ID do aluno
+	 */
 	public function __emailSignup($student_id) {
 		
 		$Student = $this->Student->find('first', array(
@@ -252,6 +306,30 @@ class StudentsController extends AppController {
 		$this->EmailQueue->set('token', sha1($Student['name'] . $Student['email']));
 		
 		$this->EmailQueue->queue();
+	}
+	
+	/**
+	 * Email com a nova senha
+	 * 
+	 * @param int $student_id ID do aluno
+	 * @param string $password Nova senha do aluno
+	 */
+	public function __emailPasswordReset($student_id, $password) {
+		
+		$Student = $this->Student->find('first', array(
+			'conditions' => array('Student.id' => (int)$student_id)
+		));
+		extract($Student);
+		
+		$this->EmailQueue->to = array($Student['fullname'] => $Student['email']);
+		
+		$this->EmailQueue->subject = 'Assando Sites - Nova senha de acesso ao Painel do Aluno';
+		
+		$this->EmailQueue->view = 'password_reset';
+		$this->EmailQueue->set('Student', $Student);
+		$this->EmailQueue->set('password', $password);
+		
+		$this->EmailQueue->send();
 	}
 	
 }

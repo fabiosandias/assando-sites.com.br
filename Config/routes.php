@@ -46,6 +46,7 @@
 	Router::connect('/aluno', array('controller' => 'students', 'action' => 'dashboard', 'aluno' => true));
 	Router::connect('/aluno/login', array('controller' => 'students', 'action' => 'login', 'aluno' => true));
 	Router::connect('/aluno/logout', array('controller' => 'students', 'action' => 'logout', 'aluno' => true));
+	Router::connect('/aluno/esqueci-minha-senha', array('controller' => 'students', 'action' => 'reset_password', 'aluno' => true));
 	Router::connect('/aluno/download/:token', array('controller' => 'my_files', 'action' => 'download', 'aluno' => true), array('token' => '[a-zA-Z0-9]{40}'));
 
 	# Rotas do painel de controle

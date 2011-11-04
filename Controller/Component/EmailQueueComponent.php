@@ -15,6 +15,11 @@ App::uses('CakeEmail', 'Network/Email');
  */
 class EmailQueueComponent extends Component {
 	
+	/**
+	 * Configurações padrões
+	 * 
+	 * @var array
+	 */
 	public $settings = array(
 		'to' => array(),
 		'cc' => array(),
@@ -28,6 +33,9 @@ class EmailQueueComponent extends Component {
 		'data' => array()
 	);
 	
+	/**
+	 * Construtor
+	 */
 	public function __construct(ComponentCollection $collection, $settings = array()) {
 		$this->settings['from'] = Configure::read('Email.from');
 		$this->settings['replyto'] = Configure::read('Email.from');
@@ -36,11 +44,18 @@ class EmailQueueComponent extends Component {
 		parent::__construct($collection, array_merge($this->settings, $settings));
 	}
 	
+	/**
+	 * Inicializador (non-PHPdoc)
+	 * @see Component::initialize()
+	 */
 	public function initialize($controller) {
 		$this->Controller = $controller;
 		$this->Controller->loadModel('Email');
 	}
 	
+	/**
+	 * Definição maǵica de atributos
+	 */
 	public function __set($name, $value) {
 		if (isset($this->settings[$name]))
 			$this->settings[$name] = $value;
@@ -48,10 +63,23 @@ class EmailQueueComponent extends Component {
 			$this->$name = $value;
 	}
 	
+	/**
+	 * Define uma configuração
+	 * 
+	 * @param string $name
+	 * @param string $value
+	 */
 	public function set($name, $value) {
 		$this->settings['data'][$name] = $value;
 	}
 	
+	/**
+	 * Renderiza a view do email
+	 * 
+	 * @param boolean $plain
+	 * 
+	 * @return string
+	 */
 	private function render($plain = false) {
 		$view = '/Email/' . ($plain ? 'text' : 'html') . '/' . $this->settings['view'];
 		$layout = 'email/' . ($plain ? 'text' : 'html') . '/' . $this->settings['layout'];
@@ -62,6 +90,9 @@ class EmailQueueComponent extends Component {
 		return $View->render($view, $layout); 
 	}
 	
+	/**
+	 * Enfileira o email
+	 */
 	public function queue() {		
 		$this->settings['html'] = $this->render();	
 		$this->settings['plain'] = $this->render(true);
@@ -71,6 +102,9 @@ class EmailQueueComponent extends Component {
 		$this->Controller->Email->save($this->settings);
 	}
 	
+	/**
+	 * Processa a fila de emails
+	 */
 	public function processQueue() {
 		$emails = $this->Controller->Email->unsetEmails();
 		
@@ -92,6 +126,17 @@ class EmailQueueComponent extends Component {
 				$this->Controller->Email->saveField('sent', true);
 			}			
 		}
+	}
+	
+	/**
+	 * Enfileira e envia um email
+	 * 
+	 * @see EmailQueueComponent::queue()
+	 * @see EmailQueueComponent::processQueue()
+	 */
+	public function send() {		
+		$this->queue();		
+		$this->processQueue();
 	}
 	
 }

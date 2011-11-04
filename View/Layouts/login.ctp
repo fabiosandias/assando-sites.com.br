@@ -17,7 +17,7 @@
 	<div class="container">
 		<div class="content">
 			<div class="page-header">
-				<h1><?php echo $title_for_layout ?></h1>
+				<h1><?php echo $title_for_layout ?> <?php if (isset($subtitle_for_layout) && !empty($subtitle_for_layout)) echo $this->Html->tag('small', $subtitle_for_layout) ?></h1>
 			</div>
 			
 			<?php echo $this->Session->flash() ?>

@@ -97,4 +97,18 @@ class AppModel extends Model {
 		return isset($this->data[$this->alias][$field]) && ($data == $this->data[$this->alias][$field]);
 	}
 	
+	/**
+	 * Gera uma nova senha alfa-numérica e segura
+	 * 
+	 * @param int $length Tamanho da senha
+	 * 
+	 * @return string
+	 */
+	public function generatePassword($length = 8) {
+		$password = uniqid(Configure::read('Security.salt'), true);
+		$password = sha1($password);
+		
+		return substr($password, 0, $length);
+	}
+	
 }
