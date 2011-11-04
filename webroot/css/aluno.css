@@ -17,6 +17,21 @@ body.dashboard #topo li a.dashboard,body.perfil #topo li a.perfil,body.arquivos 
 #conteudo .arquivos article h4{font-size:1.2em;margin-bottom:5px;}
 #conteudo .arquivos article h4 a{color:#333333;}
 #conteudo .arquivos article p{color:#666;font-size:0.9em;}
+#conteudo .arquivos article.file{background-image:url('../img/icons/mime/default.png');}
+#conteudo .arquivos article.file-movie{background-image:url('../img/icons/mime/movie.png');}
+#conteudo .arquivos article.file-wmv{background-image:url('../img/icons/mime/movie.png');}
+#conteudo .arquivos article.file-avi{background-image:url('../img/icons/mime/movie.png');}
+#conteudo .arquivos article.file-mp4{background-image:url('../img/icons/mime/mp4.png');}
 #conteudo .arquivos article.file-pdf{background-image:url('../img/icons/mime/pdf.png');}
+#conteudo .arquivos article.file-doc{background-image:url('../img/icons/mime/doc.png');}
+#conteudo .arquivos article.file-txt{background-image:url('../img/icons/mime/txt.png');}
+#conteudo .arquivos article.file-html{background-image:url('../img/icons/mime/html.png');}
+#conteudo .arquivos article.file-php{background-image:url('../img/icons/mime/php.png');}
 #conteudo .arquivos article.file-7z{background-image:url('../img/icons/mime/7zip.png');}
+#conteudo .arquivos article.file-rar{background-image:url('../img/icons/mime/rar.png');}
+#conteudo .arquivos article.file-zip{background-image:url('../img/icons/mime/zip.png');}
+#conteudo .arquivos article.file-gz{background-image:url('../img/icons/mime/zip.png');}
+#conteudo .arquivos article.file-exe{background-image:url('../img/icons/mime/exe.png');}
+#conteudo .arquivos article.file-jpg{background-image:url('../img/icons/mime/jpg.png');}
+#conteudo .arquivos article.file-png{background-image:url('../img/icons/mime/png.png');}
 #rodape{display:none;}
