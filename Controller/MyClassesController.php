@@ -36,7 +36,13 @@ class MyClassesController extends AppController {
 	 */
 	public function admin_index() {
 		$this->paginate = array(
-			'contain' => array('Status', 'Student')
+			'contain' => array(
+				'Status',
+				'Student' => array(
+					'fields' => array('Student.id'),
+					'conditions' => array('Student.class_id' => STATUS_STUDENT_INSCRICAO_CONFIRMADA)
+				)
+			)
 		);
 		
 		$this->set(array(
