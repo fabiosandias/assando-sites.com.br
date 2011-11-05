@@ -46,14 +46,14 @@ class PagSeguroHelper extends AppHelper {
 		foreach ($data['produtos'] AS $produto) {
 			$content .= $this->Form->hidden('itemId' . $i, array('name' => 'itemId' . $i, 'value' => $produto['id'])) . PHP_EOL;
 			$content .= $this->Form->hidden('itemDescription' . $i, array('name' => 'itemDescription' . $i, 'value' => $produto['descricao'])) . PHP_EOL;
-			$content .= $this->Form->hidden('itemQuantity' . $i, array('name' => 'itemQuantity' . $i, 'value' => $produto['quantidade'])) . PHP_EOL;
-			$content .= $this->Form->hidden('itemAmount' . $i, array('name' => 'itemAmount' . $i, 'value' => sprintf('%.2f', $produto['valor']))) . PHP_EOL;
+			$content .= $this->Form->hidden('itemQuantity' . $i, array('name' => 'itemQuantity' . $i, 'value' => (int)$produto['quantidade'])) . PHP_EOL;
+			$content .= $this->Form->hidden('itemAmount' . $i, array('name' => 'itemAmount' . $i, 'value' => sprintf('%.2f', (float)$produto['valor']))) . PHP_EOL;
 			
 			$i++;
 		}
 		
 		// Desconto
-		$content .= $this->Form->hidden('extraAmount', array('name' => 'extraAmount', 'value' => sprintf('%.2f', $data['desconto']))) . PHP_EOL;
+		$content .= $this->Form->hidden('extraAmount', array('name' => 'extraAmount', 'value' => sprintf('-%.2f', (float)$data['desconto']))) . PHP_EOL;
 				
 		// Cliente
 		if (isset($data['cliente']) && !empty($data['cliente'])) {
