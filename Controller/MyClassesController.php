@@ -39,8 +39,7 @@ class MyClassesController extends AppController {
 			'contain' => array(
 				'Status',
 				'Student' => array(
-					'fields' => array('Student.id'),
-					'conditions' => array('Student.class_id' => STATUS_STUDENT_INSCRICAO_CONFIRMADA)
+					'conditions' => array('Student.status_id' => STATUS_STUDENT_INSCRICAO_CONFIRMADA)
 				)
 			)
 		);
