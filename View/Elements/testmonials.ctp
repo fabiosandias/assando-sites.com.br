@@ -35,3 +35,15 @@
 	<cite>Fazer um curso com o Thiago, é realmente muito bom. Quem estiver em dúvida dá uma olhada do <a href="http://blog.thiagobelem.net" rel="external">blog dele</a>, certamente vão perceber a grande didática e como ele torna as coisas mais fáceis de entender</cite>
 	<h3>Acácio C. Costa</h3>
 </article>
+
+<article class="grid_6">
+	<?php echo $this->Html->image('https://secure.gravatar.com/avatar/c37a4c7a759ade851edac5b918c78c2a?s=70&amp;d=mm', array('alt' => 'Douglas Faria', 'class' => 'avatar', 'width' => 70, 'height' => 70)) ?>
+	<cite>Um curso muito interessante para quem quer otimizar o seu tempo de forma segura e bem estruturada. Um ótimo <?php echo $this->Html->link('conteúdo', array('controller' => 'pages', 'action' => 'display', 'about')) ?> e um professor que entende do assunto!</cite>
+	<h3>Douglas Faria</h3>
+</article>
+
+<article class="grid_6">
+	<?php echo $this->Html->image('https://secure.gravatar.com/avatar/e47ff230d1168f6d2871d3564e8c67b5?s=70&amp;d=mm', array('alt' => 'Kelvne Pechim', 'class' => 'avatar', 'width' => 70, 'height' => 70)) ?>
+	<cite>Se você quer aprender algo fantástico com um professor genial, o curso Assando Sites foi feito para você!</cite>
+	<h3>Kelvne Pechim &ndash; <?php echo $this->Html->link('@kelvne', 'http://twitter.com/kelvne', array('rel' => 'external')) ?></h3>
+</article>

@@ -4,8 +4,8 @@ $config = array(
 	'Meta' => array(
 		'title' => 'Assando Sites, curso online de CakePHP',
 
-		'description' => 'Curso online de CakePHP - Aprenda CakePHP de forma fácil e prática, sem sair de casa',
-		'keywords' => 'curso, cakephp, desenvolvimento, curso online, curso on-line, curso cakephp, curso cake php, cake php, php, curso php, framework, workshop, frameworks',
+		'description' => 'Assando Sites é um curso prático de CakePHP onde você vai aprender a desenvolver sites e portais de forma rápida e eficiente',
+		'keywords' => 'CakePHP, Framework, Curso de CakePHP, Curso CakePHP, Curso Online, PHP',
 		
 		'canonical' => 'http://assando-sites.com.br/'
 	),

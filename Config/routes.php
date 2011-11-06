@@ -28,9 +28,7 @@
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 	
-	# Rotas antigas
-	Router::connect('/inscreva-se/confirmacao/:token', array('controller' => 'students', 'action' => 'payment'), array('token' => '[a-zA-Z0-9]{40}'));
-	
+
 	# Páginas estáticas
 	Router::connect('/conteudo-do-curso', array('controller' => 'pages', 'action' => 'display', 'about'));
 	Router::connect('/conteudo-do-curso-avancado', array('controller' => 'pages', 'action' => 'display', 'about-advanced'));
@@ -52,7 +50,8 @@
 	# Rotas do painel de controle
 	Router::connect('/admin', array('controller' => 'students', 'action' => 'dashboard', 'admin' => true));
 	
-	# Redirects
+	# Rotas antigas e Redirects
+	Router::connect('/inscreva-se/confirmacao/:token', array('controller' => 'students', 'action' => 'payment'), array('token' => '[a-zA-Z0-9]{40}'));
 	Router::redirect('/alunos/inscricao', array('controller' => 'my_classes', 'action' => 'index'));
 	Router::redirect('/inscreva-se/*', array('controller' => 'my_classes', 'action' => 'index'));
 

@@ -10,7 +10,8 @@
 	<?php if (Configure::read('debug') || $isPainelAluno) echo $this->Html->meta(array('name' => 'robots', 'content' => 'noindex,nofollow')); ?>	
 	
 	<?php echo $this->Html->meta('icon') ?><link rel="apple-touch-icon" href="<?php echo $this->Html->url('/apple-touch-icon.png') ?>" />
-
+	
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
 	<?php echo $this->Html->css('http://fonts.googleapis.com/css?family=Delius|Rosario') ?>
 <?php if (Configure::read('debug')) { ?>	
