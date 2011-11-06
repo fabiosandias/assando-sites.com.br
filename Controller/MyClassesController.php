@@ -129,4 +129,25 @@ class MyClassesController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
+	/**
+	 * Cria uma lista de email com os alunos
+	 * 
+	 * @param integer $id
+	 */
+	public function admin_mail_list($id) {		
+		$this->layout = 'ajax';
+		
+		$MyClass = $this->MyClass->find('first', array(
+			'conditions' => array('MyClass.id' => $id),
+			'contain' => array(
+				'Student' => array(
+					'conditions' => array('Student.status_id' => STATUS_STUDENT_INSCRICAO_CONFIRMADA),
+					'order' => array('Student.name' => 'ASC')
+				)
+			)
+		));
+		
+		$this->set('Students', $MyClass['Student']);
+	}
+	
 }
