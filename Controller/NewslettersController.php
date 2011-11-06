@@ -13,9 +13,21 @@
  */
 class NewslettersController extends AppController {
 	
-	public function signup() {
-		// $this->request->is('ajax')
+	/**
+	 * Antes de filtrar (non-PHPdoc)
+	 * 
+	 * @see AppController::beforeFilter()
+	 */
+	public function beforeFilter() {
+		parent::beforeFilter();
 		
+		$this->Security->requirePost('signup');
+	}
+	
+	/**
+	 * Cadastro na newsletter
+	 */
+	public function signup() {		
 		$this->Newsletter->create();		
 		if ($this->Newsletter->save($this->data)) {
 			$message = 'Inscrição efetuada com sucesso';

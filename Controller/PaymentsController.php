@@ -15,6 +15,7 @@ class PaymentsController extends AppController {
 	
 	/**
 	 * Antes de filtrar (non-PHPdoc)
+	 * 
 	 * @see AppController::beforeFilter()
 	 */
 	public function beforeFilter() {
@@ -60,9 +61,12 @@ class PaymentsController extends AppController {
 			)
 		));
 		
-		// Tenta criar o pagamento
-		$this->Payment->create();
+		// Tenta encontrar o Payment
+		$Payment = $this->Payment->findByReference($Transaction->getReference());
+		
+		// Tenta salvar o pagamento
 		$this->Payment->save(array(
+			'id' => !empty($Payment) ? $Payment['Payment']['id'] : null,
 			'student_id' => !empty($Student) ? $Student['Student']['id'] : 0,
 		
 			'code' => $Transaction->getCode(),

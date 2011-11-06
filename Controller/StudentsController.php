@@ -20,13 +20,18 @@ class StudentsController extends AppController {
 	public $paginate = array();
 	
 	/**
-	 * Antes de filtrar as actions do aluno 
+	 * Antes de filtrar (non-PHPdoc)
+	 * 
+	 * @see AppController::beforeFilter()
 	 */
 	public function beforeFilter() {
 		parent::beforeFilter();
 		
-		// Esqueci minah senha
+		// Esqueci minha senha
 		$this->Auth->allow('aluno_reset_password');
+		
+		// Cadastro de aluno
+		$this->Security->requirePost('signup');
 		
 	}
 	
