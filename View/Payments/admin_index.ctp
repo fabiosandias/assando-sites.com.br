@@ -12,7 +12,7 @@ $this->Bootstrap->addCrumb('Pagamentos');
 		<th>#</th>
 		<th>Aluno</th>
 		<th>Valor</th>
-		<th>Meio</th>
+		<th>Forma de pagamento</th>
 		<th>Status</th>
 		<th>Cadastro</th>
 	</tr>
