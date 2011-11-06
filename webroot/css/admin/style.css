@@ -48,3 +48,9 @@ body.login label { margin: 0 0 10px 20px; text-align: left; font-size: 1.2em }
 body.login .input { margin: 0 auto; width: 360px }
 body.login .input input { font-size: 1.4em; padding: 5px 10px; height: 30px; width: 340px }
 body.login .actions { margin: 30px -20px -20px; padding-left: 20px; padding-right: 20px; overflow: hidden }
+
+table.zebra-striped th a { color: #404040 }
+table.zebra-striped th a.asc,
+table.zebra-striped th a.desc { padding-right: 18px; color: #0069d6 }
+table.zebra-striped th a.asc { background: url('../../img/icons/arrow-up.png') right 1px no-repeat }
+table.zebra-striped th a.desc { background: url('../../img/icons/arrow-down.png') right 1px no-repeat }

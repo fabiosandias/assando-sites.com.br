@@ -8,11 +8,11 @@ $this->Bootstrap->addCrumb('Turmas');
 <table class="zebra-striped">
 <thead>
 	<tr>
-		<th>#</th>
-		<th colspan="2">Turma</th>
+		<th><?php echo $this->Paginator->sort('MyClass.id', '#') ?></th>
+		<th colspan="2"><?php echo $this->Paginator->sort('MyClass.code', 'Turma') ?></th>
 		<th>Alunos</th>
-		<th>Data</th>
-		<th>Status</th>
+		<th><?php echo $this->Paginator->sort('MyClass.start', 'Data') ?></th>
+		<th><?php echo $this->Paginator->sort('Status.name', 'Status') ?></th>
 	</tr>
 </thead>
 <tbody>

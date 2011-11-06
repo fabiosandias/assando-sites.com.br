@@ -8,11 +8,11 @@ $this->Bootstrap->addCrumb('Arquivos');
 <table class="zebra-striped">
 <thead>
 	<tr>
-		<th>#</th>
-		<th>Título</th>
-		<th>Descrição</th>
-		<th colspan="2">Turma</th>
-		<th>Data</th>
+		<th><?php echo $this->Paginator->sort('MyFile.id', '#') ?></th>
+		<th><?php echo $this->Paginator->sort('MyFile.title', 'Título') ?></th>
+		<th><?php echo $this->Paginator->sort('MyFile.description', 'Descrição') ?></th>
+		<th colspan="2"><?php echo $this->Paginator->sort('MyClass.code', 'Turma') ?></th>
+		<th><?php echo $this->Paginator->sort('MyFile.created', 'Cadastro') ?></th>
 	</tr>
 </thead>
 <tbody>

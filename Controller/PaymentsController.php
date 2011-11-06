@@ -94,7 +94,7 @@ class PaymentsController extends AppController {
 	 */
 	public function admin_index() {
 		$this->paginate = array(
-			'contain' => array('Student', 'Status', 'PaymentMethod'),
+			'contain' => array('Student', 'Status', 'PaymentMethod', 'PaymentGateway'),
 			'order' => array('Payment.created' => 'DESC')
 		);
 		

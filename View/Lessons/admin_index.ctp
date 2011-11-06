@@ -9,11 +9,11 @@ $this->Bootstrap->addCrumb('Aulas');
 <table class="zebra-striped">
 <thead>
 	<tr>
-		<th>#</th>
-		<th>Título</th>
-		<th>Descrição</th>
-		<th colspan="2">Turma</th>
-		<th>Data</th>
+		<th><?php echo $this->Paginator->sort('Lesson.id', '#') ?></th>
+		<th><?php echo $this->Paginator->sort('Lesson.title', 'Título') ?></th>
+		<th><?php echo $this->Paginator->sort('Lesson.description', 'Descrição') ?></th>
+		<th colspan="2"><?php echo $this->Paginator->sort('MyClass.code', 'Status') ?></th>
+		<th><?php echo $this->Paginator->sort('Lesson.datetime', 'Data') ?></th>
 	</tr>
 </thead>
 <tbody>

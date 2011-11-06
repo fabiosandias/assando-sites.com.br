@@ -9,11 +9,11 @@ $this->Bootstrap->addCrumb('Alunos');
 <table class="zebra-striped">
 <thead>
 	<tr>
-		<th>#</th>
-		<th>Nome</th>
-		<th>Email</th>
-		<th>Status</th>
-		<th>Cadastro</th>
+		<th><?php echo $this->Paginator->sort('Student.id', '#') ?></th>
+		<th><?php echo $this->Paginator->sort('Student.fullname', 'Nome') ?></th>
+		<th><?php echo $this->Paginator->sort('Student.email', 'Email') ?></th>
+		<th><?php echo $this->Paginator->sort('Status.name', 'Status') ?></th>
+		<th><?php echo $this->Paginator->sort('Student.created', 'Cadastro') ?></th>
 	</tr>
 </thead>
 <tbody>
