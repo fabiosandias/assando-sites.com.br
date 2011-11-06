@@ -46,7 +46,7 @@ body.home #rodape li a.home,body.sobre #rodape li a.sobre,body.cakephp #rodape l
 #conteudo .autor p{margin-bottom:10px;}
 #conteudo .widget.inscricao{text-align:center;}#conteudo .widget.inscricao a.botao{margin-bottom:20px;}
 #conteudo .widget.inscricao p{text-transform:lowercase;}#conteudo .widget.inscricao p strong{color:#333;font-family:Delius, Ubuntu, cursive;}
-#conteudo .container_12{position:relative;}
+#conteudo .container_12{position:relative;min-height:400px;}#conteudo .container_12 pre{white-space:pre-wrap;line-height:1.2em;}
 #conteudo .gnomo-aponta{width:150px;height:197px;background:transparent url('../img/layout/gnomo-aponta.png') no-repeat;position:absolute;bottom:-112px;left:440px;}
 #rodape{font-size:.9em;color:#999;background-color:#333;border-top:1px solid #d2d2d2;padding:40px 0 80px;}#rodape .pagamento h5{font-size:1.1em;color:#FFF;font-weight:bold;margin-bottom:10px;}
 #rodape .pagamento p{margin-bottom:10px;}
