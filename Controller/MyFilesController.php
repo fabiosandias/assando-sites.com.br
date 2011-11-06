@@ -19,9 +19,9 @@ class MyFilesController extends AppController {
 	public function aluno_download() {
 		$ids = array();
 		
-		$this->loadModel('Student');
-				
+		$this->loadModel('Student');		
 		$MyClasses = $this->Student->getClasses(array('contain' => array('ClassesStudent')));
+		
 		foreach ($MyClasses AS $class)
 			$ids[] = $class['MyClass']['id'];
 		
