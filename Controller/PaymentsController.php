@@ -89,4 +89,20 @@ class PaymentsController extends AppController {
 		exit;
 	}
 	
+	/**
+	 * Lista de alunos
+	 */
+	public function admin_index() {
+		$this->paginate = array(
+			'contain' => array('Student', 'Status', 'PaymentMethod'),
+			'order' => array('Payment.created' => 'DESC')
+		);
+		
+		$this->set(array(
+			'title_for_layout' => 'Pagamentos',
+		
+			'data' => $this->paginate('Payment')
+		));
+	}
+	
 }

@@ -33,10 +33,12 @@ class Payment extends AppModel {
 	 * @var array
 	 */
 	public $belongsTo = array(
+		'Student',
 		'Status' => array(
 			'conditions' => array('Status.type' => 'Payment')
 		),
-		'Student'
+		'PaymentMethod',
+		'PaymentGateway'
 	);
 	
 }
