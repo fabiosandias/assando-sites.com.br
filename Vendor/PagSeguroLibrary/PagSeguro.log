@@ -1,0 +1,6 @@
+{2011/11/06 19:52:02} [Info] TransactionSearchService.SearchByCode(6A873F7F-A8E6-4919-9638-9B4B54BA65AB) - begin 
+{2011/11/06 19:52:04} [Info] TransactionSearchService.SearchByCode(transactionCode=6A873F7F-A8E6-4919-9638-9B4B54BA65AB) - end Transaction(Code=6A873F7F-A8E6-4919-9638-9B4B54BA65AB, SenderEmail=ricardo_saqua@yahoo.com.br, Date=2011-11-06T12:37:24.000-02:00, Reference=91274fb2bef5de41e75391672605fb41b9976ebc, status=2, itemsCount=1) 
+{2011/11/06 19:52:13} [Info] TransactionSearchService.SearchByCode(6A873F7F-A8E6-4919-9638-9B4B54BA65AB) - begin 
+{2011/11/06 19:52:14} [Info] TransactionSearchService.SearchByCode(transactionCode=6A873F7F-A8E6-4919-9638-9B4B54BA65AB) - end Transaction(Code=6A873F7F-A8E6-4919-9638-9B4B54BA65AB, SenderEmail=ricardo_saqua@yahoo.com.br, Date=2011-11-06T12:37:24.000-02:00, Reference=91274fb2bef5de41e75391672605fb41b9976ebc, status=2, itemsCount=1) 
+{2011/11/06 19:52:22} [Info] TransactionSearchService.SearchByCode(6A873F7F-A8E6-4919-9638-9B4B54BA65AB) - begin 
+{2011/11/06 19:52:23} [Info] TransactionSearchService.SearchByCode(transactionCode=6A873F7F-A8E6-4919-9638-9B4B54BA65AB) - end Transaction(Code=6A873F7F-A8E6-4919-9638-9B4B54BA65AB, SenderEmail=ricardo_saqua@yahoo.com.br, Date=2011-11-06T12:37:24.000-02:00, Reference=91274fb2bef5de41e75391672605fb41b9976ebc, status=2, itemsCount=1) 

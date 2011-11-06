@@ -93,3 +93,9 @@ define('STATUS_CLASS_PENDENTE', 4);
 define('STATUS_CLASS_INSCRICOES_ABERTAS', 5);
 define('STATUS_CLASS_INSCRICOES_FECHADAS', 6);
 define('STATUS_CLASS_ENCERRADA', 7);
+
+/**
+ * Gateway des pagamento
+ */
+define('PAYMENT_GATEWAY_PAGSEGURO', 1);
+define('PAYMENT_GATEWAY_PAYPAL', 2);
