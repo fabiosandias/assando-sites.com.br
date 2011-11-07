@@ -22,6 +22,7 @@ class PaymentsController extends AppController {
 		parent::beforeFilter();
 		
 		# $this->Security->requirePost('PagSeguro');
+		$this->Security->csrfCheck = false;
 	}
 	
 	/**
