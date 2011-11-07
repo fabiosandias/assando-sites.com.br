@@ -46,6 +46,9 @@
 	Router::connect('/aluno/logout', array('controller' => 'students', 'action' => 'logout', 'aluno' => true));
 	Router::connect('/aluno/esqueci-minha-senha', array('controller' => 'students', 'action' => 'reset_password', 'aluno' => true));
 	Router::connect('/aluno/download/:token', array('controller' => 'my_files', 'action' => 'download', 'aluno' => true), array('token' => '[a-zA-Z0-9]{40}'));
+	
+	# Notificação de Pagamento
+	Router::connect('/pagamento/pagseguro', array('controller' => 'payments', 'action' => 'PagSeguro'));
 
 	# Rotas do painel de controle
 	Router::connect('/admin', array('controller' => 'students', 'action' => 'dashboard', 'admin' => true));
