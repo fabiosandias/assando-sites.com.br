@@ -54,8 +54,10 @@
 			<nav id="menu" class="grid_6 prefix_6">
 				<?php echo $this->element('aluno/menu') ?>
 			</nav>
+
+			<div class="perfil">Seja bem-vindo(a), <strong><?php echo AuthComponent::user('name') ?></strong>! <?php echo $this->Html->image(gravatar(AuthComponent::user('email'), 32), array('class' => 'avatar', 'width' => 32, 'height' => 32)) ?></div>
 			
-			<div class="titulo grid_6 suffix_6">
+			<div class="titulo grid_6 suffix_2">
 				<h1><?php echo $this->Html->link('Painel do Aluno', '/aluno') ?></h1>
 			</div>
 			

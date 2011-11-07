@@ -70,7 +70,15 @@ Inflector::rules('plural', array(
  *
  */
 
-
+/**
+ * Gera o endereço do gravatar de um email
+ * 
+ * @param string $email
+ * @param integer $size
+ */
+function gravatar($email, $size = 70) {
+	return 'https://secure.gravatar.com/avatar/' . md5($email) . '?s=' . $size . '&d=mm';
+}
 	
 /**
  * Status gerais
