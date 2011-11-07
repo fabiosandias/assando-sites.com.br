@@ -21,13 +21,13 @@ class PaymentsController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		
-		$this->Security->requirePost('PagSeguro');
+		# $this->Security->requirePost('PagSeguro');
 	}
 	
 	/**
 	 * Recebe as notificações do PagSeguro
 	 */
-	public function PagSeguro() {		
+	public function PagSeguro() {	
 		// Se não houver o "notificationType" ou o "notificationCode" ou (notificationType != transaction)
 		if (!isset($this->request->data['notificationType']) || !isset($this->request->data['notificationCode']) ||
 			($this->request->data['notificationType'] != 'transaction')) {
