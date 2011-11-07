@@ -2,6 +2,7 @@ body.dashboard #topo li a.dashboard,body.perfil #topo li a.perfil,body.arquivos 
 #topo .container_12{background:none;padding-bottom:10px;}
 #topo .titulo{margin-top:0;margin-bottom:0;}
 #topo h1 a{color:#333333;}
+#topo .perfil{float:right;margin:40px 20px 0 0;color:#555;}#topo .perfil .avatar{vertical-align:middle;margin-top:-6px;padding:2px;margin-left:10px;}
 #conteudo .gnomo-aponta{display:none;}
 #conteudo h3{font-size:1.3em;margin:30px 0 20px;}
 #conteudo .aulas{background:#b0d9ba;padding:15px 5px;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;overflow:hidden;}#conteudo .aulas article{min-height:90px;}#conteudo .aulas article.grid_2{width:170px;}
