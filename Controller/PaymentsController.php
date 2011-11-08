@@ -57,9 +57,9 @@ class PaymentsController extends AppController {
 		$Student = $this->Payment->Student->find('first', array(
 			'conditions' => array(
 				'OR' => array(
-					'Student.email' => $transaction->getSender()->getEmail(),
-					'Student.name' => $transaction->getSender()->getName(),
-					'Student.fullname' => $transaction->getSender()->getName(),
+					'Student.email' => $Transaction->getSender()->getEmail(),
+					'Student.name' => $Transaction->getSender()->getName(),
+					'Student.fullname' => $Transaction->getSender()->getName(),
 				)
 			)
 		));
