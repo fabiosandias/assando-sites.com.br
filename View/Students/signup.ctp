@@ -16,13 +16,16 @@
 			$class = Inflector::slug(strtolower(preg_replace('/[0-9]/', '', $MyClass['title'])), ' ');
 			?>
 				<h3 class="grid_8 alpha omega">Turma escolhida <small>&ndash; <?php echo $this->Html->link('Escolha outra turma', array('controller' => 'my_classes', 'action' => 'index')) ?></small></h3>
-				<article class="<?php echo $class ?>" data-turma-id="<?php echo $MyClass['id'] ?>">
-					<h3><?php echo $MyClass['title'] ?></h3>
-					<p><?php echo $MyClass['description'] ?></p>
+
+				<article class="<?php echo $class ?>" data-turma-id="<?php echo $MyClass['id'] ?>" itemscope itemtype="http://schema.org/Event">
+					<h3 itemprop="name"><?php echo $MyClass['title'] ?></h3>
+					<p itemprop="description"><?php echo $MyClass['description'] ?></p>
+					<meta itemprop="startDate" content="<?php echo $this->Time->format('c', $MyClass['start']) ?>" />
+					<meta itemprop="endDate" content="<?php echo $this->Time->format('c', $MyClass['end']) ?>" />
 					
 					<aside class="preco">
 						<?php if ($MyClass['price_discount'] < $MyClass['price']) { ?>
-						<span class="desconto">de <strike><?php echo $this->Number->format($MyClass['price'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></strike> por</span>
+						<span class="desconto">de <del><?php echo $this->Number->format($MyClass['price'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></del> por</span>
 						<?php } ?>
 						<?php echo $this->Number->format($MyClass['price_discount'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?>
 					</aside>

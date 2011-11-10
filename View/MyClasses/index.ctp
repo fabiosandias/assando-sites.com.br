@@ -12,7 +12,7 @@
 			?>
 			<article class="<?php echo $class ?>" data-turma-id="<?php echo $MyClass['id'] ?>" itemscope itemtype="http://schema.org/Event">
 				<h3 itemprop="name"><?php echo $MyClass['title'] ?></h3>
-				<p><?php echo $MyClass['description'] ?></p>
+				<p itemprop="description"><?php echo $MyClass['description'] ?></p>
 				<meta itemprop="startDate" content="<?php echo $this->Time->format('c', $MyClass['start']) ?>" />
 				<meta itemprop="endDate" content="<?php echo $this->Time->format('c', $MyClass['end']) ?>" />
 				
@@ -20,7 +20,7 @@
 					<?php if ($MyClass['price_discount'] < $MyClass['price']) { ?>
 					<span class="desconto">de <del><?php echo $this->Number->format($MyClass['price'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></del> por</span>
 					<?php } ?>
-					<ins><?php echo $this->Number->format($MyClass['price_discount'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></ins>
+					<?php echo $this->Number->format($MyClass['price_discount'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?>
 				</aside>
 					
 				<?php if ($MyClass['price_discount'] >= $MyClass['price']) { ?>
