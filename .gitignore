@@ -21,3 +21,4 @@
 # Protected files
 /Config/safe.php
 deploy.sh
+/Vendor/PagSeguroLibrary/PagSeguro.log
