@@ -1,5 +1,8 @@
 <!doctype html>
-<html itemscope itemtype="http://schema.org/Organization">
+<html lang="pt-BR"
+	itemscope itemtype="http://schema.org/Organization"
+	xmlns:og="http://ogp.me/ns#"
+	xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
 	<title><?php echo empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title') ?></title>
@@ -26,10 +29,30 @@
 	<?php echo $this->Html->css('style.min.css') ?>
 	<?php if ($isPainelAluno) echo $this->Html->css('aluno') ?>
 <?php } ?>
-		
-	<?php foreach (Configure::read('Google.webmasters') AS $code) echo $this->Html->meta(array('name' => 'google-site-verification', 'content' => $code)) . PHP_EOL; ?>
+	
+	<!-- Author -->
+	<?php
+	foreach (Configure::read('Google.webmasters') AS $code)
+		echo $this->Html->meta(array('name' => 'google-site-verification', 'content' => $code));
 
-	<link rel="author" href="https://plus.google.com/108724422355747527461" />
+	echo $this->Html->meta(array('name' => 'y_key', 'content' => 'd3b849455e35d7da'));
+	echo $this->Html->meta(array('name' => 'msvalidate.01', 'content' => '500081F68DAE77855425F1E768F88AC0'));
+	?>
+
+	<link href="https://plus.google.com/108724422355747527461" rel="author" />
+	<link href="https://plus.google.com/107977856765116714804" rel="publisher" />
+
+	<!-- Facebook -->
+	<?php 
+	echo $this->Html->meta(array('property' => 'og:title', 'content' => Configure::read('Meta.title')));
+	echo $this->Html->meta(array('property' => 'og:url', 'content' => Configure::read('Meta.canonical')));
+	echo $this->Html->meta(array('property' => 'og:description', 'content' => Configure::read('Meta.description')));
+	echo $this->Html->meta(array('property' => 'og:image', 'content' => $this->Html->url('/apple-touch-icon.png', true)));
+	echo $this->Html->meta(array('property' => 'og:type', 'content' => 'website'));
+	echo $this->Html->meta(array('property' => 'og:site_name', 'content' => 'Assando Sites'));
+	echo $this->Html->meta(array('property' => 'og:admins', 'content' => '1480410295'));
+	echo $this->Html->meta(array('property' => 'og:app_id', 'content' => '196764077041865')) . PHP_EOL;
+	?>
 </head>
 <body class="<?php if (isset($body_class)) echo $body_class ?>">
 	<header id="topo">
