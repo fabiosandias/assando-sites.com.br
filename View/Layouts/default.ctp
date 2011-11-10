@@ -27,7 +27,9 @@
 	<?php if ($isPainelAluno) echo $this->Html->css('aluno') ?>
 <?php } ?>
 		
-	<?php foreach (Configure::read('Google.webmasters') AS $code) echo $this->Html->meta(array('name' => 'google-site-verification', 'content' => $code)); ?>
+	<?php foreach (Configure::read('Google.webmasters') AS $code) echo $this->Html->meta(array('name' => 'google-site-verification', 'content' => $code)) . PHP_EOL; ?>
+
+	<link rel="author" href="https://plus.google.com/108724422355747527461" />
 </head>
 <body class="<?php if (isset($body_class)) echo $body_class ?>">
 	<header id="topo">
