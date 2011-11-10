@@ -123,7 +123,7 @@
 	
 	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
 	
-	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'https://s3.amazonaws.com/assando-sites/assets/js/scripts.min.js')) ?>
+	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'https://s3.amazonaws.com/assando-sites/assets/js/scripts.min.js')) ?>
 	
 	<script>	
 	loadAssync('//apis.google.com/js/plusone.js');
