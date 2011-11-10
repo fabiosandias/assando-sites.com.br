@@ -10,9 +10,11 @@
 
 				$class = Inflector::slug(strtolower(preg_replace('/[0-9]/', '', $MyClass['title'])), ' ');
 			?>
-			<article class="<?php echo $class ?>" data-turma-id="<?php echo $MyClass['id'] ?>">
-				<h3><?php echo $MyClass['title'] ?></h3>
+			<article class="<?php echo $class ?>" data-turma-id="<?php echo $MyClass['id'] ?>" itemscope itemtype="http://schema.org/Event">
+				<h3 itemprop="name"><?php echo $MyClass['title'] ?></h3>
 				<p><?php echo $MyClass['description'] ?></p>
+				<meta itemprop="startDate" content="<?php echo $this->Time->format('c', $MyClass['start']) ?>" />
+				<meta itemprop="endDate" content="<?php echo $this->Time->format('c', $MyClass['end']) ?>" />
 				
 				<aside class="preco">
 					<?php if ($MyClass['price_discount'] < $MyClass['price']) { ?>

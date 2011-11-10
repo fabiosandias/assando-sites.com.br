@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html itemscope itemtype="http://schema.org/Organization">
 <head>
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
 	<title><?php echo empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title') ?></title>
@@ -42,8 +42,9 @@
 			</nav>
 
 			<div class="titulo grid_6 suffix_6">
-				<h1><a href="<?php echo $this->Html->url('/') ?>">Desenvolver com <strong>CakePHP</strong> é tão fácil quanto assar um bolo</a></h1>
-				<p><strong>Assando Sites</strong> é um curso prático de <?php echo $this->Html->link('CakePHP', array('controller' => 'pages', 'action' => 'display', 'cakephp')) ?> onde você vai aprender a desenvolver sites e portais de forma rápida e eficiente.</p>
+				<h1 itemprop="name">Assando Sites</h1>
+				<h2><a href="<?php echo $this->Html->url('/') ?>" itemprop="url">Desenvolver com <strong>CakePHP</strong> é tão fácil quanto assar um bolo</a></h2>
+				<p itemprop="description"><strong>Assando Sites</strong> é um curso prático de <?php echo $this->Html->link('CakePHP', array('controller' => 'pages', 'action' => 'display', 'cakephp')) ?> onde você vai aprender a desenvolver sites e portais de forma rápida e eficiente.</p>
 				<p>As aulas são <strong>on-line</strong>, através de uma ferramenta com áudio, vídeo, chat e apresentação de slides... Você aprende sem sair de casa!</p>
 			</div>
 			
