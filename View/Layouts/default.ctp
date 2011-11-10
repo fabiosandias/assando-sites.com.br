@@ -106,7 +106,7 @@
 			<div class="pagamento grid_6">
 				<h5>Formas de pagamento, via PagSeguro</h5>
 				<p>Você pode pagar com Visa, MasterCard, Diners, American Express, Hipercard, Aura, Bradesco, Itaú, Banco do Brasil, Banrisul, Oi Paggo, saldo em conta PagSeguro ou boleto bancário</p>
-				<?php echo $this->Html->image('layout/opcoes-pagamento.png', array('alt' => 'Formas de Pagamento')) ?>
+				<?php echo $this->Html->image('layout/opcoes-pagamento.png', array('alt' => 'Formas de Pagamento', 'width' => 386, 'height' => 100)) ?>
 			</div>
 
 			<div class="creditos grid_5 prefix_1">

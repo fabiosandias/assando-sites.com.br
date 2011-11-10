@@ -20,7 +20,7 @@ $this->set(array(
 				<?php echo $this->Form->input('email', array('label' => 'Email', 'placeholder' => 'digite seu email', 'type' => 'email', 'div' => false)) ?>
 				
 				<?php echo $this->Form->submit('OK', array('class' => 'botao verde', 'div' => false)) ?>				
-				<?php echo $this->Html->image('icons/loading-green.gif', array('alt' => 'Carregando...', 'class' => 'loading')) ?>
+				<?php echo $this->Html->image('icons/loading-green.gif', array('alt' => 'Carregando...', 'class' => 'loading', 'width' => 32, 'height' => 32)) ?>
 			<?php echo $this->Form->end() ?>
 		</section>
 
