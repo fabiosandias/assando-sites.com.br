@@ -1,15 +1,16 @@
 .clear{clear:both;display:block;}
 body{font:normal normal 16px Rosario,Ubuntu,Helvetica,sans-serif;line-height:1.125em;color:#7f7f7f;background:#f5f5f5;}
 a{text-decoration:none;}
-h1,h2,h3,h4,h5,h6{font-weight:normal;color:#333;font-family:Delius,Ubuntu,cursive;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;color:#333;font-family:Delius,Ubuntu,cursive;text-shadow:0 0 1px rgba(51, 51, 51, 0.3);}
 .wraper{width:910px;margin:0 auto;}
 .botao{display:inline-block;color:#FFF !important;font-size:2em;padding:30px 35px;cursor:pointer;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;}.botao.vermelho{border:6px solid #f08c94;background-color:#e6001a;background-image:linear-gradient(bottom, #e6001a 100%, #cb001a 0%);background-image:-o-linear-gradient(bottom, #e6001a 100%, #cb001a 0%);background-image:-moz-linear-gradient(bottom, #e6001a 100%, #cb001a 0%);background-image:-webkit-linear-gradient(bottom, #e6001a 100%, #cb001a 0%);background-image:-ms-linear-gradient(bottom, #e6001a 100%, #cb001a 0%);background-image:-webkit-gradient(linear, left bottom, left top, color-stop(1, #e6001a), color-stop(0, #cb001a));}.botao.vermelho:active{background-color:#cb001a;background-image:linear-gradient(bottom, #cb001a 100%, #e6001a 0%);background-image:-o-linear-gradient(bottom, #cb001a 100%, #e6001a 0%);background-image:-moz-linear-gradient(bottom, #cb001a 100%, #e6001a 0%);background-image:-webkit-linear-gradient(bottom, #cb001a 100%, #e6001a 0%);background-image:-ms-linear-gradient(bottom, #cb001a 100%, #e6001a 0%);background-image:-webkit-gradient(linear, left bottom, left top, color-stop(1, #cb001a), color-stop(0, #e6001a));}
 .botao.verde{border:4px solid #9bcca7;background-color:#7cb489;background-image:linear-gradient(bottom, #7cb489 100%, #5e9d6d 0%);background-image:-o-linear-gradient(bottom, #7cb489 100%, #5e9d6d 0%);background-image:-moz-linear-gradient(bottom, #7cb489 100%, #5e9d6d 0%);background-image:-webkit-linear-gradient(bottom, #7cb489 100%, #5e9d6d 0%);background-image:-ms-linear-gradient(bottom, #7cb489 100%, #5e9d6d 0%);background-image:-webkit-gradient(linear, left bottom, left top, color-stop(1, #7cb489), color-stop(0, #5e9d6d));}.botao.verde:active{background-color:#5e9d6d;background-image:linear-gradient(bottom, #5e9d6d 100%, #7cb489 0%);background-image:-o-linear-gradient(bottom, #5e9d6d 100%, #7cb489 0%);background-image:-moz-linear-gradient(bottom, #5e9d6d 100%, #7cb489 0%);background-image:-webkit-linear-gradient(bottom, #5e9d6d 100%, #7cb489 0%);background-image:-ms-linear-gradient(bottom, #5e9d6d 100%, #7cb489 0%);background-image:-webkit-gradient(linear, left bottom, left top, color-stop(1, #5e9d6d), color-stop(0, #7cb489));}
 .botao.menor{font-size:1.3em;padding:10px 15px;border-width:4px;}
 .avatar{background:white;padding:5px;border:1px solid #ebebeb;}
 #topo{background:#FFF;padding-bottom:20px;}#topo .container_12{padding:20px 0 50px;background:transparent url('../img/layout/bolo.png') right bottom no-repeat;}
-#topo .titulo{margin-top:55px;margin-bottom:45px;}#topo .titulo h1{font-size:2.1em;line-height:1.15em;margin-bottom:20px;}#topo .titulo h1 a{color:#333333;}
-#topo .titulo h1 span,#topo .titulo h1 strong{color:#cb001a;font-weight:normal;}
+#topo .titulo{margin-top:55px;margin-bottom:45px;}#topo .titulo h1{display:none;}
+#topo .titulo h2{font-size:2.1em;line-height:1.15em;margin-bottom:20px;}#topo .titulo h2 a{color:#333333;}
+#topo .titulo h2 span,#topo .titulo h2 strong{color:#cb001a;font-weight:normal;}
 #topo .titulo p{color:#777;line-height:1.4em;margin-bottom:10px;}#topo .titulo p a{color:#f08c94;}
 #topo div.inscricao p{text-transform:lowercase;text-align:right;color:#999;float:left;display:block;width:130px;margin:25px 25px 0 20px;}#topo div.inscricao p strong{color:#333;font-family:Delius, Ubuntu, cursive;}
 #topo div.inscricao a.botao{float:right;}
@@ -22,7 +23,7 @@ body.home #rodape li a.home,body.sobre #rodape li a.sobre,body.cakephp #rodape l
 #conteudo .vantagens article{font-size:.95em;border-right:1px solid #e0e0e0;padding:10px 0;}#conteudo .vantagens article:last-child{border-right:none;}
 #conteudo .vantagens article h3,#conteudo .vantagens article p{width:200px;}
 #conteudo .vantagens article img{border:1px solid #cccccc;}
-#conteudo .vantagens article h3{font-weight:bold;margin:20px 0 10px;font-size:1.2em;}
+#conteudo .vantagens article h3{font-weight:bold;margin:20px 0 10px;font-size:1.05em;}
 #conteudo .vantagens article p{color:#7f7f7f;line-height:1.4em;}
 #conteudo .depoimentos h2{margin-top:50px;}
 #conteudo .depoimentos article{margin-bottom:30px;position:relative;}#conteudo .depoimentos article:nth-child(2n){clear:left;}
