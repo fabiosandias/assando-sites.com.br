@@ -125,15 +125,17 @@
 	
 	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'http://assando-sites.s3.amazonaws.com/assets/js/scripts.min.js')) ?>
 	
-	<script>	
-	loadAssync('//apis.google.com/js/plusone.js');
-	loadAssync('//platform.twitter.com/widgets.js');
-	loadAssync('//connect.facebook.net/pt_BR/all.js#xfbml=1');
+	<script>
+	$(window).load(function() {
+		loadAssync('//apis.google.com/js/plusone.js');
+		loadAssync('//platform.twitter.com/widgets.js');
+		loadAssync('//connect.facebook.net/pt_BR/all.js#xfbml=1');
 
-<?php if (!Configure::read('debug')) { ?>
-	var _gaq = [['_setAccount', '<?php echo Configure::read('Google.analytics') ?>'], ['_trackPageview']];
-	loadAssync('//google-analytics.com/ga.js');
-<?php } ?>
+	<?php if (!Configure::read('debug')) { ?>
+		var _gaq = [['_setAccount', '<?php echo Configure::read('Google.analytics') ?>'], ['_trackPageview']];
+		loadAssync('//google-analytics.com/ga.js');
+	<?php } ?>		
+	});
 	</script>
 </body>
 </html>
