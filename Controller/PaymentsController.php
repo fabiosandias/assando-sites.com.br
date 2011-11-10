@@ -14,7 +14,7 @@
 class PaymentsController extends AppController {
 		
 	/**
-	 * Lista de alunos
+	 * Lista de pagamentos
 	 */
 	public function admin_index() {
 		$this->paginate = array(

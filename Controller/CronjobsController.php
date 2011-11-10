@@ -95,6 +95,8 @@ class CronjobsController extends AppController {
 			if (!empty($Payment) && (strtotime($Payment['Payment']['updated']) == strtotime($Transaction->getLastEventDate())))
 				continue;
 			
+			
+			// Dados à serem salvos
 			$data = array(
 				'id' => !empty($Payment) ? $Payment['Payment']['id'] : null,
 				'student_id' => !empty($Student) ? $Student : 0,
