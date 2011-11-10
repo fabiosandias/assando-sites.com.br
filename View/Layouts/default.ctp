@@ -26,7 +26,7 @@
 	
 	<?php echo $this->Html->script('libs/less.min.js') . PHP_EOL ?>
 <?php } else { ?>
-	<?php echo $this->Html->css('style.min.css') ?>
+	<?php echo $this->Html->css('https://s3.amazonaws.com/assando-sites/assets/css/style.min.css') ?>
 	<?php if ($isPainelAluno) echo $this->Html->css('aluno') ?>
 <?php } ?>
 	
@@ -123,7 +123,7 @@
 	
 	<?php if (Configure::read('debug') == 2) echo $this->element('sql_dump') ?>
 	
-	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'scripts.min.js')) ?>
+	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'https://s3.amazonaws.com/assando-sites/assets/js/scripts.min.js')) ?>
 	
 	<script>	
 	loadAssync('//apis.google.com/js/plusone.js');
