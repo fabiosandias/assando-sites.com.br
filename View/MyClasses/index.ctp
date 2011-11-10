@@ -18,9 +18,9 @@
 				
 				<aside class="preco">
 					<?php if ($MyClass['price_discount'] < $MyClass['price']) { ?>
-					<span class="desconto">de <strike><?php echo $this->Number->format($MyClass['price'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></strike> por</span>
+					<span class="desconto">de <del><?php echo $this->Number->format($MyClass['price'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></del> por</span>
 					<?php } ?>
-					<?php echo $this->Number->format($MyClass['price_discount'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?>
+					<ins><?php echo $this->Number->format($MyClass['price_discount'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></ins>
 				</aside>
 					
 				<?php if ($MyClass['price_discount'] >= $MyClass['price']) { ?>
