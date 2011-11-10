@@ -25,7 +25,7 @@ class Payment extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $order = array('Payment.datetime' => 'DESC');
+	public $order = array('Payment.updated' => 'DESC');
 	
 	/**
 	 * Pagamentos pertencem à...
