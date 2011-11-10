@@ -76,6 +76,48 @@ $this->Bootstrap->addCrumb($this->data['Student']['fullname']);
 		
 		<?php echo $this->Form->input('MyClass', array('options' => $MyClass, 'multiple' => 'checkbox')) ?>
 		
+	</fieldset>	
+	<fieldset>
+		<?php echo $this->Html->tag('legend', 'Pagamentos', array('style' => 'padding-left: 0')) ?>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>Valor</th>
+					<th>Data</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				foreach ($Payments AS $Payment) {
+					extract($Payment);
+		
+					switch ($Status['id']) {
+						case STATUS_PAYMENT_AGUARDANDO_PAGAMENTO:
+						case STATUS_PAYMENT_EM_ANALISE:
+							$labelClass = 'warning';
+							break;
+						case STATUS_PAYMENT_PAGO:
+						case STATUS_PAYMENT_DISPONIVEL:
+							$labelClass = 'success';
+							break;
+						case STATUS_PAYMENT_EM_DISPUTA:
+						case STATUS_PAYMENT_DEVOLVIDO:
+						case STATUS_PAYMENT_CANCELADO:
+							$labelClass = 'important';
+							break;
+				}
+				?>
+				<tr>
+					<td><?php echo $this->Number->format($Payment['value'], array('places' => 2, 'decimals' => ',', 'before' => 'R$ ')) ?></td>
+					<td class="center"><?php echo $this->Time->format('d/m', $Payment['datetime']) ?></td>
+					<td><?php echo $this->Html->tag('span', $Status['name'], array('class' => 'label ' . $labelClass)) ?></td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+		
 	</fieldset>
 	</div>
 </div>

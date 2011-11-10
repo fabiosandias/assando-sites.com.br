@@ -261,12 +261,15 @@ class StudentsController extends AppController {
 			$this->redirect(array('action' => 'index'));			
 		}
 		
+		$this->loadModel('Payment');
+		
 		$this->set(array(
 			'title_for_layout' => 'Editando aluno',
 			'subtitle_for_layout' => $this->data['Student']['fullname'],
 		
 			'Status' => $this->Student->Status->find('list', array('conditions' => array('Status.type' => 'Student'))),
 			'MyClass' => $this->Student->MyClass->find('list', array('fields' => 'shortname')),
+			'Payments' => $this->Payment->find('all', array('conditions' => array('student_id' => $id), 'contain' => array('Status'))),
 		));
 	}
 	
