@@ -2,10 +2,10 @@
 /**
  * Component de emails enfileirados
  * 
- * @author			Thiago Belem <contato@thiagobelem.net>
+ * @author		Thiago Belem <contato@thiagobelem.net>
  * 
  * @package		AssandoSites
- * @subpackage		Component
+ * @subpackage	Component
  */
 
 App::uses('CakeEmail', 'Network/Email');

@@ -2,10 +2,10 @@
 /**
  * Controller da aplicação
  * 
- * @author			Thiago Belem <contato@thiagobelem.net>
+ * @author		Thiago Belem <contato@thiagobelem.net>
  * 
  * @package		AssandoSites
- * @subpackage		Controller
+ * @subpackage	Controller
  */
 
 /**

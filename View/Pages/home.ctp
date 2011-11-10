@@ -27,5 +27,5 @@ $this->set(array(
 		<section class="container_12">
 			<?php echo $this->element('widgets/author') ?>
 
-			<?php echo $this->element('widgets/sign-up', array('class' => 'widget inscricao grid_6 omega')) ?>
+			<?php echo $this->element('widgets/sign-up', array('class' => 'widget inscricao grid_6 omega'), array('cache' => array('key' => 'signup_footer'))) ?>
 		</section>

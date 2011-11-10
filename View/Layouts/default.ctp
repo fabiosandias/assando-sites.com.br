@@ -50,7 +50,7 @@
 				<p>As aulas são <strong>on-line</strong>, através de uma ferramenta com áudio, vídeo, chat e apresentação de slides... Você aprende sem sair de casa!</p>
 			</div>
 			
-			<?php echo $this->element('widgets/sign-up', array('class' => 'inscricao grid_6')) ?>
+			<?php echo $this->element('widgets/sign-up', array('class' => 'inscricao grid_6'), array('cache' => array('key' => 'signup_header'))) ?>
 			
 			<?php } else { ?>
 			

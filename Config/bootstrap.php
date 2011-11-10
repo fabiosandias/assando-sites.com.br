@@ -76,8 +76,8 @@ Inflector::rules('plural', array(
  * @param string $email
  * @param integer $size
  */
-function gravatar($email, $size = 70) {
-	return 'https://secure.gravatar.com/avatar/' . md5($email) . '?s=' . $size . '&d=mm';
+function gravatar($email, $size = 70, $default = 'mm') {
+	return 'https://secure.gravatar.com/avatar/' . md5($email) . '?s=' . $size . '&d=' . urlencode($default);
 }
 	
 /**

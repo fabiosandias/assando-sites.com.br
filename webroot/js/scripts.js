@@ -18,13 +18,6 @@
 		
 		$('#MyClassIndexForm').submit();
 	});
-	
-	// Reordena os depoimentos e esconde > 4
-	$depoimentos = $('section.depoimentos article');
-	$depoimentos.sort(function() { return (Math.round(Math.random())-0.5); });
-	$('section.depoimentos article').remove();
-	$('section.depoimentos').append($depoimentos);
-	$('section.depoimentos article:gt(3)').hide();
 		
 	// Rotaciona o avatar dos depoimentos
 	$('section.depoimentos .avatar').each(function() {
@@ -79,6 +72,11 @@
  * @param script
  */
 function loadAssync(script) {
-	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = script;
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	var po = document.createElement('script');
+		po.type = 'text/javascript';
+		po.async = true;
+		po.src = script;
+
+	var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(po, s);
 }

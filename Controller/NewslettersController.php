@@ -5,7 +5,7 @@
  * @author		Thiago Belem <contato@thiagobelem.net>
  * 
  * @package		AssandoSites
- * @subpackage		Controller
+ * @subpackage	Controller
  */
 
 /**
