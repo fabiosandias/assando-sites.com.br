@@ -1,4 +1,4 @@
-<?php $isFacebook = preg_match('/facebook/', getevn('HTTP_USER_AGENT')); ?>
+<?php $isFacebook = preg_match('/facebook/', getenv('HTTP_USER_AGENT')); ?>
 <!doctype html>
 <html lang="pt-BR"
 	itemscope itemtype="http://schema.org/Organization"<?php if ($isFacebook) { ?>
