@@ -1,8 +1,9 @@
+<?php $isFacebook = preg_match('/facebook/', getevn('HTTP_USER_AGENT')); ?>
 <!doctype html>
 <html lang="pt-BR"
-	itemscope itemtype="http://schema.org/Organization"
+	itemscope itemtype="http://schema.org/Organization"<?php if ($isFacebook) { ?>
 	xmlns:og="http://ogp.me/ns#"
-	xmlns:fb="https://www.facebook.com/2008/fbml">
+	xmlns:fb="https://www.facebook.com/2008/fbml"<?php } ?>>
 <head>
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
 	<title><?php echo empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title') ?></title>
@@ -44,6 +45,7 @@
 
 	<!-- Facebook -->
 	<?php 
+	if ($isFacebook) {
 	echo $this->Html->meta(array('property' => 'og:title', 'content' => empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title')));
 	echo $this->Html->meta(array('property' => 'og:url', 'content' => $this->Html->url($this->here, true)));
 	echo $this->Html->meta(array('property' => 'og:description', 'content' => Configure::read('Meta.description')));
@@ -53,6 +55,7 @@
 	echo $this->Html->meta(array('property' => 'og:locale', 'content' => 'pt_BR'));
 	echo $this->Html->meta(array('property' => 'og:site_name', 'content' => 'Assando Sites'));
 	echo $this->Html->meta(array('property' => 'fb:admins', 'content' => '1480410295')) . PHP_EOL;
+	}
 	?>
 </head>
 <body class="<?php if (isset($body_class)) echo $body_class ?>">
