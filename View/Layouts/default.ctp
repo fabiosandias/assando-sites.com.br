@@ -48,6 +48,7 @@
 	echo $this->Html->meta(array('property' => 'og:url', 'content' => Configure::read('Meta.canonical')));
 	echo $this->Html->meta(array('property' => 'og:description', 'content' => Configure::read('Meta.description')));
 	echo $this->Html->meta(array('property' => 'og:image', 'content' => $this->Html->url('/apple-touch-icon.png', true)));
+	echo '<link rel="image_src" href="'. $this->Html->url('/apple-touch-icon.png', true) .'" />';
 	echo $this->Html->meta(array('property' => 'og:type', 'content' => 'website'));
 	echo $this->Html->meta(array('property' => 'og:site_name', 'content' => 'Assando Sites'));
 	echo $this->Html->meta(array('property' => 'og:admins', 'content' => '1480410295'));
@@ -125,17 +126,24 @@
 	
 	<?php echo $this->Html->script(array('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', Configure::read('debug') ? 'scripts.js' : 'http://assando-sites.s3.amazonaws.com/assets/js/scripts-' . md5_file(JS . DS . 'scripts.min.js') . '.min.js')) ?>
 	
-	<script>
+	<script type="text/javascript">
 	$(window).load(function() {
 		loadAssync('//apis.google.com/js/plusone.js');
 		loadAssync('//platform.twitter.com/widgets.js');
 		loadAssync('//connect.facebook.net/pt_BR/all.js#xfbml=1');
-
-	<?php if (!Configure::read('debug')) { ?>
-		var _gaq = [['_setAccount', '<?php echo Configure::read('Google.analytics') ?>'], ['_trackPageview']];
-		loadAssync('//google-analytics.com/ga.js');
-	<?php } ?>		
 	});
+	
+<?php if (!Configure::read('debug')) { ?>
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', '<?php echo Configure::read('Google.analytics') ?>']);
+	_gaq.push(['_trackPageview']);
+	
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+<?php } ?>
 	</script>
 </body>
 </html>
