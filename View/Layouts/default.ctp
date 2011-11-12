@@ -51,8 +51,7 @@
 	echo '<link rel="image_src" href="'. $this->Html->url('/apple-touch-icon.png', true) .'" />';
 	echo $this->Html->meta(array('property' => 'og:type', 'content' => 'website'));
 	echo $this->Html->meta(array('property' => 'og:site_name', 'content' => 'Assando Sites'));
-	echo $this->Html->meta(array('property' => 'fb:admins', 'content' => '1480410295'));
-	echo $this->Html->meta(array('property' => 'fb:app_id', 'content' => '196764077041865')) . PHP_EOL;
+	echo $this->Html->meta(array('property' => 'fb:admins', 'content' => '1480410295')) . PHP_EOL;
 	?>
 </head>
 <body class="<?php if (isset($body_class)) echo $body_class ?>">
