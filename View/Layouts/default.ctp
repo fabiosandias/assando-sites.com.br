@@ -50,6 +50,7 @@
 	echo $this->Html->meta(array('property' => 'og:image', 'content' => $this->Html->url('/apple-touch-icon.png', true)));
 	echo '<link rel="image_src" href="'. $this->Html->url('/apple-touch-icon.png', true) .'" />';
 	echo $this->Html->meta(array('property' => 'og:type', 'content' => 'website'));
+	echo $this->Html->meta(array('property' => 'og:locale', 'content' => 'pt_BR'));
 	echo $this->Html->meta(array('property' => 'og:site_name', 'content' => 'Assando Sites'));
 	echo $this->Html->meta(array('property' => 'fb:admins', 'content' => '1480410295')) . PHP_EOL;
 	?>
