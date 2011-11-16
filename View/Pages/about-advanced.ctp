@@ -15,25 +15,25 @@ $this->set(array(
 				<li>Conceito de <strong>ACO</strong>s</li>
 				<li>Conceito de <strong>ARO</strong>s</li>
 				<li>Configurando o ACL</li>
-				<li>Definindo os grupos de acesso (administradores, usuaŕios e etc.)</li>
-				<li>Protegendo a sua aplicação com <strong>AuthComponent</strong> + <strong>ACL</strong></li>
+				<li>Definindo os <strong>grupos de acesso</strong> (administradores, usuários e etc.)</li>
+				<li>Protegendo a sua aplicação com <strong>AuthComponent</strong> &plus; <strong>ACL</strong></li>
 			</ul>
 			
-			<h4>3. Plugins</h4>
+			<h4>2. Plugins</h4>
 			<ul>
 				<li>Conceito de Plugins</li>
 				<li>Exemplos de Plugins (<em>Cake pt-BR</em> e <em>Migrations</em>)</li>
 				<li>Instalando Plugins</li>
 			</ul>
 			
-			<h4>4. Components</h4>
+			<h4>3. Components</h4>
 			<ul>
 				<li>Conceito de <span lang="en" title="Componentes">Components</span></li>
-				<li>Exemplos de <span lang="en" title="Componentes">Components</span> (<em>Security</em>, <em>Request Handling</em> e<em>Pagination</em>)</li>
+				<li>Exemplos de <span lang="en" title="Componentes">Components</span> (<em>Security</em>, <em>Request Handling</em> e <em>Pagination</em>)</li>
 				<li>Criando <span lang="en" title="Componentes">Components</span></li>
 			</ul>
 			
-			<h4>5. Behaviors</h4>
+			<h4>4. Behaviors</h4>
 			<ul>
 				<li>Conceito de <span lang="en" title="Comportamentos">Behaviors</span></li>
 				<li>Exemplos de <span lang="en" title="Comportamentos">Behaviors</span> (<em>Sluggable</em> e <em>Containable</em>)</li>
@@ -41,15 +41,15 @@ $this->set(array(
 				<li>AutoUpload <span lang="en" title="Comportamentos">Behavior</span></li>
 			</ul>
 			
-			<h4>6. Otimização</h4>
+			<h4>5. Otimização</h4>
 			<ul>
-				<li>Configuração do Cache</li>
+				<li>Configuração do Cache (<em>FileSystem</em> e <em>Memcached</em>)</li>
 				<li>Compressão de CSS</li>
 				<li>Compressão de Javascript</li>
 				<li>Plugin <em>Asset Compress</em></li>
 			</ul>
 			
-			<h4>7. Deploy automatizado</h4>
+			<h4>6. Deploy automatizado</h4>
 			<ul>
 				<li>Integração via SSH</li>
 				<li>Git Hooks</li>
