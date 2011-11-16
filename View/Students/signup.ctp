@@ -63,15 +63,15 @@
 
 		<section class="grid_3 sidebar sobre">
 
-			<h3>Como funciona o curso?</h3>
-			
-			<p>O curso é <em>on-line</em>! São <strong>cinco aulas</strong> de <strong>três horas</strong>, aos domingos.</p>
+			<h3>Como funciona o curso?</h3>			
 			<p>Todo o <?php echo $this->Html->link('conteúdo do curso', array('controller' => 'pages', 'action' => 'display', 'about')) ?> é dado através de vídeo e slides.</p>
 			<p>Após cada aula você receberá os slides e um <strong>vídeo</strong> da aula.</p>
 			<p>Temos também uma <strong>ferramenta para você tirar dúvidas</strong> e compartilhar o seu progresso com os outros participantes.</p>
+			
 
 			<h3 style="margin-top: 30px">O que eu preciso pra participar?</h3>			
 			<p>Você precisa conhecer os conceitos da <strong>Orientação à Objetos</strong> e utilizar um navegador atualizado com a última versão do <em>Adobe Flash</em> instalada.</p>
+			<p>Para fazer o <?php echo $this->Html->link('curso avançado', array('controller' => 'pages', 'action' => 'display', 'about-advanced')) ?> você precisa saber todo o básico do CakePHP e se sentir <strong>confortável</strong> em partir para um nível mais avançado.</p>
 			
 
 			<h3 style="margin-top: 30px">O que acontece após a inscrição?</h3>			
