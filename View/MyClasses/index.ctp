@@ -39,7 +39,7 @@
 		<section class="grid_3 sidebar sobre">
 
 			<h3>Como funciona o curso?</h3>
-			<p>Todo o <?php echo $this->Html->link('conteúdo do curso', array('controller' => 'pages', 'action' => 'display', 'about')) ?> é dado através de vídeo e slides.</p>
+			<p>Todo o <?php echo $this->Html->link('conteúdo do curso', array('controller' => 'pages', 'action' => 'display', 'about')) ?> é dado ao vivo e online, através de áudio e slides.</p>
 			<p>Após cada aula você receberá os slides e um <strong>vídeo</strong> da aula.</p>
 			<p>Temos também uma <strong>ferramenta para você tirar dúvidas</strong> e compartilhar o seu progresso com os outros participantes.</p>
 			
