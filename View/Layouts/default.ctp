@@ -6,7 +6,7 @@
 	xmlns:fb="https://www.facebook.com/2008/fbml"<?php } ?>>
 <head>
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
-	<title><?php echo empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title') ?></title>
+	<title><?php echo empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' – ' . Configure::read('Meta.title') ?></title>
 	
 	<?php echo $this->Html->meta('description', Configure::read('Meta.description')) . PHP_EOL ?>
 	<?php echo $this->Html->meta('keywords', Configure::read('Meta.keywords')) . PHP_EOL ?>
@@ -46,7 +46,7 @@
 	<!-- Facebook -->
 	<?php 
 	if ($isFacebook) {
-	echo $this->Html->meta(array('property' => 'og:title', 'content' => empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' &ndash; ' . Configure::read('Meta.title')));
+	echo $this->Html->meta(array('property' => 'og:title', 'content' => empty($title_for_layout) ? Configure::read('Meta.title') : $title_for_layout . ' - ' . Configure::read('Meta.title')));
 	echo $this->Html->meta(array('property' => 'og:url', 'content' => $this->Html->url($this->here, true)));
 	echo $this->Html->meta(array('property' => 'og:description', 'content' => Configure::read('Meta.description')));
 	echo $this->Html->meta(array('property' => 'og:image', 'content' => $this->Html->url('/apple-touch-icon.png', true)));
