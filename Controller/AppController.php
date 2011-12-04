@@ -18,7 +18,7 @@ class AppController extends Controller {
 	 * 
 	 * @var array
 	 */
-	public $components = array('Session', 'RequestHandler', 'Auth', 'Security');
+	public $components = array('Session', 'RequestHandler', 'Auth', 'Security', 'HtmlTidy.HtmlTidy');
 	
 	/**
 	 * Helpers da aplicação

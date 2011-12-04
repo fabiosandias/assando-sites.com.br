@@ -1,0 +1,3 @@
+[submodule "Plugin/HtmlTidy"]
+	path = Plugin/HtmlTidy
+	url = git://github.com/TiuTalk/HtmlTidyComponent.git
