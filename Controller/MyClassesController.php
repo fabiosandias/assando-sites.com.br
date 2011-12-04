@@ -19,7 +19,7 @@ class MyClassesController extends AppController {
 	public function index() {
 		$data = $this->MyClass->openSignup();
 		
-		if (isset($this->request->params['requested']) && $this->request->params['requested'])
+		 if (isset($this->params['requested']))
 			return $data;
 		
 		$this->set(array(

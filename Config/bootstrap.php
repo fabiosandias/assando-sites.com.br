@@ -70,6 +70,8 @@ Inflector::rules('plural', array(
  *
  */
 
+CakePlugin::loadAll();
+
 /**
  * Gera o endereço do gravatar de um email
  * 

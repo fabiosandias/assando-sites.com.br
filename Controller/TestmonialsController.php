@@ -19,7 +19,7 @@ class TestmonialsController extends AppController {
 	public function index() {
 		$data = $this->Testmonial->random();
 		
-		if (isset($this->request->params['requested']) && $this->request->params['requested'])
+		if (isset($this->params['requested']))
 			return $data;
 	}
 

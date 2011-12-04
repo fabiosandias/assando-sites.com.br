@@ -25,7 +25,7 @@ class Testmonial extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $data = array(
+	public $testmonials = array(
 		array(
 			'author' => array(
 				'name' => 'William Espindola',
@@ -98,7 +98,8 @@ class Testmonial extends AppModel {
 	 * @return array
 	 */
 	public function random($limit = 4) {
-		$data = $this->data;
+		$data = $this->testmonials;
+
 		shuffle($data);
 
 		return array_slice($data, 0, $limit);
