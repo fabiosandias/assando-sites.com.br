@@ -17,10 +17,12 @@ class TestmonialsController extends AppController {
 	 * Lista de depoimentos
 	 */
 	public function index() {
-		$data = $this->Testmonial->random();
-		
+		$testmonials = $this->Testmonial->random();
+
 		if (isset($this->params['requested']))
-			return $data;
+			return $testmonials;
+		
+		$this->set('testmonials', $testmonials);
 	}
 
 }

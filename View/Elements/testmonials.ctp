@@ -1,5 +1,7 @@
 <?php
 $testmonials = $this->requestAction(array('controller' => 'testmonials', 'action' => 'index'));
+
+if (!empty($testmonials)) {
 ?>
 <h2 class="grid_12">Opinião de quem já participou</h2>
 
@@ -14,4 +16,4 @@ foreach ($testmonials AS $row) {
 	<?php echo $this->Html->tag('cite', $message) ?>
 	<h3><?php echo $this->Html->tag('span', $author['name'], array('itemprop' => 'name')) . (isset($author['twitter']) ? ' &ndash; ' . $this->Html->link("@{$author['twitter']}", "http://twitter.com/{$author['twitter']}", array('rel' => 'external', 'itemprop' => 'url')) : '') ?></h3>
 </article>
-<?php } ?>
+<?php } } ?>
