@@ -147,8 +147,19 @@ class Student extends AppModel {
 		if (isset($this->data[$this->alias]['password'])) {
 			$this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
 		}
-		
-		return true;
+
+		return parent::beforeSave();
+	}
+	
+	/**
+	 * Depois de salvar o registro
+	 * 
+	 * @see Model::afterSave()
+	 */
+	public function afterSave($created) {
+		$this->syncHighRise($created);
+
+		return parent::afterSave($created);
 	}
 	
 	/**
@@ -174,6 +185,49 @@ class Student extends AppModel {
 		), $params);
 		
 		return $this->MyClass->find('all', $params);
+	}
+
+	protected function syncHighrise($created) {
+		App::import('Vendor', 'HighriseAPI', array('file' => 'Highrise' . DS . 'lib' . DS . 'HighriseAPI.class.php'));
+
+		$Highrise = new HighriseAPI();
+		$Highrise->setAccount(Configure::read('Highrise.account'));
+		$Highrise->setToken(Configure::read('Highrise.token'));
+
+		$this->contain('Information', 'MyClass');
+		$Student = $this->read();
+
+		$Person = new HighrisePerson($Highrise);
+
+		// Se já existe no banco de dados
+		if (!empty($Student['Information']['highrise_person_id']))
+			$Person->setId($Student['Information']['highrise_person_id']);
+		else if ($HighrisePerson = $Highrise->findPeopleByEmail($Student['Student']['email']))
+			$Person->setId($HighrisePerson[0]->getId());
+		
+		// Define o nome do aluno
+		$Person->setFirstName($Student['Student']['name']);
+		$Person->setLastName($Student['Student']['surname']);
+
+		// Adiciona o email para novos alunos
+		if ($created || !$Person->getId())
+			$Person->addEmailAddress($Student['Student']['email']);
+
+		// Salva o Highrise Person ID do aluno
+		if ($Person->save()) {
+			$this->Information->updateAll(
+				array('Information.highrise_person_id' => $Person->getId()),
+				array('Information.student_id' => $this->id));
+
+			// Adiciona uma nota pra novos alunos
+			if ($created) {
+				$Note = new HighriseNote($Highrise);
+				$Note->setBody('Se inscreveu na turma ' . $Student['MyClass'][0]['code']);
+				$Note->setSubjectType('Party');
+				$Note->setSubjectId($Person->getId());
+				$Note->save();
+			}
+		}
 	}
 	
 }

@@ -1,0 +1,1 @@
+ALTER TABLE  `information` ADD  `highrise_person_id` INT UNSIGNED NULL DEFAULT NULL AFTER  `state`;

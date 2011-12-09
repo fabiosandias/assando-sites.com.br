@@ -1,3 +1,6 @@
 [submodule "Plugin/HtmlTidy"]
 	path = Plugin/HtmlTidy
 	url = git://github.com/TiuTalk/HtmlTidyComponent.git
+[submodule "Vendor/Highrise"]
+	path = Vendor/Highrise
+	url = git://github.com/ignaciovazquez/Highrise-PHP-Api.git

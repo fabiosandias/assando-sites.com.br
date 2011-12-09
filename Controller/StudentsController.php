@@ -239,10 +239,7 @@ class StudentsController extends AppController {
 	 * 
 	 * @param integer $id
 	 */
-	public function admin_edit($id) {
-		$this->Student->id = $id;
-		$this->Student->contain('Information', 'MyClass');
-				
+	public function admin_edit($id) {				
 		// Houve submit
 		if (!empty($this->data)) {
 			// Salva os dados
@@ -253,6 +250,8 @@ class StudentsController extends AppController {
 			}
 		}
 		
+		$this->Student->id = $id;
+		$this->Student->contain('Information', 'MyClass');
 		$this->data = $this->Student->read();
 		
 		// Registro não encontrado
