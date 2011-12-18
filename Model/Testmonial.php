@@ -87,6 +87,23 @@ class Testmonial extends AppModel {
 				'twitter' => 'kelvne'
 			),
 			'message' => 'Se você quer aprender algo fantástico com um professor genial, o curso Assando Sites foi feito para você!'
+		),
+		// 2011.4
+		array(
+			'author' => array(
+				'name' => 'Patrick Maciel',
+				'email' => 'patrickmaciel.info@gmail.com',
+				'twitter' => 'p4dev'
+			),
+			'message' => 'Mesmo já conhecendo o básico de CakePHP, o curso foi excelente. A didática do professor é ótima, o conteúdo aplicado é de qualidade; há vários exemplos e não ficamos presos aos slides, já que ele sempre explica situações aplicadas na vida real, na prática.'
+		),
+		array(
+			'author' => array(
+				'name' => 'Simone Myrrha',
+				'email' => 'patrickmaciel.info@gmail.com',
+				'twitter' => 'p4dev'
+			),
+			'message' => 'Adquiri conhecimentos de como programar de forma rápida e eficiente, aumentando a qualidade do desenvolvimento em pouco tempo de trabalho. Ótimo conteúdo, com um professor estudioso e atencioso.'
 		)
 	);
 
