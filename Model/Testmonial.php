@@ -95,7 +95,7 @@ class Testmonial extends AppModel {
 				'email' => 'patrickmaciel.info@gmail.com',
 				'twitter' => 'p4dev'
 			),
-			'message' => 'A didática é ótimaa e o conteúdo é de qualidade; há vários exemplos e não ficamos presos aos slides, já que ele sempre explica situações aplicadas na vida real, na prática. Mesmo já conhecendo o básico de CakePHP, o curso foi excelente.'
+			'message' => 'A didática é ótima e o conteúdo é de qualidade; há vários exemplos e não ficamos presos aos slides, já que ele explica situações da vida real, na prática. Mesmo já conhecendo o básico de CakePHP, o curso foi excelente.'
 		),
 		array(
 			'author' => array(
@@ -103,7 +103,7 @@ class Testmonial extends AppModel {
 				'email' => 'simyrrha@yahoo.com.br',
 				'twitter' => 'simonemyrrha'
 			),
-			'message' => 'Adquiri conhecimentos de como programar de forma rápida e eficiente, aumentando a qualidade do desenvolvimento em pouco tempo de trabalho.'
+			'message' => 'Adquiri conhecimento de como programar de forma rápida e eficiente, aumentando a qualidade do desenvolvimento em pouco tempo de trabalho.'
 		)
 	);
 
