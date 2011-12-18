@@ -100,8 +100,8 @@ class Testmonial extends AppModel {
 		array(
 			'author' => array(
 				'name' => 'Simone Myrrha',
-				'email' => 'patrickmaciel.info@gmail.com',
-				'twitter' => 'p4dev'
+				'email' => 'simyrrha@yahoo.com.br',
+				'twitter' => 'simonemyrrha'
 			),
 			'message' => 'Adquiri conhecimentos de como programar de forma rápida e eficiente, aumentando a qualidade do desenvolvimento em pouco tempo de trabalho. Ótimo conteúdo, com um professor estudioso e atencioso.'
 		)
