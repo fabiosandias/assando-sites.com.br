@@ -37,7 +37,7 @@ $this->Bootstrap->addCrumb('Turmas');
 		<td><?php echo $MyClass['id'] ?></td>
 		<td><?php echo $MyClass['code'] ?></td>
 		<td><?php echo $this->Html->link($MyClass['title'], array('action' => 'edit', $MyClass['id'])) ?></td>
-		<td><?php echo count($Student) ?></td>
+		<td><?php echo $this->Html->link(count($Student), array('controller' => 'students', 'class' => $MyClass['id'])) ?></td>
 		<td class="center"><?php printf('%s até %s', $this->Html->tag('strong', $this->Time->format('d/m', $MyClass['start'])), $this->Html->tag('strong', $this->Time->format('d/m', $MyClass['end']))) ?></td>
 		<td><?php echo $this->Html->tag('span', $Status['name'], array('class' => 'label ' . $labelClass)) ?></td>
 	</tr>

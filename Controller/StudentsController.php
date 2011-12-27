@@ -227,6 +227,22 @@ class StudentsController extends AppController {
 				)
 			);
 		}
+			
+		// Busca aluno por turma
+		if (isset($this->params['named']['class'])) {
+			$this->loadModel('ClassesStudent');
+
+			$students = $this->ClassesStudent->find('list', array(
+				'fields' => array('student_id'),
+				'conditions' => array(
+					'class_id' => (int)$this->params['named']['class']
+				)
+			));
+				
+			$this->paginate['conditions'] = array(
+				'Student.id' => (array)$students
+			);
+		}
 		
 		$this->set(array(
 			'title_for_layout' => 'Alunos cadastrados',
