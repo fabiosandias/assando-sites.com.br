@@ -25,7 +25,7 @@ $this->Bootstrap->addCrumb('Arquivos');
 		<td><?php echo $this->Html->link($MyFile['title'], array('action' => 'edit', $MyFile['id'])) ?></td>
 		<td><?php echo $this->Text->truncate($MyFile['description'], 30) ?></td>
 		<td><?php echo $MyClass['shortname'] ?></td>
-		<td><?php echo $MyClass['code'] ?></td>
+		<td><?php echo $this->Html->tag('span', $MyClass['code'], array('class' => 'label', 'style' => 'background: ' . stringToColor($MyClass['code']))) ?></td>
 		<td class="center"><?php echo $this->Time->format('d/m ~ H:i', $MyFile['created']) ?></td>
 	</tr>
 	<?php endforeach ?>

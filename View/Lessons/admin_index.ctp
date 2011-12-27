@@ -12,7 +12,7 @@ $this->Bootstrap->addCrumb('Aulas');
 		<th><?php echo $this->Paginator->sort('Lesson.id', '#') ?></th>
 		<th><?php echo $this->Paginator->sort('Lesson.title', 'Título') ?></th>
 		<th><?php echo $this->Paginator->sort('Lesson.description', 'Descrição') ?></th>
-		<th colspan="2"><?php echo $this->Paginator->sort('MyClass.code', 'Status') ?></th>
+		<th colspan="2"><?php echo $this->Paginator->sort('MyClass.code', 'Turma') ?></th>
 		<th><?php echo $this->Paginator->sort('Lesson.datetime', 'Data') ?></th>
 	</tr>
 </thead>
@@ -26,7 +26,7 @@ $this->Bootstrap->addCrumb('Aulas');
 		<td><?php echo $this->Html->link($Lesson['title'], array('action' => 'edit', $Lesson['id'])) ?></td>
 		<td><?php echo $this->Text->truncate($Lesson['description'], 30) ?></td>
 		<td><?php echo $MyClass['shortname'] ?></td>
-		<td><?php echo $MyClass['code'] ?></td>
+		<td><?php echo $this->Html->tag('span', $MyClass['code'], array('class' => 'label', 'style' => 'background: ' . stringToColor($MyClass['code']))) ?></td>
 		<td class="center"><?php echo $this->Time->format('d/m ~ H:i', $Lesson['datetime']) ?></td>
 	</tr>
 	<?php endforeach ?>

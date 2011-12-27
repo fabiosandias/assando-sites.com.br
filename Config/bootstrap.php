@@ -81,6 +81,19 @@ CakePlugin::loadAll();
 function gravatar($email, $size = 70, $default = 'mm') {
 	return 'https://secure.gravatar.com/avatar/' . md5($email) . '?s=' . $size . '&d=' . urlencode($default);
 }
+
+/**
+ * Converte uma string para uma cor hexadecimal
+ *
+ * @param string $string
+ *
+ * @return string The color
+ */
+function stringToColor($string) {
+	$color = substr(md5($string), 0, 6);
+
+	return '#' . $color;
+}
 	
 /**
  * Status gerais

@@ -28,6 +28,18 @@ class AppController extends Controller {
 	 * @var array
 	 */
 	public $helpers = array('Html', 'Form', 'Session', 'Time', 'Text', 'Number', 'Bootstrap');
+
+	/**
+	 * Verifica se está dentro de um prefixo
+	 *
+	 * @param string $prefix
+	 *
+	 * @return boolean
+	 */
+	protected function isPrefix($prefix) {
+		return isset($this->request->params['prefix']) &&
+			   $this->request->params['prefix'] === $prefix;
+	}
 	
 	/**
 	 * Antes de filtrar as actions da aplicação
@@ -47,7 +59,7 @@ class AppController extends Controller {
 		));
 			
 		// Painel de Controle
-		if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
+		if ($this->isPrefix('admin')) {
 			$this->layout = 'admin';
 			
 			// Configuração do AuthComponent
@@ -59,7 +71,7 @@ class AppController extends Controller {
 
 						
 		// Painel do Aluno
-		} elseif (isset($this->params['prefix']) && $this->params['prefix'] == 'aluno') {
+		} elseif ($this->isPrefix('aluno')) {
 			
 			// Configuração do AuthComponent
 			$this->Auth->loginAction = array('controller' => 'students', 'action' => 'login', 'aluno' => true);
@@ -82,8 +94,8 @@ class AppController extends Controller {
 	public function beforeRender() {
 		parent::beforeRender();
 		
-		$this->set('isPainelAdmin', isset($this->params['prefix']) && $this->params['prefix'] == 'admin');
-		$this->set('isPainelAluno', isset($this->params['prefix']) && $this->params['prefix'] == 'aluno');
+		$this->set('isPainelAdmin', $this->isPrefix('admin'));
+		$this->set('isPainelAluno', $this->isPrefix('aluno'));
 	}
 	
 	/**

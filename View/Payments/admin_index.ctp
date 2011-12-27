@@ -41,7 +41,7 @@ $this->Bootstrap->addCrumb('Pagamentos');
 	<tr class="status-<?php echo $Status['id'] ?>">
 		<td><?php echo $Payment['id'] ?></td>
 		<td><?php echo $this->Html->link($Student['fullname'], array('controller' => 'students', 'action' => 'edit', $Student['id'])) ?></td>
-		<td><?php echo $this->Number->format($Payment['value'], array('places' => 2, 'decimals' => ',', 'before' => 'R$ ')) ?></td>
+		<td style="font-size: 1.1em; text-align: right"><?php echo $this->Number->format($Payment['value'], array('places' => 2, 'decimals' => ',', 'before' => 'R$ ')) ?></td>
 		<td><?php echo $PaymentMethod['name'] ?></td>
 		<td><?php echo $this->Html->tag('span', $Status['name'], array('class' => 'label ' . $labelClass)) ?> <?php echo $this->Html->tag('span', $PaymentGateway['name'], array('class' => 'label')) ?></td>
 		<td class="center"><?php echo $this->Time->format('d/m ~ H:i', $Payment['datetime']) ?></td>

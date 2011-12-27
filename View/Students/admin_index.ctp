@@ -32,15 +32,17 @@ $this->Bootstrap->addCrumb('Alunos');
 				$labelClass = 'important';
 				break;
 		}
+
+		$highrise_link = 'https://' . Configure::read('Highrise.account') . '.highrisehq.com/people/' . $Information['highrise_person_id'];
 	?>
 	<tr class="status-<?php echo $Status['id'] ?>">
 		<td><?php echo $Student['id'] ?></td>
-		<td><?php echo $this->Html->link($Student['fullname'], array('action' => 'edit', $Student['id'])) ?></td>
+		<td><?php echo $this->Html->link($Student['fullname'], array('action' => 'edit', $Student['id'])) ?><?php if (!empty($Information['highrise_person_id'])) echo $this->Html->link($this->Html->image('icons/highrise.png'), $highrise_link, array('title' => 'Highrise: ' . $Student['fullname'], 'style' => 'float: right; height: 16px', 'target' => '_blank', 'escape' => false)) ?></td>
 		<td><?php echo $Student['email'] ?></td>
 		<td>
 			<?php echo $this->Html->tag('span', $Status['name'], array('class' => 'label ' . $labelClass)) ?>
 			<?php foreach ($MyClass AS $class): ?>
-			<?php echo $this->Html->tag('span', $class['code'], array('class' => 'label')) ?>
+			<?php echo $this->Html->tag('span', $class['code'], array('class' => 'label', 'style' => 'background: ' . stringToColor($class['code']))) ?>
 			<?php endforeach ?>
 		</td>
 		<td class="center"><?php echo $this->Time->format('d/m ~ H:i', $Student['created']) ?></td>

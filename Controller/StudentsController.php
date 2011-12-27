@@ -207,7 +207,7 @@ class StudentsController extends AppController {
 	 */
 	public function admin_index() {
 		$this->paginate = array(
-			'contain' => array('Status', 'MyClass'),
+			'contain' => array('Status', 'MyClass', 'Information'),
 			'order' => array('Student.created' => 'DESC')
 		);
 		
