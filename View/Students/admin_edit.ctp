@@ -123,7 +123,10 @@ $this->Bootstrap->addCrumb($this->data['Student']['fullname']);
 </div>
 		
 	<div class="actions">
-		<?php echo $this->Form->submit('Salvar', array('class' => 'btn primary', 'div' => false)) ?>	
+		<?php echo $this->Form->submit('Salvar', array('class' => 'btn primary', 'div' => false)) ?>
+
+		<?php if (!empty($this->data['Information']['highrise_person_id'])) echo $this->Html->link('Ir para o Highrise', 'https://' . Configure::read('Highrise.account') . '.highrisehq.com/people/' . $this->data['Information']['highrise_person_id'], array('class' => 'btn success', 'target' => '_blank', 'escape' => false)) ?>
+
 		<?php echo $this->Html->link('Deletar aluno', array('action' => 'delete', (int)$this->data['Student']['id']), array('class' => 'red right'), 'Deseja realmente deletar este aluno? Toda as informações relacionadas serão apagadas!') ?>			
 	</div>
 <?php echo $this->Form->end() ?>

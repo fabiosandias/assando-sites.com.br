@@ -6,7 +6,7 @@ $this->Bootstrap->addCrumb('Pagamentos');
 
 
 <?php if (!empty($data)) { ?>
-<table class="zebra-striped">
+<table class="bordered-table zebra-striped">
 <thead>
 	<tr>
 		<th>#</th>

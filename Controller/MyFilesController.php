@@ -47,7 +47,7 @@ class MyFilesController extends AppController {
 	 */
 	public function admin_index() {
 		$this->paginate = array(
-			'contain' => array('MyClass')
+			'contain' => array('MyClass', 'Status')
 		);
 		
 		$this->set(array(

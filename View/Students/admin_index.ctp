@@ -6,7 +6,7 @@ $this->Bootstrap->addCrumb('Alunos');
 
 
 <?php if (!empty($data)) { ?>
-<table class="zebra-striped">
+<table class="bordered-table zebra-striped">
 <thead>
 	<tr>
 		<th><?php echo $this->Paginator->sort('Student.id', '#') ?></th>
@@ -42,7 +42,7 @@ $this->Bootstrap->addCrumb('Alunos');
 		<td>
 			<?php echo $this->Html->tag('span', $Status['name'], array('class' => 'label ' . $labelClass)) ?>
 			<?php foreach ($MyClass AS $class): ?>
-			<?php echo $this->Html->tag('span', $class['code'], array('class' => 'label', 'style' => 'background: ' . stringToColor($class['code']))) ?>
+			<?php echo $this->Html->link($this->Html->tag('span', $class['code'], array('class' => 'label', 'style' => 'background: ' . stringToColor($class['code']))), array('class' => $class['id']), array('escape' => false)) ?>
 			<?php endforeach ?>
 		</td>
 		<td class="center"><?php echo $this->Time->format('d/m ~ H:i', $Student['created']) ?></td>

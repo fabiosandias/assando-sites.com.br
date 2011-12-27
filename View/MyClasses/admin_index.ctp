@@ -5,7 +5,7 @@ $this->Bootstrap->addCrumb('Turmas');
 ?>
 
 <?php if (!empty($data)) { ?>
-<table class="zebra-striped">
+<table class="bordered-table zebra-striped">
 <thead>
 	<tr>
 		<th><?php echo $this->Paginator->sort('MyClass.id', '#') ?></th>

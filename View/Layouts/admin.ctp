@@ -4,7 +4,7 @@
 	<meta charset="<?php echo Configure::read('App.encoding') ?>" />
 	<title><?php echo $title_for_layout ?> - Painel de Controle</title>
 	
-	<?php echo $this->Html->css(array('http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css', 'admin/style.css')) . PHP_EOL ?>
+	<?php echo $this->Html->css(array('http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css', 'admin/style.css')) . PHP_EOL ?>
 		
 	<!--[if lt IE 9]><?php echo $this->Html->script('http://html5shim.googlecode.com/svn/trunk/html5.js') ?><![endif]-->
 	
