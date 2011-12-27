@@ -292,7 +292,7 @@ class StudentsController extends AppController {
 		
 		$this->set(array(
 			'title_for_layout' => $this->data['Student']['name'],
-			'subtitle_for_layout' => $this->data['Student']['name'],
+			'subtitle_for_layout' => $this->data['Student']['surname'],
 		
 			'Status' => $this->Student->Status->find('list', array('conditions' => array('Status.type' => 'Student'))),
 			'MyClass' => $this->Student->MyClass->find('list', array('fields' => 'shortname')),
