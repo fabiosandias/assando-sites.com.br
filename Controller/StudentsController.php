@@ -266,7 +266,9 @@ class StudentsController extends AppController {
 	 * 
 	 * @param integer $id
 	 */
-	public function admin_edit($id) {				
+	public function admin_edit($id) {			
+		$this->Student->id = $id;
+					
 		// Houve submit
 		if (!empty($this->data)) {
 			// Salva os dados
@@ -277,7 +279,6 @@ class StudentsController extends AppController {
 			}
 		}
 		
-		$this->Student->id = $id;
 		$this->Student->contain('Information', 'MyClass');
 		$this->data = $this->Student->read();
 		
@@ -290,8 +291,8 @@ class StudentsController extends AppController {
 		$this->loadModel('Payment');
 		
 		$this->set(array(
-			'title_for_layout' => 'Editando aluno',
-			'subtitle_for_layout' => $this->data['Student']['fullname'],
+			'title_for_layout' => $this->data['Student']['name'],
+			'subtitle_for_layout' => $this->data['Student']['name'],
 		
 			'Status' => $this->Student->Status->find('list', array('conditions' => array('Status.type' => 'Student'))),
 			'MyClass' => $this->Student->MyClass->find('list', array('fields' => 'shortname')),

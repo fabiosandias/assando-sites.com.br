@@ -110,5 +110,18 @@ class AppModel extends Model {
 		
 		return substr($password, 0, $length);
 	}
+
+	/**
+	 * Formata um telefone, adicionando parentesis e hifen
+	 *
+	 * @param string
+	 *
+	 * @return string
+	 */
+	public function formatPhone($phone) {
+		$phone = preg_replace('/[^0-9]/', '', $phone);
+
+		return preg_replace('/^([0-9]{2})([0-9]{4})([0-9]{4})$/', '($1) $2-$3', $phone);
+	}
 	
 }

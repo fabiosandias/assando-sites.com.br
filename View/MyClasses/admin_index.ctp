@@ -11,7 +11,8 @@ $this->Bootstrap->addCrumb('Turmas');
 		<th><?php echo $this->Paginator->sort('MyClass.id', '#') ?></th>
 		<th colspan="2"><?php echo $this->Paginator->sort('MyClass.code', 'Turma') ?></th>
 		<th>Alunos</th>
-		<th><?php echo $this->Paginator->sort('MyClass.start', 'Data') ?></th>
+		<th><?php echo $this->Paginator->sort('MyClass.start', 'Inscrições') ?></th>
+		<th><?php echo $this->Paginator->sort('MyClass.start', 'Aulas') ?></th>
 		<th><?php echo $this->Paginator->sort('Status.name', 'Status') ?></th>
 	</tr>
 </thead>
@@ -38,6 +39,7 @@ $this->Bootstrap->addCrumb('Turmas');
 		<td><?php echo $this->Html->tag('span', $MyClass['code'], array('class' => 'label', 'style' => 'background: ' . stringToColor($MyClass['code']))) ?></td>
 		<td><?php echo $this->Html->link($MyClass['title'], array('action' => 'edit', $MyClass['id'])) ?></td>
 		<td><?php echo $this->Html->link(count($Student), array('controller' => 'students', 'class' => $MyClass['id'])) ?></td>
+		<td class="center"><?php printf('Até %s', $this->Html->tag('strong', $this->Time->format('d/m', $MyClass['start'] . ' -1 week'))) ?></td>
 		<td class="center"><?php printf('%s até %s', $this->Html->tag('strong', $this->Time->format('d/m', $MyClass['start'])), $this->Html->tag('strong', $this->Time->format('d/m', $MyClass['end']))) ?></td>
 		<td><?php echo $this->Html->tag('span', $Status['name'], array('class' => 'label ' . $labelClass)) ?></td>
 	</tr>

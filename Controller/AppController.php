@@ -61,6 +61,7 @@ class AppController extends Controller {
 		// Painel de Controle
 		if ($this->isPrefix('admin')) {
 			$this->layout = 'admin';
+			$this->Components->disable('HtmlTidy');
 			
 			// Configuração do AuthComponent
 			$this->Auth->sessionKey = 'Auth.Admin';
@@ -72,6 +73,7 @@ class AppController extends Controller {
 						
 		// Painel do Aluno
 		} elseif ($this->isPrefix('aluno')) {
+			$this->Components->disable('HtmlTidy');
 			
 			// Configuração do AuthComponent
 			$this->Auth->loginAction = array('controller' => 'students', 'action' => 'login', 'aluno' => true);
@@ -94,8 +96,10 @@ class AppController extends Controller {
 	public function beforeRender() {
 		parent::beforeRender();
 		
-		$this->set('isPainelAdmin', $this->isPrefix('admin'));
-		$this->set('isPainelAluno', $this->isPrefix('aluno'));
+		$this->set(array(
+			'isPainelAdmin' => $this->isPrefix('admin'),
+			'isPainelAluno' => $this->isPrefix('aluno')
+		));
 	}
 	
 	/**

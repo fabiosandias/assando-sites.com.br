@@ -69,4 +69,22 @@ class Information extends AppModel {
 			),
 		),
 	);
+	
+	/**
+	 * Antes de salvar o registro
+	 * 
+	 * 1 - Remove o @ do Twitter
+	 * 2 - Ajusta o formato do telefone
+	 * 
+	 * @see Model::beforeSave()
+	 */
+	public function beforeSave() {
+		if (isset($this->data[$this->alias]['twitter']))
+			$this->data[$this->alias]['twitter'] = trim($this->data[$this->alias]['twitter'], '@');
+
+		if (isset($this->data[$this->alias]['phone']))
+			$this->data[$this->alias]['phone'] = $this->formatPhone($this->data[$this->alias]['phone']);
+
+		return parent::beforeSave();
+	}
 }
