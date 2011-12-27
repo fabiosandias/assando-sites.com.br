@@ -65,7 +65,11 @@ class Student extends AppModel {
 	 * 
 	 * @var array
 	 */
-	public $hasMany = array('Payment');
+	public $hasMany = array(
+		'Payment' => array(
+			'dependent' => true
+		)
+	);
 	
 	/**
 	 * Alunos contém e pertencem à muitos...

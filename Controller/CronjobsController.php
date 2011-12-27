@@ -124,4 +124,18 @@ class CronjobsController extends AppController {
 		exit;
 	}
 	
+	/**
+	 * Remove usuários deletados a mais de uma semana
+	 */
+	public function removeDeletedStudents() {
+		$this->loadModel('Student');
+
+		$conditions = array(
+			'Student.status_id' => STATUS_STUDENT_DELETADO,
+			'Student.updated <=' => date('Y-m-d', strtotime('-1 week'))
+		);
+
+		$this->Student->deleteAll($conditions); exit;
+	}
+	
 }
