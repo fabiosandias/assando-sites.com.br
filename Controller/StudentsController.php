@@ -8,6 +8,7 @@
  * @subpackage	Controller
  */
 
+App::uses('AppController', 'Controller');
 App::uses('Sanitize', 'Utility');
 
 /**

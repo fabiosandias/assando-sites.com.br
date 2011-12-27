@@ -8,6 +8,8 @@
  * @subpackage	Controller
  */
 
+App::uses('Controller', 'Controller');
+
 /**
  * Controller da aplicação
  */

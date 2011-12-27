@@ -8,6 +8,8 @@
  * @subpackage	Controller
  */
 
+App::uses('AppController', 'Controller');
+
 /**
  * Controller de turmas
  */
