@@ -33,26 +33,36 @@ class StudentsController extends AppController {
 		
 		// Cadastro de aluno
 		$this->Security->requirePost('signup');
-		
+
+		if ($this->action == 'signup')
+			$this->Security->validatePost = false;		
 	}
 	
 	/**
 	 * Inscrição de aluno
 	 */
-	public function signup() {		
+	public function signup() {
+		$this->helpers[] = 'Recaptcha';
+
 		// Veio da selação de turma
 		if (isset($this->data['MyClass']['id'])) {
 			$this->Session->write('Student.MyClass.id', (int)$this->data['MyClass']['id']);
 			
-		// Salva os dados do aluno
 		} else if (isset($this->data['Student'])) {
 			
 			// Inclui a classe e status padrão
 			$this->request->data['MyClass'] = array('id' => (int)$this->Session->read('Student.MyClass.id'));
 			$this->request->data['Student']['status_id'] = STATUS_STUDENT_INSCRICAO_PENDENTE;
+
+			App::import('Vendor', 'recaptchalib');
+			$Recaptcha = recaptcha_check_answer(Configure::read('Recaptcha.private'),
+				getenv('REMOTE_ADDR'),
+				$this->request->data['recaptcha_challenge_field'],
+				$this->request->data['recaptcha_response_field']);
 			
+			// Salva os dados do aluno
 			$this->Student->create();
-			if ($this->Student->saveAll($this->data)) {
+			if ($Recaptcha->is_valid && $this->Student->saveAll($this->data)) {
 				// Envia o email e redireciona pra tela de pagamento
 				$this->__emailSignup($this->Student->id);
 				
