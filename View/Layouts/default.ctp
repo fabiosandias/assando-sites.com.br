@@ -57,6 +57,8 @@
 	echo $this->Html->meta(array('property' => 'fb:admins', 'content' => '1480410295')) . PHP_EOL;
 	}
 	?>
+
+	<?php if (!Configure::read('debug')) echo $this->element('mixpanel') ?>
 </head>
 <body class="<?php if (isset($body_class)) echo $body_class ?>">
 	<header id="topo">
