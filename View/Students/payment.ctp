@@ -42,7 +42,7 @@
 		</section>
 
 		<script>
-		mpq.track('Inscrição realizada');
 		mpq.name_tag('<?php echo $Student['fullname'] ?>');
 		mpq.identify('<?php echo $Student['email'] ?>');
+		mpq.track('Inscrição realizada');
 		</script>
