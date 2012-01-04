@@ -29,3 +29,5 @@ $this->set(array(
 
 			<?php echo $this->element('widgets/sign-up', array('class' => 'widget inscricao grid_6 omega'), array('cache' => array('key' => 'signup_footer'))) ?>
 		</section>
+
+		<script>mpq.track("Página inicial");</script>

@@ -81,3 +81,5 @@
 			<p>Assim que o pagamento for confirmado, sua vaga estará garantida!</p>
 			
 		</section>
+
+		<script>mpq.track("Formulário de inscrição");</script>

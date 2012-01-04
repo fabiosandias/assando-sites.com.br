@@ -44,3 +44,5 @@
 			<p>Temos também uma <strong>ferramenta para você tirar dúvidas</strong> e compartilhar o seu progresso com os outros participantes.</p>
 			
 		</section>
+
+		<script>mpq.track("Listagem de turmas");</script>
