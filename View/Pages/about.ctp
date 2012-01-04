@@ -90,3 +90,5 @@ $this->set(array(
 
 			<?php echo $this->element('widgets/sign-up', array('class' => 'widget inscricao grid_6 omega')) ?>
 		</section>
+
+		<script>mpq.track("Sobre o curso");</script>
