@@ -82,4 +82,9 @@
 			
 		</section>
 
-		<script>mpq.track("Formulário de inscrição");</script>
+		<script>
+		mpq.track("Formulário de inscrição", {
+			turma: "<?php echo $MyClass['title'] ?>",
+			preco: <?php echo $MyClass['price_discount'] ?>,
+		});
+		</script>

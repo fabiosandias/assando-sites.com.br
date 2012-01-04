@@ -40,3 +40,9 @@
 			<p>Temos também uma <strong>ferramenta para você tirar dúvidas</strong> e compartilhar o seu progresso com os outros participantes.</p>
 			
 		</section>
+
+		<script>
+		mpq.track('Inscrição realizada');
+		mpq.name_tag('<?php echo $Student['fullname'] ?>');
+		mpq.identify('<?php echo $Student['email'] ?>'');
+		</script>
