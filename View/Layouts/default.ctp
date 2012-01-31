@@ -101,7 +101,7 @@
 
 	<div id="conteudo">
 		<div class="container_12">
-			<?php echo $content_for_layout ?>
+			<?php echo $this->fetch('content') ?>
 			
 			<div class="gnomo-aponta"><!--  --></div>		
 		</div>

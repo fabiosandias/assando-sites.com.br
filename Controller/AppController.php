@@ -48,6 +48,9 @@ class AppController extends Controller {
 	 */
 	public function beforeFilter() {
 		parent::beforeFilter();
+
+		if (Configure::read('debug'))
+			$this->Components->disable('Security');
 						
 		$this->Auth->authError = 'Área restrita';
 		$this->Auth->authorize = array('Controller');		

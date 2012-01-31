@@ -85,6 +85,7 @@ class EmailQueueComponent extends Component {
 		$layout = 'email/' . ($plain ? 'text' : 'html') . '/' . $this->settings['layout'];
 		
 		$View = new View('Email');
+		$View->helpers = array('Html', 'Time', 'Number');
 		$View->viewVars = $this->settings['data'];
 		
 		return $View->render($view, $layout); 

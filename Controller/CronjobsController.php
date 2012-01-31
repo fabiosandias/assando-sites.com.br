@@ -118,7 +118,17 @@ class CronjobsController extends AppController {
 			);
 			
 			// Salva ou atualiza os dados do pagamento
-			$this->Payment->save($data);
+			if ($this->Payment->save($data)) {
+
+				$newPayment = (bool)empty($Payment);
+				$oldStatus = (int)$Payment['Payment']['status_id'];
+				$newStatus = (int)$data['status_id'];
+
+				// Se o status foi alterado pra PAGO
+				if (($newStatus == STATUS_PAYMENT_PAGO) && ($newPayment || ($oldStatus != $newStatus))) {
+					$this->__confirmPayment($this->Payment->id);
+				}
+			}
 		}
 		
 		exit;
@@ -136,6 +146,42 @@ class CronjobsController extends AppController {
 		);
 
 		$this->Student->deleteAll($conditions); exit;
+	}
+
+	/**
+	 * Confirma o pagamento de um aluno
+	 */
+	protected function __confirmPayment($payment_id) {
+		$this->loadModel('Payment');
+
+		// Encontra os dados do pagamento, do aluno e das turmas
+		$Payment = $this->Payment->find('first', array(
+			'conditions' => array('Payment.id' => $payment_id),
+			'contain' => array(
+				'PaymentGateway',
+				'Student' => array(
+					'conditions' => array('Student.status_id' => STATUS_STUDENT_INSCRICAO_PENDENTE),
+					'MyClass',
+				)
+			)
+		));
+
+		extract($Payment);
+		$Payment['PaymentGateway'] = $PaymentGateway;
+
+		if (empty($Payment) OR empty($Student['id']))
+			exit;
+		
+		$this->EmailQueue->to = array($Student['fullname'] => $Student['email']);
+		$this->EmailQueue->bcc = Configure::read('Email.from');
+		
+		$this->EmailQueue->subject = 'Assando Sites - Sua vaga está garantida!';
+		
+		$this->EmailQueue->view = 'payment_confirmation';
+		$this->EmailQueue->set('Student', $Student);
+		$this->EmailQueue->set('Payment', $Payment);
+		
+		$this->EmailQueue->queue(); exit;
 	}
 	
 }

@@ -161,7 +161,8 @@ class Student extends AppModel {
 	 * @see Model::afterSave()
 	 */
 	public function afterSave($created) {
-		$this->syncHighRise($created);
+		if (!Configure::read('debug'))
+			$this->syncHighRise($created);
 
 		return parent::afterSave($created);
 	}

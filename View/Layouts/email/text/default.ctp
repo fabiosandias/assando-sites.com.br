@@ -1,4 +1,4 @@
-<?php echo $content_for_layout . PHP_EOL ?>
+<?php echo $this->fetch('content') . PHP_EOL ?>
 
 Atenciosamente,
 --
