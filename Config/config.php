@@ -11,6 +11,7 @@ $config = array(
 	),
 	
 	'Inscricao' => array(
+		'Limite' => '-1 week',
 		'Desconto' => array(
 			array(
 				'porcentagem' => 25,

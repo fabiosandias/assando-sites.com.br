@@ -124,7 +124,7 @@ class MyClass extends AppModel {
 			$data['price_discount'] = $this->calculatePrice();
 			
 			if (isset($data['start']))
-				$data['signup_limit'] = strtotime('-1 week', strtotime($data['start']));
+				$data['signup_limit'] = strtotime(Configure::read('Inscricao.Limite'), strtotime($data['start']));
 				
 			if (empty($data['description']) && isset($data['start']) && isset($data['end']))
 				$data['description'] = sprintf('Aulas de <strong>%s</strong> até <strong>%s</strong>',
@@ -143,7 +143,8 @@ class MyClass extends AppModel {
 		$data = $this->read(array('price', 'start'));
 		$data['MyClass']['price_discount'] = $data['MyClass']['price'];
 		
-		$data['MyClass']['start'] = strtotime($data['MyClass']['start'] . ' 00:00:00');
+		// Calcula o fim das inscrições
+		$data['MyClass']['start'] = strtotime($data['MyClass']['start'] . ' ' . Configure::read('Inscricao.Limite'));
 		$now = time();
 		
 		foreach (Configure::read('Inscricao.Desconto') AS $desconto) {
@@ -153,7 +154,7 @@ class MyClass extends AppModel {
 				$data['MyClass']['price_discount'] = $data['MyClass']['price'] * ((100 - $desconto['porcentagem']) / 100);
 				break;		
 			}
-		}		
+		}
 		
 		return ceil($data['MyClass']['price_discount']);
 	}
