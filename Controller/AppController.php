@@ -89,7 +89,7 @@ class AppController extends Controller {
 
 		// Site externo (fora dos painéis de controle)
 		} else {
-			$this->Auth->allow('*');
+			$this->Auth->allow();
 		}
 	}
 	
