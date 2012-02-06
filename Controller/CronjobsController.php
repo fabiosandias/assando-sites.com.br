@@ -159,24 +159,23 @@ class CronjobsController extends AppController {
 		$this->loadModel('Payment');
 
 		// Encontra os dados do pagamento, do aluno e das turmas
-		$Payment = $this->Payment->find('first', array(
+		$PaymentObject = $this->Payment->find('first', array(
 			'conditions' => array('Payment.id' => $payment_id),
 			'contain' => array(
 				'PaymentGateway',
-				'Student' => array(
-					'conditions' => array('Student.status_id' => STATUS_STUDENT_INSCRICAO_PENDENTE),
-					'MyClass',
-				)
+				'Student' => array('MyClass')
 			)
 		));
+		
+		$this->log(serialize($PaymentObject), 'payments');
 
-		extract($Payment);
+		extract($PaymentObject);
 		$Payment['PaymentGateway'] = $PaymentGateway;
 
 		if (empty($Payment) OR empty($Student['id'])) {
 			$this->log('Pagamento #' . $payment_id . ' não encontrado', 'payments');
-			$this->log('$Payment:' . serialize($Payment), 'payments');
-			$this->log('$Student:' . serialize($Student), 'payments');
+			$this->log('$Payment: ' . serialize($Payment), 'payments');
+			$this->log('$Student: ' . serialize($Student), 'payments');
 			exit;
 		}
 		
