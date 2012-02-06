@@ -127,7 +127,7 @@ class CronjobsController extends AppController {
 				// Se o status foi alterado pra PAGO
 				if (($newStatus == STATUS_PAYMENT_PAGO) && ($newPayment || ($oldStatus != $newStatus))) {
 					$this->Payment->Student->id = (int)$Student;
-					if ($this->Paument->Student->saveField('status_id', STATUS_STUDENT_INSCRICAO_CONFIRMADA)) {
+					if ($this->Payment->Student->saveField('status_id', STATUS_STUDENT_INSCRICAO_CONFIRMADA)) {
 						$this->__confirmPayment($this->Payment->id);
 					}
 				}
