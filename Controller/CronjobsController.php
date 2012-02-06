@@ -175,6 +175,8 @@ class CronjobsController extends AppController {
 
 		if (empty($Payment) OR empty($Student['id'])) {
 			$this->log('Pagamento #' . $payment_id . ' não encontrado', 'payments');
+			$this->log('$Payment:' . serialize($Payment), 'payments');
+			$this->log('$Student:' . serialize($Student), 'payments');
 			exit;
 		}
 		
