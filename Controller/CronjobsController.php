@@ -155,6 +155,7 @@ class CronjobsController extends AppController {
 	 * Confirma o pagamento de um aluno
 	 */
 	protected function __confirmPayment($payment_id) {
+		$this->log('Confirmando pagamento #' . $payment_id, 'payments');
 		$this->loadModel('Payment');
 
 		// Encontra os dados do pagamento, do aluno e das turmas
@@ -172,8 +173,10 @@ class CronjobsController extends AppController {
 		extract($Payment);
 		$Payment['PaymentGateway'] = $PaymentGateway;
 
-		if (empty($Payment) OR empty($Student['id']))
+		if (empty($Payment) OR empty($Student['id'])) {
+			$this->log('Pagamento #' . $payment_id . ' não encontrado', 'payments');
 			exit;
+		}
 		
 		$this->EmailQueue->to = array($Student['fullname'] => $Student['email']);
 		$this->EmailQueue->bcc = Configure::read('Email.from');
