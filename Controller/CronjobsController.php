@@ -166,18 +166,15 @@ class CronjobsController extends AppController {
 				'Student' => array('MyClass')
 			)
 		));
-		
-		$this->log(serialize($PaymentObject), 'payments');
 
 		extract($PaymentObject);
-		$Payment['PaymentGateway'] = $PaymentGateway;
 
 		if (empty($Payment) OR empty($Student['id'])) {
 			$this->log('Pagamento #' . $payment_id . ' não encontrado', 'payments');
-			$this->log('$Payment: ' . serialize($Payment), 'payments');
-			$this->log('$Student: ' . serialize($Student), 'payments');
 			exit;
 		}
+		
+		$Payment['PaymentGateway'] = $PaymentGateway;
 		
 		$this->EmailQueue->to = array($Student['fullname'] => $Student['email']);
 		$this->EmailQueue->bcc = Configure::read('Email.from');
