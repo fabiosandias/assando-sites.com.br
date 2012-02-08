@@ -104,6 +104,23 @@ class Testmonial extends AppModel {
 				'twitter' => 'simonemyrrha'
 			),
 			'message' => 'Adquiri conhecimento de como programar de forma rápida e eficiente, aumentando a qualidade do desenvolvimento em pouco tempo de trabalho.'
+		),
+		// 2012.1-AV
+		array(
+			'author' => array(
+				'name' => 'Patrick Maciel',
+				'email' => 'patrickmaciel.info@gmail.com',
+				'twitter' => 'p4dev'
+			),
+			'message' => 'O <a href="http://assando-sites.com.br/conteudo-do-curso-avancado">curso avançado</a> foi um excelente complemento ao básico. O que estava faltando para que pudéssemos ter uma visão geral de como funciona o CakePHP, foi suprido agora.'
+		),
+		array(
+			'author' => array(
+				'name' => 'Luiz Antonio',
+				'email' => 'tonyzrp@gmail.com',
+				'twitter' => 'tonyzrp'
+			),
+			'message' => 'De forma bastante dinâmica, o CakePHP foi desmembrado e conseguimos ter uma ideia ampla do funcionamento do mesmo. Com o curso, nós interagimos com a mágica do Cake e adquirimos conhecimento para criar nossos próprios truques.'
 		)
 	);
 
