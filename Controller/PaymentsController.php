@@ -19,7 +19,7 @@ class PaymentsController extends AppController {
 	 * Antes de filtar
 	 */
 	public function beforeFilter() {
-		if ($this->action == 'syncPayment')
+		if ($this->action == 'syncPayment_PagSeguro')
 			$this->Components->disable('Security');
 			
 		return parent::beforeFilter();
@@ -44,7 +44,7 @@ class PaymentsController extends AppController {
 	/**
 	 * Sincroniza os dados de pagamento do PagSeguro
 	 */
-	public function syncPayment() {
+	public function syncPayment_PagSeguro() {
 		if (!$this->request->is('post'))
 			exit;
 
@@ -52,14 +52,15 @@ class PaymentsController extends AppController {
 
 		$AccountCredentials = new AccountCredentials(Configure::read('PagSeguro.API.email'), Configure::read('PagSeguro.API.token'));
 
-		$this->log('POST: ' . serialize($_POST), 'PagSeguro');
-		$this->log('Data: ' . serialize($this->request->data), 'PagSeguro');
+		$this->log('POST:' . serialize($_POST), 'PagSeguro');
+		$this->log('Data:' . serialize($this->request->data), 'PagSeguro');
 
 		/* Tipo de notificação recebida */  
 		$type = $_POST['notificationType'];  
 
 		/* Código da notificação recebida */  
-		$code = $_POST['notificationCode'];
+		$code = $_POST['notificationCode'];  
+
 
 		/* Verificando tipo de notificação recebida */  
 		if ($type === 'transaction') {  
@@ -70,7 +71,7 @@ class PaymentsController extends AppController {
 				$code // código de notificação  
 			); 
 
-			$this->log('Transaction: ' . serialize($transaction), 'PagSeguro');
+			$this->log('Transaction:' . serialize($transaction), 'PagSeguro');
 
 		}
 
