@@ -59,7 +59,7 @@ class PaymentsController extends AppController {
 
 		if ($transactionType == 'transaction') {  
 
-			$Transaction = PagSeguroNotificationService::checkTransaction(  
+			$Transaction = NotificationService::checkTransaction(  
 				$AccountCredentials,  
 				$transactionCode
 			); 
