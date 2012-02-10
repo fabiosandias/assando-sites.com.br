@@ -92,7 +92,7 @@ class CronjobsController extends AppController {
 			
 			// Enconta o pagamento pelo código e pelo ID do aluno (que corresponde ao reference)
 			$Payment = $this->Payment->find('first', array(
-				'fields' => array('id', 'updated'),
+				'fields' => array('id', 'updated', 'status_id'),
 				'conditions' => array(
 					'code' => $Transaction->getCode(),
 					'student_id' => $Student
