@@ -53,7 +53,7 @@ class PaymentsController extends AppController {
 		App::import('Vendor', 'PagSeguro', array('file' => 'PagSeguroLibrary' . DS . 'PagSeguroLibrary.php'));
 
 		// Login
-		$AccountCredentials = new AccountCredentials(Configure::read('PagSeguro.API.email'), Configure::read('PagSeguro.API.token'));
+		$AccountCredentials = new PagSeguroAccountCredentials(Configure::read('PagSeguro.API.email'), Configure::read('PagSeguro.API.token'));
 
 		# $this->log('POST: ' . serialize($_POST), 'PagSeguro');
 		# $this->log('Data: ' . serialize($this->request->data), 'PagSeguro');
