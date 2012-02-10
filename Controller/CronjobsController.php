@@ -73,7 +73,7 @@ class CronjobsController extends AppController {
 			$pageNumber,
 			$maxPageResults,
 			$initialDate,
-			$finalDate,
+			$finalDate
 		);
 		
 		foreach ($Transactions->getTransactions() AS $Transaction) {
