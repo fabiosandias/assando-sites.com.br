@@ -20,7 +20,7 @@ limitations under the License.
 /**
 * Represents a page of transactions returned by the transaction search service
 */
-class TransactionSearchResult {
+class PagSeguroTransactionSearchResult {
 	
 	/**
 	 * Date/time when this search was executed
@@ -43,7 +43,7 @@ class TransactionSearchResult {
 	private $currentPage;
 	
 	/**
-	 * Transactions in this page
+	 * Transaction summaries in this page
 	 */
 	private $transactions;
 	
@@ -78,14 +78,14 @@ class TransactionSearchResult {
     }
 
     /**
-     * @return the number of Transactions in the current page
+     * @return the number of transactions summaries in the current page
      */
     public function getResultsInThisPage() {
         return $this->resultsInThisPage;
     }
 
     /**
-     * Sets the number of Transactions in the current page
+     * Sets the number of transaction summaries in the current page
      *
      * @param resultsInThisPage
      */
@@ -110,17 +110,17 @@ class TransactionSearchResult {
     }
 
     /**
-     * @return the Transactions in this page
-     * @see TransactionSummary
+     * @return the transaction summaries in this page
+     * @see PagSeguroTransactionSummary
      */
     public function getTransactions() {
         return $this->transactions;
     }
 
     /**
-     * Sets the transactions in this page
+     * Sets the transaction summaries in this page
      *
-     * @param transactionSummaries
+     * @param transactions
      */
     public function setTransactions(Array $transactions) {
         $this->transactions = $transactions;
@@ -130,7 +130,7 @@ class TransactionSearchResult {
     * @return a string that represents the current object
     */
     public function toString(){
-    	return "TransactionSearchResult("
+    	return "PagSeguroTransactionSearchResult("
 	    	."Date=".$this->date
 	    	.", CurrentPage=".$this->currentPage
 	    	.", TotalPages=".$this->totalPages

@@ -57,6 +57,7 @@ class PagSeguroHelper {
 			} else {
 				print_r($var);
 			}
+			echo "</pre>";
 		}
 	}
 	

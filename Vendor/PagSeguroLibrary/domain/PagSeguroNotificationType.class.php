@@ -18,27 +18,16 @@ limitations under the License.
 */
 
 /**
- * Defines a list of known transaction statuses.
+ * Defines a list of known notification types.
  * This class is not an enum to enable the introduction of new shipping types
  * without breaking this version of the library.
  */	
-class TransactionStatus {
+class PagSeguroNotificationType {
 	
-	private static $statusList = array(
-		'INITIATED' => 0,
-		'WAITING_PAYMENT' => 1,
-		'IN_ANALYSIS' => 2,
-		'PAID' => 3,
-		'AVAILABLE' => 4,
-		'IN_DISPUTE' => 5,
-		'REFUNDED' => 6,
-		'CANCELLED' => 7
+	private static $typeList = array(
+		'TRANSACTION' 	=> 'transaction'
 	);
 	
-	/**
-	 * the value of the transaction status
-	 * Example: 3
-	 */
 	private $value;
 	
 	public function __construct($value = null){
@@ -52,27 +41,24 @@ class TransactionStatus {
 	}
 	
 	public function setByType($type) {
-		if (isset(self::$statusList[$type])) {
-			$this->value = self::$statusList[$type];
+		if (isset(self::$typeList[$type])) {
+			$this->value = self::$typeList[$type];
 		} else {
 			throw new Exception("undefined index $type");
 		}
 	}
 	
-	/**
-	 * @return the status value.
-	 */
 	public function getValue(){
 		return $this->value;
 	}
 	
 	/**
 	 * @param value
-	 * @return the transaction status corresponding to the informed status value
+	 * @return the PagSeguroNotificationType corresponding to the informed value
 	 */
 	public function getTypeFromValue($value = null) {
 		$value = ($value == null ? $this->value : $value);
-		return array_search($this->value, self::$statusList);
+		return array_search($this->value, self::$typeList);
 	}
 	
 }

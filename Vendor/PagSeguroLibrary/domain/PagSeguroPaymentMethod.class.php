@@ -22,7 +22,7 @@ limitations under the License.
  * Payment method
  *
  */
-class PaymentMethod{
+class PagSeguroPaymentMethod{
 	
 	/**
 	* Payment method type
@@ -37,8 +37,8 @@ class PaymentMethod{
     /**
      * Initializes a new instance of the PaymentMethod class
      *  
-     * @param PaymentMethodType $type
-     * @param PaymentMethodCode $code
+     * @param PagSeguroPaymentMethodType $type
+     * @param PagSeguroPaymentMethodCode $code
      */
     public function __construct($type = null, $code = null) {
     	if ($type) {
@@ -58,13 +58,13 @@ class PaymentMethod{
     
     /**
      * Sets the payment method type
-     * @param PaymentMethodType $type
+     * @param PagSeguroPaymentMethodType $type
      */
     public function setType($type) {
-    	if ($type instanceof PaymentMethodType) {
+    	if ($type instanceof PagSeguroPaymentMethodType) {
     		$this->type = $type;
     	} else {
-    		$this->type = new PaymentMethodType($type);
+    		$this->type = new PagSeguroPaymentMethodType($type);
     	}
     }
 
@@ -77,13 +77,13 @@ class PaymentMethod{
     
     /**
      * Sets the payment method code
-     * @param PaymentMethodCode $code
+     * @param PagSeguroPaymentMethodCode $code
      */
     public function setCode($code) {
-        if ($code instanceof PaymentMethodCode) {
+        if ($code instanceof PagSeguroPaymentMethodCode) {
     		$this->code = $code;
     	} else {
-    		$this->code = new PaymentMethodCode($code);
+    		$this->code = new PagSeguroPaymentMethodCode($code);
     	}
     }
 	

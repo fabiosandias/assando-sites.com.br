@@ -26,7 +26,7 @@ class PagSeguroServiceException extends Exception{
 	private $httpMessage;
 	private $errors = Array();
 	
-	public function __construct(HttpStatus $httpStatus, Array $errors = null) {
+	public function __construct(PagSeguroHttpStatus $httpStatus, Array $errors = null) {
 		$this->httpStatus  = $httpStatus;
 		if ($errors) {
 			$this->errors = $errors;
@@ -44,7 +44,7 @@ class PagSeguroServiceException extends Exception{
 	public function getHttpStatus(){
 		return $this->httpStatus;
 	}		
-	public function setHttpStatus(HttpStatus $httpStatus){
+	public function setHttpStatus(PagSeguroHttpStatus $httpStatus){
 		$this->httpStatus = $httpStatus;
 	}
 	

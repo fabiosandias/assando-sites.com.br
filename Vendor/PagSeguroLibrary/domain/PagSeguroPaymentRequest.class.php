@@ -20,7 +20,7 @@ limitations under the License.
 /**
  * Represents a payment request
  */
-class PaymentRequest  {
+class PagSeguroPaymentRequest  {
 	
 	/**
 	* Party that will be sending the money
@@ -100,14 +100,14 @@ class PaymentRequest  {
 	public function setSender($name, $email = null, $areaCode = null, $number = null) {
         $param = $name;
 		if (is_array($param)) {
-        	$this->sender = new Sender($param);
-        } elseif($param instanceof Sender) {
+        	$this->sender = new PagSeguroSender($param);
+        } elseif($param instanceof PagSeguroSender) {
         	$this->sender = $param;
         } else {
-        	$sender = new Sender();
+        	$sender = new PagSeguroSender();
         	$sender->setName($param);
         	$sender->setEmail($email);
-        	$sender->setPhone(new Phone($areaCode, $number));
+        	$sender->setPhone(new PagSeguroPhone($areaCode, $number));
         	$this->sender = $sender;
         }
     }
@@ -118,7 +118,7 @@ class PaymentRequest  {
      */
     public function setSenderName($senderName) {
     	if ($this->sender == null) {
-            $this->sender = new Sender();
+            $this->sender = new PagSeguroSender();
         }
         $this->sender->setName($senderName);
     }
@@ -129,7 +129,7 @@ class PaymentRequest  {
      */
     public function setSenderEmail($senderEmail) {
     	if ($this->sender == null) {
-    		$this->sender = new Sender();
+    		$this->sender = new PagSeguroSender();
     	}
     	$this->sender->setEmail($senderEmail);
     }
@@ -143,12 +143,12 @@ class PaymentRequest  {
     public function setSenderPhone($areaCode, $number = null) {
     	$param = $areaCode;
     	if ($this->sender == null) {
-    		$this->sender = new Sender();
+    		$this->sender = new PagSeguroSender();
     	}
-    	if ($param instanceof Phone) {
+    	if ($param instanceof PagSeguroPhone) {
     		$this->sender->setPhone($param);
     	} else {
-    		$this->sender->setPhone(new Phone($param, $number));
+    		$this->sender->setPhone(new PagSeguroPhone($param, $number));
     	}
     }
 
@@ -183,14 +183,14 @@ class PaymentRequest  {
     	if (is_array($items)) {
     		$i = Array();
     		foreach ($items as $key => $item) {
-    			if ($item instanceof Item) {
+    			if ($item instanceof PagSeguroItem) {
     				$i[$key] = $item;
     			} else if (is_array($item)) {
-    				$i[$key] = new Item($item);
+    				$i[$key] = new PagSeguroItem($item);
     			}
     		}
+			$this->items = $i;
     	}
-    	$this->items = $i;
     }
 
 	/**
@@ -209,11 +209,11 @@ class PaymentRequest  {
             $this->items = Array();
         }
         if (is_array($param)) {
-        	array_push($this->items, new Item($param));
-        } else if ($param instanceof Item) {
+        	array_push($this->items, new PagSeguroItem($param));
+        } else if ($param instanceof PagSeguroItem) {
         	array_push($this->items, $param);
         } else {
-        	$item = new Item();
+        	$item = new PagSeguroItem();
         	$item->setId($param);
         	$item->setDescription($description);
         	$item->setQuantity($quantity);
@@ -284,7 +284,7 @@ class PaymentRequest  {
 	
 	/**
 	 * @return the shipping information for this payment request
-	 * @see Shipping
+	 * @see PagSeguroShipping
 	 */
     public function getShipping() {
         return $this->shipping;
@@ -292,25 +292,25 @@ class PaymentRequest  {
 
     /**
      * Sets the shipping information for this payment request
-     * @param Shipping $address
-     * @param ShippingType $type
+     * @param PagSeguroShipping $address
+     * @param PagSeguroShippingType $type
      */
     public function setShipping($address, $type = null) {
     	$param = $address;
-    	if ($param instanceof Shipping) {
+    	if ($param instanceof PagSeguroShipping) {
     		$this->shipping = $param;
     	} else {
-    		$shipping = new Shipping();
+    		$shipping = new PagSeguroShipping();
     		if (is_array($param)) {
-    			$shipping->setAddress(new Address($param));
-    		} else if ($param instanceof Address) {
+    			$shipping->setAddress(new PagSeguroAddress($param));
+    		} else if ($param instanceof PagSeguroAddress) {
     			$shipping->setAddress($param);
     		}
     		if ($type) {
-    			if ($type instanceof ShippingType) {
+    			if ($type instanceof PagSeguroShippingType) {
     				$shipping->setType($type);
     			} else {
-    				$shipping->setType(new ShippingType($type));
+    				$shipping->setType(new PagSeguroShippingType($type));
     			}    		
     		}
     		$this->shipping = $shipping;
@@ -331,14 +331,14 @@ class PaymentRequest  {
     public function setShippingAddress($postalCode = null, $street = null, $number = null, $complement = null, $district = null, $city = null, $state = null, $country = null) {
     	$param = $postalCode;
     	if ($this->shipping == null) {
-			$this->shipping = new Shipping();
+			$this->shipping = new PagSeguroShipping();
 		}
 		if (is_array($param)) {
-			$this->shipping->setAddress(new Address($param));
-		} elseif ($param instanceof Address) {
+			$this->shipping->setAddress(new PagSeguroAddress($param));
+		} elseif ($param instanceof PagSeguroAddress) {
 			$this->shipping->setAddress($param);
 		} else {
-			$address = new Address();
+			$address = new PagSeguroAddress();
 			$address->setPostalCode($postalCode);
 			$address->setStreet($street);
 			$address->setNumber($number);
@@ -353,17 +353,17 @@ class PaymentRequest  {
     
     /**
      * Sets the shipping type for this payment request
-     * @param ShippingType $type
+     * @param PagSeguroShippingType $type
      */
     public function setShippingType($type) {
     	$param = $type;
     	if ($this->shipping == null) {
-    		$this->shipping = new Shipping();
+    		$this->shipping = new PagSeguroShipping();
     	}
-    	if ($param instanceof ShippingType) {
+    	if ($param instanceof PagSeguroShippingType) {
     		$this->shipping->setType($param);
     	} else {
-    		$this->shipping->setType(new ShippingType($param));
+    		$this->shipping->setType(new PagSeguroShippingType($param));
     	}
     }
     
@@ -416,8 +416,8 @@ class PaymentRequest  {
      * @param Credentials $credentials
      * @return The URL to where the user needs to be redirected to in order to complete the payment process
      */
-    public function register(Credentials $credentials) {
-		return PaymentService::createCheckoutRequest($credentials, $this);
+    public function register(PagSeguroCredentials $credentials) {
+		return PagSeguroPaymentService::createCheckoutRequest($credentials, $this);
     }
 	
 	/**
@@ -425,7 +425,7 @@ class PaymentRequest  {
     */
 	public function toString(){
 		$email = $this->sender ? $this->sender->getEmail() : "null";
-		return "PaymentRequest(Reference=".$this->reference.",     SenderEmail=".$email.")";
+		return "PagSeguroPaymentRequest(Reference=".$this->reference.",     SenderEmail=".$email.")";
 	}
 	
 	

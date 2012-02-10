@@ -20,7 +20,7 @@ limitations under the License.
 /**
  * Encapsulates web service calls to search for PagSeguro transactions
  */
-class TransactionSearchService {
+class PagSeguroTransactionSearchService {
 	
 	const serviceName = 'transactionSearchService';
 	
@@ -31,21 +31,21 @@ class TransactionSearchService {
 	
 	private static function buildSearchUrlByDate(PagSeguroConnectionData $connectionData, Array $searchParams) {
 		$url = $connectionData->getServiceUrl();
-		$initialDate  = $searchParams['initialDate'] != null ? $searchParams['initialDate'] : "";
-		$finalDate    = $searchParams['finalDate']   != null ? $searchParams['finalDate'] 	: "";
+		$initialDate  = $searchParams['initialDate'] 	!= null ? $searchParams['initialDate'] : "";
+		$finalDate    = $searchParams['finalDate'] 		!= null ? ("&finalDate=".$searchParams['finalDate']) : "";
 		if ($searchParams['pageNumber'] != null) {
             $page = "&page=" . $searchParams['pageNumber'];
         }
 		if ($searchParams['maxPageResults'] != null) {
             $maxPageResults = "&maxPageResults=" . $searchParams['maxPageResults'];
         }		
-        return  "{$url}/?".$connectionData->getCredentialsUrlQuery()."&initialDate={$initialDate}&finalDate={$finalDate}{$page}{$maxPageResults}";
+        return  "{$url}/?".$connectionData->getCredentialsUrlQuery()."&initialDate={$initialDate}{$finalDate}{$page}{$maxPageResults}";
     }
     
     private static function buildSearchUrlAbandoned(PagSeguroConnectionData $connectionData, Array $searchParams) {
     	$url = $connectionData->getServiceUrl();
-    	$initialDate  = $searchParams['initialDate'] != null ? $searchParams['initialDate'] : "";
-    	$finalDate    = $searchParams['finalDate']   != null ? $searchParams['finalDate'] 	: "";
+		$initialDate  = $searchParams['initialDate'] 	!= null ? $searchParams['initialDate'] : "";
+		$finalDate    = $searchParams['finalDate'] 		!= null ? ("&finalDate=".$searchParams['finalDate']) : "";
     	if ($searchParams['pageNumber'] != null) {
     		$page = "&page=" . $searchParams['pageNumber'];
     	}
@@ -60,46 +60,46 @@ class TransactionSearchService {
     /**
      * Finds a transaction with a matching transaction code
      * 
-     * @param Credentials $credentials
+     * @param PagSeguroCredentials $credentials
      * @param String $transactionCode
      * @return a transaction object
-     * @see transaction
+     * @see PagSeguroTransaction
      * @throws PagSeguroServiceException
      * @throws Exception
      */
-    public static function searchByCode(Credentials $credentials, $transactionCode) {
+    public static function searchByCode(PagSeguroCredentials $credentials, $transactionCode) {
 		
-		LogPagSeguro::info("TransactionSearchService.SearchByCode($transactionCode) - begin");
+		LogPagSeguro::info("PagSeguroTransactionSearchService.SearchByCode($transactionCode) - begin");
 		
 		$connectionData = new PagSeguroConnectionData($credentials, self::serviceName);
 		
 		try{
 			
-			$connection = new HttpConnection();
+			$connection = new PagSeguroHttpConnection();
 			$connection->get(
 				self::buildSearchUrlByCode($connectionData, $transactionCode),
 				$connectionData->getServiceTimeout(),
 				$connectionData->getCharset()
 			);
-			$httpStatus = new HttpStatus($connection->getStatus());
+			$httpStatus = new PagSeguroHttpStatus($connection->getStatus());
 			
 			switch ($httpStatus->getType()) {
 				
 				case 'OK':
-					$transaction = TransactionParser::readTransaction($connection->getResponse());
-					LogPagSeguro::info("TransactionSearchService.SearchByCode(transactionCode=$transactionCode) - end ".$transaction->toString());
+					$transaction = PagSeguroTransactionParser::readTransaction($connection->getResponse());
+					LogPagSeguro::info("PagSeguroTransactionSearchService.SearchByCode(transactionCode=$transactionCode) - end ".$transaction->toString());
 					break;
 					
 				case 'BAD_REQUEST':
-					$errors = TransactionParser::readErrors($connection->getResponse());
+					$errors = PagSeguroTransactionParser::readErrors($connection->getResponse());
 					$e = new PagSeguroServiceException($httpStatus, $errors);
-					LogPagSeguro::error("TransactionSearchService.SearchByCode(transactionCode=$transactionCode) - error ".$e->getOneLineMessage());
+					LogPagSeguro::error("PagSeguroTransactionSearchService.SearchByCode(transactionCode=$transactionCode) - error ".$e->getOneLineMessage());
 					throw $e;
 					break;
 					
 				default:
 					$e = new PagSeguroServiceException($httpStatus);
-					LogPagSeguro::error("TransactionSearchService.SearchByCode(transactionCode=$transactionCode) - error ".$e->getOneLineMessage());
+					LogPagSeguro::error("PagSeguroTransactionSearchService.SearchByCode(transactionCode=$transactionCode) - error ".$e->getOneLineMessage());
 					throw $e;
 					break;
 					
@@ -120,57 +120,58 @@ class TransactionSearchService {
     /**
      * Search transactions associated with this set of credentials within a date range
      * 
-     * @param Credentials $credentials
-     * @param String $initialDate
-     * @param String $finalDate
+     * @param PagSeguroCredentials $credentials
      * @param integer $pageNumber
      * @param integer $maxPageResults
-     * @return a object of TransactionSerachResult class
-     * @see TransactionSearchResult
+     * @param String $initialDate
+     * @param String $finalDate
+     * @return a object of PagSeguroTransactionSerachResult class
+     * @see PagSeguroTransactionSearchResult
      * @throws PagSeguroServiceException
      * @throws Exception
      */
-    public static function searchByDate(Credentials $credentials, $initialDate, $finalDate, $pageNumber, $maxPageResults) {
+    public static function searchByDate(PagSeguroCredentials $credentials, $pageNumber, $maxPageResults, $initialDate, $finalDate = null) {
 		
-		LogPagSeguro::info("TransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - begin");
+		LogPagSeguro::info("PagSeguroTransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - begin");
 		
 		$connectionData = new PagSeguroConnectionData($credentials, self::serviceName);
 		
 		$searchParams = Array(
 			'initialDate' 	 => PagSeguroHelper::formatDate($initialDate),
-			'finalDate' 	 => PagSeguroHelper::formatDate($finalDate),
 			'pageNumber' 	 => $pageNumber,
 			'maxPageResults' => $maxPageResults
 		);
 		
+		$searchParams['finalDate'] = $finalDate ? PagSeguroHelper::formatDate($finalDate) : null;
+		
 		try{
 			
-			$connection = new HttpConnection();
+			$connection = new PagSeguroHttpConnection();
 			$connection->get(
 				self::buildSearchUrlByDate($connectionData, $searchParams),
 				$connectionData->getServiceTimeout(),
 				$connectionData->getCharset()
 			);
 			
-			$httpStatus = new HttpStatus($connection->getStatus());
+			$httpStatus = new PagSeguroHttpStatus($connection->getStatus());
 			
 			switch ($httpStatus->getType()) {
 				
 				case 'OK':
-					$searchResult = TransactionParser::readSearchResult($connection->getResponse());
-					LogPagSeguro::info("TransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$searchResult->toString());
+					$searchResult = PagSeguroTransactionParser::readSearchResult($connection->getResponse());
+					LogPagSeguro::info("PagSeguroTransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$searchResult->toString());
 					break;
 					
 				case 'BAD_REQUEST':
-					$errors = TransactionParser::readErrors($connection->getResponse());
+					$errors = PagSeguroTransactionParser::readErrors($connection->getResponse());
 					$e = new PagSeguroServiceException($httpStatus, $errors);
-					LogPagSeguro::error("TransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
+					LogPagSeguro::error("PagSeguroTransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
 					throw $e;
 					break;
 					
 				default:
 					$e = new PagSeguroServiceException($httpStatus);
-					LogPagSeguro::error("TransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
+					LogPagSeguro::error("PagSeguroTransactionSearchService.SearchByDate(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
 					throw $e;
 					break;
 					
@@ -191,58 +192,59 @@ class TransactionSearchService {
     /**
     * Search transactions abandoned associated with this set of credentials within a date range
     *
-    * @param Credentials $credentials
+    * @param PagSeguroCredentials $credentials
     * @param String $initialDate
     * @param String $finalDate
     * @param integer $pageNumber
     * @param integer $maxPageResults
-    * @return a object of TransactionSerachResult class
-    * @see TransactionSearchResult
+    * @return a object of PagSeguroTransactionSerachResult class
+    * @see PagSeguroTransactionSearchResult
     * @throws PagSeguroServiceException
     * @throws Exception
     */
-    public static function searchAbandoned(Credentials $credentials, $initialDate, $finalDate, $pageNumber, $maxPageResults) {
+    public static function searchAbandoned(PagSeguroCredentials $credentials, $pageNumber, $maxPageResults, $initialDate, $finalDate = null) {
     
-    	LogPagSeguro::info("TransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - begin");
+    	LogPagSeguro::info("PagSeguroTransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - begin");
     
     	$connectionData = new PagSeguroConnectionData($credentials, self::serviceName);
     
     	$searchParams = Array(
     			'initialDate' 	 => PagSeguroHelper::formatDate($initialDate),
-    			'finalDate' 	 => PagSeguroHelper::formatDate($finalDate),
     			'pageNumber' 	 => $pageNumber,
     			'maxPageResults' => $maxPageResults
     	);
+		
+		$searchParams['finalDate'] = $finalDate ? PagSeguroHelper::formatDate($finalDate) : null;
     
     	try{
     			
-    		$connection = new HttpConnection();
+    		$connection = new PagSeguroHttpConnection();
     		$connection->get(
 	    		self::buildSearchUrlAbandoned($connectionData, $searchParams),
 	    		$connectionData->getServiceTimeout(),
 	    		$connectionData->getCharset()
     		);
     			
-    		$httpStatus = new HttpStatus($connection->getStatus());
+    		$httpStatus = new PagSeguroHttpStatus($connection->getStatus());
     			
     		switch ($httpStatus->getType()) {
     
     			case 'OK':
-    				$searchResult = TransactionParser::readSearchResult($connection->getResponse());
-    				LogPagSeguro::info("TransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$searchResult->toString());
+    				$searchResult = PagSeguroTransactionParser::readSearchResult($connection->getResponse());
+    				LogPagSeguro::info("PagSeguroTransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$searchResult->toString());
     				break;
     					
     			case 'BAD_REQUEST':
-    				$errors = TransactionParser::readErrors($connection->getResponse());
+    				$errors = PagSeguroTransactionParser::readErrors($connection->getResponse());
     				$e = new PagSeguroServiceException($httpStatus, $errors);
-    				LogPagSeguro::error("TransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
+    				LogPagSeguro::error("PagSeguroTransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
     				throw $e;
     				break;
     					
     			default:
     				$e = new PagSeguroServiceException($httpStatus);
-    			LogPagSeguro::error("TransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
-    			throw $e;
+					LogPagSeguro::error("PagSeguroTransactionSearchService.searchAbandoned(initialDate=".PagSeguroHelper::formatDate($initialDate).", finalDate=".PagSeguroHelper::formatDate($finalDate).") - end ".$e->getOneLineMessage());
+					throw $e;
     			break;
     				
     		}

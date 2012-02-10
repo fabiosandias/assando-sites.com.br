@@ -1,4 +1,4 @@
-<?php if (!defined('PAGSEGURO_LIBRARY')) { die('NOT ALLOWED'); }
+<?php if (!defined('PAGSEGURO_LIBRARY')) { die('No direct script access allowed'); }
 /*
 ************************************************************************
 Copyright [2011] [PagSeguro Internet Ltda.]
@@ -18,29 +18,20 @@ limitations under the License.
 */
 
 /**
- * Defines a list of known payment method types.
- */
-class PaymentMethodType {
+* Defines a list of known shipping types.
+* this class is not an enum to enable the introduction of new shipping types
+* without breaking this version of the library.
+*/	
+class PagSeguroShippingType {
 	
 	private static $typeList = array(
-		/** Credit card */
-		'CREDIT_CARD' => 1,
-		
-		/** Boleto - is a form of invoicing in Brazil */
-		'BOLETO' => 2,
-		
-		/** Online transfer */
-		'ONLINE_TRANSFER' => 3,
-		
-		/** PagSeguro account balance */
-		'BALANCE' => 4,
-		
-		/** OiPaggo */
-		'OI_PAGGO' => 5
+		'PAC' => 1,
+		'SEDEX' => 2,
+		'NOT_SPECIFIED' => 3
 	);
 	
 	/**
-	 * Payment method type value
+	 * the shipping type value
 	 * Example: 1
 	 */
 	private $value;
@@ -64,8 +55,7 @@ class PaymentMethodType {
 	}
 	
 	/**
-	 * @return payment method type value
-	 * Example: 1
+	 * @return the value of the shipping type
 	 */
 	public function getValue(){
 		return $this->value;
@@ -73,13 +63,34 @@ class PaymentMethodType {
 	
 	/**
 	 * @param value
-	 * @return the PaymentMethodType corresponding to the informed value
-	 */
+	 * @return the PagSeguroShippingType corresponding to the informed value
+	*/
 	public function getTypeFromValue($value = null) {
-		$value = ($value == null ? $this->value : $value);
-		return array_search($this->value, self::$typeList);
+		$value = ($value === null ? $this->value : $value);
+		return array_search($value, self::$typeList);
 	}
 	
+	/**
+	 * @param type
+	 * @return the code corresponding to the informed shipping type
+	 */
+	public static function getCodeByType($type){
+		if (isset(self::$typeList[$type])) {
+			return self::$typeList[$type];
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * @param type
+	 * @return a PagSeguroShippingType object corresponding to the informed type
+	*/
+	public static function createByType($type){
+		$ShippingType = new PagSeguroShippingType();
+		$ShippingType->setByType($type);
+		return $ShippingType;
+	}	
 	
 }
 

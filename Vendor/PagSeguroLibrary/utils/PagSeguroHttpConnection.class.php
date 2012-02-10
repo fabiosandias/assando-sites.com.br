@@ -18,16 +18,16 @@ limitations under the License.
 */
 
 /**
- * HTTP Connection Class - used in API calls (CURL library required)
+ * HTTP Connection Class - used in API calls (cURL library is required)
 */
-class HttpConnection{
+class PagSeguroHttpConnection{
 	
 	private $status;
 	private $response;
 	
 	public function __construct() {
 		if (!function_exists('curl_init')) {
-			throw new Exception('CURL library is required.');
+			throw new Exception('PagSeguroLibrary: cURL library is required.');
 		}
 	}
 	
@@ -49,7 +49,7 @@ class HttpConnection{
 		return $this->curlConnection('POST', $url, $data, $timeout, $charset);
 	}
 	
-	public function get($url, $timeout = 20, $charset, $charset = 'ISO-8859-1') {
+	public function get($url, $timeout = 20, $charset = 'ISO-8859-1') {
 		return $this->curlConnection('GET', $url, null, $timeout, $charset);
 	}
 	

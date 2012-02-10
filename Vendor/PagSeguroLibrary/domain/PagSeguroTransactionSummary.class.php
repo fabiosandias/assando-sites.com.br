@@ -20,7 +20,7 @@ limitations under the License.
 /**
  * Represents a summary of a PagSeguro transaction, typically returned by search services.
  */	
-class TransactionSummary {
+class PagSeguroTransactionSummary {
 	
 	/**
 	 * Transaction date
@@ -52,13 +52,13 @@ class TransactionSummary {
     
     /**
      * Transaction type
-     * @see TransactionType::
+     * @see PagSeguroTransactionType
      */
     private $type;
 	
     /**
      * Transaction status
-     * @see TransactionStatus::
+     * @see PagSeguroTransactionStatus
      */
 	private $status;
 
@@ -84,7 +84,7 @@ class TransactionSummary {
     
     /**
      * Payment method
-     * @see PaymentMethod
+     * @see PagSeguroPaymentMethod
      */
     private $paymentMethod;	
 
@@ -154,7 +154,7 @@ class TransactionSummary {
 
     /**
      * @return the transaction type
-     * @see TransactionType::
+     * @see PagSeguroTransactionType
      */
     public function getType() {
         return $this->type;
@@ -162,9 +162,9 @@ class TransactionSummary {
 
     /**
      * Sets the transaction sype
-     * @param TransactionType $type
+     * @param PagSeguroTransactionType $type
      */
-    public function setType(TransactionType $type) {
+    public function setType(PagSeguroTransactionType $type) {
         $this->type = $type;
     }	
 	
@@ -186,7 +186,7 @@ class TransactionSummary {
 	
     /**
      * @return the transaction status
-     * @see TransactionStatus::
+     * @see PagSeguroTransactionStatus
      */
 	public function getStatus() {
         return $this->status;
@@ -194,9 +194,9 @@ class TransactionSummary {
 
     /**
      * Sets the transaction status
-     * @param TransactionStatus $status
+     * @param PagSeguroTransactionStatus $status
      */
-    public function setStatus(TransactionStatus $status) {
+    public function setStatus(PagSeguroTransactionStatus $status) {
         $this->status = $status;
     }
 
@@ -262,15 +262,15 @@ class TransactionSummary {
 
     /**
      * Sets the payment method
-     * @param PaymentMethod $paymentMethod
+     * @param PagSeguroPaymentMethod $paymentMethod
      */
-    public function setPaymentMethod(PaymentMethod $paymentMethod) {
+    public function setPaymentMethod(PagSeguroPaymentMethod $paymentMethod) {
         $this->paymentMethod = $paymentMethod;
     }
 
     /**
      * @return the payment method
-     * @see PaymentMethod
+     * @see PagSeguroPaymentMethod
      */
     public function getPaymentMethod() {
         return $this->paymentMethod;

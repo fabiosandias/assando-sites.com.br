@@ -17,7 +17,7 @@ limitations under the License.
 ************************************************************************
 */
 
-class PaymentParser extends ServiceParser {
+class PagSeguroPaymentParser extends PagSeguroServiceParser {
 	
 	public static function getData($payment) {
 		
@@ -145,9 +145,9 @@ class PaymentParser extends ServiceParser {
 	}
 	
 	public static function readSuccessXml($str_xml) {
-		$parser = new xmlParser($str_xml);
+		$parser = new PagSeguroXmlParser($str_xml);
 		$data = $parser->getResult('checkout');
-		$PaymentParserData = new PaymentParserData();
+		$PaymentParserData = new PagSeguroPaymentParserData();
 		$PaymentParserData->setCode($data['code']);
 		$PaymentParserData->setRegistrationDate($data['date']);
 		return $PaymentParserData;

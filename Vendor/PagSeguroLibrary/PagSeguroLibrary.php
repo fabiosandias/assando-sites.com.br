@@ -19,13 +19,14 @@ limitations under the License.
 
 /*
  * PagSeguro Library Class
- * Version: 2.0.2
+ * Version: 2.0.3
  * Date: 29/08/2011
  */
 define('PAGSEGURO_LIBRARY', TRUE);
+require_once "loader".DIRECTORY_SEPARATOR."PagSeguroAutoLoader.class.php";
 class PagSeguroLibrary {
 	
-	const VERSION = "2.0.2";
+	const VERSION = "2.0.3";
 	private static $library;
 	private static $path;
 	public static $resources;
@@ -33,29 +34,49 @@ class PagSeguroLibrary {
 	public static $log;
 	
 	private function __construct() {
-		self::$path = (dirname(__FILE__));
-		if (function_exists('spl_autoload_register')) {
-			require_once "loader".DIRECTORY_SEPARATOR."PagSeguroAutoLoader.class.php";
-			PagSeguroAutoloader::init();
-		} else {
-			require_once "loader".DIRECTORY_SEPARATOR."PagSeguroAutoLoader.php";
-		}
+		self::$path 	 = (dirname(__FILE__));
+		PagSeguroAutoloader::init();
 		self::$resources = PagSeguroResources::init();
-		self::$config = PagSeguroConfig::init();
-		self::$log = LogPagSeguro::init();
+		self::$config 	 = PagSeguroConfig::init();
+		self::$log 	 	 = LogPagSeguro::init();
 	}
 	
 	public static function init() {
+		self::verifyDependencies();
 		if (self::$library == null) {
-			self::$library = new PagSeguroLibrary();
+			self::$library  = new PagSeguroLibrary();
 		}
 		return self::$library;
 	}
 	
-	public final static function getVersion(){
+	private static function verifyDependencies() {
+		
+		$dependencies = true;
+		
+		if (!function_exists('spl_autoload_register')) {
+			throw new Exception("PagSeguroLibrary: Standard PHP Library (SPL) is required.");
+			$dependencies = false;
+		}
+		
+		if (!function_exists('curl_init')) {
+			throw new Exception('PagSeguroLibrary: cURL library is required.');
+			$dependencies = false;
+		}
+		
+		if (!class_exists('DOMDocument')) {
+			throw new Exception('PagSeguroLibrary: DOM XML extention is required.');
+			$dependencies = false;
+		}
+		
+		return $dependencies;
+		
+	}
+	
+	public final static function getVersion() {
 		return self::VERSION;
 	}
-	public final static function getPath(){
+	
+	public final static function getPath() {
 		return self::$path;
 	}
 	

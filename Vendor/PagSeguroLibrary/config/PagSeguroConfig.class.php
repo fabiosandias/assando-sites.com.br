@@ -72,7 +72,7 @@ class PagSeguroConfig{
 	
 	public static function getAccountCredentials() {
 		if (isset(self::$data['credentials']) && isset(self::$data['credentials']['email']) && isset(self::$data['credentials']['token'])) {
-			return new AccountCredentials(self::$data['credentials']['email'], self::$data['credentials']['token']);
+			return new PagSeguroAccountCredentials(self::$data['credentials']['email'], self::$data['credentials']['token']);
 		} else {
 			throw new Exception("Credentials not set.");
 		}
@@ -94,13 +94,23 @@ class PagSeguroConfig{
 		}
 	}
 	
+	public static function setApplicationCharset($charset) {
+		self::setData('application', 'charset', $charset);
+	}
+	
 	public static function logIsActive() {
 		if (isset(self::$data['log']) && isset(self::$data['log']['active'])) {
 			return (bool) self::$data['log']['active'];
 		} else {
 			throw new Exception("Log activation flag not set.");
 		}
-	}	
+	}
+	
+	public static function activeLog($fileName = null) {
+		self::setData('log', 'active', true);
+		self::setData('log', 'fileLocation', $fileName ? $fileName : '');
+		LogPagSeguro::reLoad();
+	}
 	
 	public static function getLogFileLocation() {
 		if (isset(self::$data['log']) && isset(self::$data['log']['fileLocation'])) {

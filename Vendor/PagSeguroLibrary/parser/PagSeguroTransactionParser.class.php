@@ -17,14 +17,14 @@ limitations under the License.
 ************************************************************************
 */
 
-class TransactionParser extends ServiceParser {
+class PagSeguroTransactionParser extends PagSeguroServiceParser {
 	
 	public static function readSearchResult($str_xml) {
 		
-		$parser = new xmlParser($str_xml);
+		$parser = new PagSeguroXmlParser($str_xml);
 		$data = $parser->getResult('transactionSearchResult');
 		
-		$searchResutlt = new TransactionSearchResult();
+		$searchResutlt = new PagSeguroTransactionSearchResult();
 		
 		if (isset($data['totalPages'])){
 			$searchResutlt->setTotalPages($data['totalPages']);
@@ -43,84 +43,16 @@ class TransactionParser extends ServiceParser {
 		}		
 		
 		if (isset($data['transactions']) && is_array($data['transactions'])) {
-			
 			$transactions = array();
-			$i = 0;
-			
-			foreach ($data['transactions']['transaction'] as $key => $value) {
-				
-				$transactionSummary = new TransactionSummary();
-				
-				if (isset($value['type'])){
-					$transactionSummary->setType(new TransactionType($value['type']));
+			if(isset($data['transactions']['transaction'][0])) {
+				$i = 0;
+				foreach ($data['transactions']['transaction'] as $key => $value) {
+					$transactions[$i++] = self::parseTransactionSummary($value);
 				}
-				
-				if (isset($value['code'])){
-					$transactionSummary->setCode($value['code']);
-				}
-				
-				if (isset($value['reference'])){
-					$transactionSummary->setReference($value['reference']);
-				}
-				
-				if (isset($value['date'])){
-					$transactionSummary->setDate($value['date']);
-				}
-				
-				if (isset($value['lastEventDate'])){
-					$transactionSummary->setLastEventDate($value['lastEventDate']);
-				}
-				
-				if (isset($value['grossAmount'])){
-					$transactionSummary->setGrossAmount($value['grossAmount']);
-				}
-				
-				if (isset($value['status'])){
-					$transactionSummary->setStatus(new TransactionStatus($value['status']));
-				}
-				
-				if (isset($value['netAmount'])){
-					$transactionSummary->setNetAmount($value['netAmount']);
-				}
-				
-				if (isset($value['discountAmount'])){
-					$transactionSummary->setDiscountAmount($value['discountAmount']);
-				}
-				
-				if (isset($value['feeAmount'])){
-					$transactionSummary->setFeeAmount($value['feeAmount']);
-				}
-				
-				if (isset($value['extraAmount'])){
-					$transactionSummary->setExtraAmount($value['extraAmount']);
-				}
-				
-				if (isset($value['lastEvent'])){
-					$transactionSummary->setLastEventDate($value['lastEvent']);
-				}
-				
-				if (isset($value['paymentMethod'])){
-					
-					$paymentMethod = new PaymentMethod();
-					
-					if (isset($value['paymentMethod']['type'])){
-						$paymentMethod->setType(new PaymentMethodType($value['paymentMethod']['type']));
-					}
-					
-					if (isset($value['paymentMethod']['code'])) {
-						$paymentMethod->setCode(new PaymentMethodCode($value['paymentMethod']['code']));
-					}
-					
-					$transactionSummary->setPaymentMethod($paymentMethod);
-					
-				}
-				
-				$transactions[$i++] = $transactionSummary;
-				
+			} else {
+				$transactions[0] = self::parseTransactionSummary($data['transactions']['transaction']);
 			}
-			
 			$searchResutlt->setTransactions($transactions);
-			
 		}
 		
 		return $searchResutlt;
@@ -130,11 +62,11 @@ class TransactionParser extends ServiceParser {
 	public static function readTransaction($str_xml) {
 		
 		// Parser
-		$parser = new xmlParser($str_xml);
+		$parser = new PagSeguroXmlParser($str_xml);
 		
 		// <transaction>
 		$data = $parser->getResult('transaction');
-		$transaction = new Transaction();
+		$transaction = new PagSeguroTransaction();
 		
 		// <transaction> <lastEventDate>
 		if (isset($data["lastEventDate"])) {
@@ -158,27 +90,27 @@ class TransactionParser extends ServiceParser {
 		
 		// <transaction> <type>
 		if (isset($data["type"])) {
-			$transaction->setType(new TransactionType($data["type"]));
+			$transaction->setType(new PagSeguroTransactionType($data["type"]));
 		}
 		
 		// <transaction> <status>
 		if (isset($data["status"])) {
-			$transaction->setStatus(new TransactionStatus($data["status"]));
+			$transaction->setStatus(new PagSeguroTransactionStatus($data["status"]));
 		}
 		
 		if (isset($data["paymentMethod"]) && is_array($data["paymentMethod"])) {
 			
 			// <transaction> <paymentMethod>
-			$paymentMethod = new PaymentMethod();
+			$paymentMethod = new PagSeguroPaymentMethod();
 			
 			// <transaction> <paymentMethod> <type>
 			if (isset($data["paymentMethod"]['type'])) {
-				$paymentMethod->setType(new PaymentMethodType($data["paymentMethod"]['type']));
+				$paymentMethod->setType(new PagSeguroPaymentMethodType($data["paymentMethod"]['type']));
 			}
 			
 			// <transaction> <paymentMethod> <code>
 			if (isset($data["paymentMethod"]['code'])) {
-				$paymentMethod->setCode(new PaymentMethodCode($data["paymentMethod"]['code']));
+				$paymentMethod->setCode(new PagSeguroPaymentMethodCode($data["paymentMethod"]['code']));
 			}				
 			
 			$transaction->setPaymentMethod($paymentMethod);
@@ -238,7 +170,7 @@ class TransactionParser extends ServiceParser {
 		if (isset($data["sender"])) {
 			
 			// <transaction> <sender>
-			$sender = new Sender();
+			$sender = new PagSeguroSender();
 			
 			// <transaction> <sender> <name>
 			if (isset($data["sender"]["name"])) {
@@ -253,7 +185,7 @@ class TransactionParser extends ServiceParser {
 			if (isset($data["sender"]["phone"])) {
 				
 				// <transaction> <sender> <phone>
-				$phone = new Phone();
+				$phone = new PagSeguroPhone();
 				
 				// <transaction> <sender> <phone> <areaCode>
 				if (isset($data["sender"]["phone"]["areaCode"])) {
@@ -276,11 +208,11 @@ class TransactionParser extends ServiceParser {
 		if (isset($data["shipping"]) && is_array($data["shipping"])) {
 			
 			// <transaction> <shipping>
-			$shipping = new Shipping();
+			$shipping = new PagSeguroShipping();
 			
 			// <transaction> <shipping> <type>
 			if (isset($data["shipping"]["type"])) {
-				$shipping->setType(new ShippingType($data["shipping"]["type"]));
+				$shipping->setType(new PagSeguroShippingType($data["shipping"]["type"]));
 			}
 			
 			// <transaction> <shipping> <cost>
@@ -291,7 +223,7 @@ class TransactionParser extends ServiceParser {
 			if (isset($data["shipping"]["address"]) && is_array($data["shipping"]["address"])) {
 				
 				// <transaction> <shipping> <address>
-				$address = new Address();
+				$address = new PagSeguroAddress();
 				
 				// <transaction> <shipping> <address> <street>
 				if (isset($data["shipping"]["address"]["street"])) {
@@ -349,7 +281,7 @@ class TransactionParser extends ServiceParser {
 	private static function parseTransactionItem($data) {
 		
 		// <transaction> <items> <item>
-		$item = new Item();
+		$item = new PagSeguroItem();
 			
 		// <transaction> <items> <item> <id>
 		if (isset($data["id"])) {
@@ -378,6 +310,61 @@ class TransactionParser extends ServiceParser {
 		
 		return $item;
 	
+	}
+	
+	private static function parseTransactionSummary($data) {
+		
+		$transactionSummary = new PagSeguroTransactionSummary();
+		
+		if (isset($data['type'])){
+			$transactionSummary->setType(new PagSeguroTransactionType($data['type']));
+		}
+		if (isset($data['code'])){
+			$transactionSummary->setCode($data['code']);
+		}
+		if (isset($data['reference'])){
+			$transactionSummary->setReference($data['reference']);
+		}
+		if (isset($data['date'])){
+			$transactionSummary->setDate($data['date']);
+		}
+		if (isset($data['lastEventDate'])){
+			$transactionSummary->setLastEventDate($data['lastEventDate']);
+		}
+		if (isset($data['grossAmount'])){
+			$transactionSummary->setGrossAmount($data['grossAmount']);
+		}
+		if (isset($data['status'])){
+			$transactionSummary->setStatus(new PagSeguroTransactionStatus($data['status']));
+		}
+		if (isset($data['netAmount'])){
+			$transactionSummary->setNetAmount($data['netAmount']);
+		}
+		if (isset($data['discountAmount'])){
+			$transactionSummary->setDiscountAmount($data['discountAmount']);
+		}
+		if (isset($data['feeAmount'])){
+			$transactionSummary->setFeeAmount($data['feeAmount']);
+		}
+		if (isset($data['extraAmount'])){
+			$transactionSummary->setExtraAmount($data['extraAmount']);
+		}
+		if (isset($data['lastEvent'])){
+			$transactionSummary->setLastEventDate($data['lastEvent']);
+		}
+		if (isset($data['paymentMethod'])){
+			$paymentMethod = new PagSeguroPaymentMethod();
+			if (isset($data['paymentMethod']['type'])){
+				$paymentMethod->setType(new PagSeguroPaymentMethodType($data['paymentMethod']['type']));
+			}
+			if (isset($data['paymentMethod']['code'])) {
+				$paymentMethod->setCode(new PagSeguroPaymentMethodCode($data['paymentMethod']['code']));
+			}
+			$transactionSummary->setPaymentMethod($paymentMethod);
+		}
+		
+		return $transactionSummary;
+		
 	}
 	
 }

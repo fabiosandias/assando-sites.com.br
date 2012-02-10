@@ -20,7 +20,7 @@ limitations under the License.
 /**
 * Represents a PagSeguro transaction
 */
-class Transaction {
+class PagSeguroTransaction {
 
 	/**
 	 * Transaction date
@@ -47,19 +47,19 @@ class Transaction {
 
 	/**
 	 * Transaction type
-	 * @see TransactionType::
+	 * @see PagSeguroTransactionType
 	 */
     private $type;
 
     /**
      * Transaction Status
-     * @see TransactionStatus::
+     * @see PagSeguroTransactionStatus
      */
     private $status;
 
     /**
      * Payment method
-     * @see PaymentMethod
+     * @see PagSeguroPaymentMethod
      */
     private $paymentMethod;
 
@@ -95,19 +95,19 @@ class Transaction {
 
     /**
      * item/product list in this transaction
-     * @see Item
+     * @see PagSeguroItem
      */
     private $items;
 
     /**
      * Payer information, who is sending money
-     * @see Sender
+     * @see PagSeguroSender
      */
     private $sender;
 
     /**
      * Shipping information
-     * See Shipping
+     * See PagSeguroShipping
      */
     private $shipping;
 
@@ -181,7 +181,7 @@ class Transaction {
 
     /**
      * @return the transaction type
-     * @see TransactionType
+     * @see PagSeguroTransactionType
      */
      public function getType() {
         return $this->type;
@@ -189,15 +189,15 @@ class Transaction {
 
     /**
      * Sets the transaction type
-     * @param TransactionType $type
+     * @param PagSeguroTransactionType $type
      */
-    public function setType(TransactionType $type) {
+    public function setType(PagSeguroTransactionType $type) {
         $this->type = $type;
     }
 
     /**
      * @return the transaction status
-     * @see TransactionStatus::
+     * @see PagSeguroTransactionStatus
      */
     public function getStatus() {
         return $this->status;
@@ -205,9 +205,9 @@ class Transaction {
 
     /**
      * Sets the transaction status
-     * @param TransactionStatus $status
+     * @param PagSeguroTransactionStatus $status
      */
-    public function setStatus(TransactionStatus $status) {
+    public function setStatus(PagSeguroTransactionStatus $status) {
         $this->status = $status;
     }
 
@@ -220,9 +220,9 @@ class Transaction {
 
     /**
      * Sets the payment method used in this transaction
-     * @param paymentMethod $paymentMethod
+     * @param PagSeguroPaymentMethod $paymentMethod
      */
-    public function setPaymentMethod(paymentMethod $paymentMethod) {
+    public function setPaymentMethod(PagSeguroPaymentMethod $paymentMethod) {
         $this->paymentMethod = $paymentMethod;
     }
 
@@ -318,7 +318,7 @@ class Transaction {
 
     /**
      * @return the items/products list in this transaction
-     * @see Item
+     * @see PagSeguroItem
      */
     public function getItems() {
         return $this->items;
@@ -327,7 +327,7 @@ class Transaction {
     /**
      * Sets the list of items/products in this transaction
      * @param array $items
-     * @see Item
+     * @see PagSeguroItem
      */
     public function setItems(Array $items) {
         $this->items = $items;
@@ -342,7 +342,7 @@ class Transaction {
 
     /**
      * @return the sender information, who is sending money in this transaction
-     * @see Sender
+     * @see PagSeguroSender
      */
     public function getSender() {
         return $this->sender;
@@ -350,15 +350,15 @@ class Transaction {
 
     /**
      * Sets the sender information, who is sending money in this transaction
-     * @param Sender $sender
+     * @param PagSeguroSender $sender
      */
-    public function setSender(Sender $sender) {
+    public function setSender(PagSeguroSender $sender) {
         $this->sender = $sender;
     }
 
     /**
      * @return the shipping information
-     * @see Shipping
+     * @see PagSeguroShipping
      */
     public function getShipping() {
         return $this->shipping;
@@ -366,9 +366,9 @@ class Transaction {
 
     /**
      * sets the shipping information for this transaction
-     * @param Shipping $shipping
+     * @param PagSeguroShipping $shipping
      */
-    public function setShipping(Shipping $shipping) {
+    public function setShipping(PagSeguroShipping $shipping) {
         $this->shipping = $shipping;
     }
 	

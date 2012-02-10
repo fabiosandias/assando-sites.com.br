@@ -19,9 +19,9 @@ limitations under the License.
 
 /**
  * Represents an address location, typically for shipping or charging purposes. 
- * @see Shipping
+ * @see PagSeguroShipping
  */
-class Address {
+class PagSeguroAddress {
 	
 	
 	private $postalCode;

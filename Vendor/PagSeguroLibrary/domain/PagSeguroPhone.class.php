@@ -20,7 +20,7 @@ limitations under the License.
 /**
  * Represents a phone number
  */	
-class Phone {
+class PagSeguroPhone {
 	
 	/**
 	 * Area code
@@ -33,7 +33,7 @@ class Phone {
 	private $number;
 	
 	/**
-	 * Initializes a new instance of the Phone class
+	 * Initializes a new instance of the PagSeguroPhone class
 	 * 
 	 * @param String $areaCode
 	 * @param String $number

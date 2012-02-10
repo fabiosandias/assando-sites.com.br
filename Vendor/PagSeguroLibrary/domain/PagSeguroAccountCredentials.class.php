@@ -21,7 +21,7 @@ limitations under the License.
 * Identifies a PagSeguro account
 * /
 */
-class AccountCredentials extends Credentials{
+class PagSeguroAccountCredentials extends PagSeguroCredentials{
 
 	/**
 	* Primary email associated with this account
@@ -34,7 +34,7 @@ class AccountCredentials extends Credentials{
 	private $token;
 	
 	/**
-	* Initializes a new instance of the AccountCredentials class
+	* Initializes a new instance of the PagSeguroAccountCredentials class
 	*
 	* @param email
 	* @param token

@@ -21,7 +21,7 @@ limitations under the License.
 /**
 * Represents a product/item in a transaction
 */
-class Item {
+class PagSeguroItem {
 
 	/**
 	 * Product identifier, such as SKU

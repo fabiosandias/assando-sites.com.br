@@ -28,6 +28,17 @@ class LogPagSeguro{
 	private static $fileLocation;
 	
 	private function __construct() {
+		self::reLoad();
+	}
+	
+	public static function init() {
+		if (self::$log == null) {
+			self::$log = new LogPagSeguro();
+		}
+		return self::$log;
+	}
+	
+	public static function reLoad() {
 		self::$active = PagSeguroConfig::logIsActive();
 		if (self::$active) {
 			$fileLocation = PagSeguroConfig::getLogFileLocation();
@@ -36,14 +47,7 @@ class LogPagSeguro{
 			} else {
 				self::createFile();
 			}
-		}
-	}
-	
-	public static function init() {
-		if (self::$log == null) {
-			self::$log = new LogPagSeguro();
-		}
-		return self::$log;
+		}	
 	}
 	
 	/**

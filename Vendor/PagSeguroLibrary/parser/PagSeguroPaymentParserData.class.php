@@ -17,21 +17,25 @@ limitations under the License.
 ************************************************************************
 */
 
-/**
-* Abstract class that represents a PagSeguro credential
-*/
-abstract class Credentials {
-
-	/**
-	 * @return a map of name value pairs that compose this set of credentials
-	 */
-	abstract function getAttributesMap();
+class PagSeguroPaymentParserData{
 	
-	/**
-	 * @return a string that represents the current object
-	 */
-	abstract function toString();
+	private $code;
+	private $registrationDate;
+	
+	public function getCode(){
+		return $this->code;
+	}
+	public function setCode($code){
+		$this->code = $code;
+	}
+	
+	public function getRegistrationDate(){
+		return $this->registrationDate;
+	}		
+	public function setRegistrationDate($registrationDate){
+		$this->registrationDate = $registrationDate;
+	}		
 	
 }
-	
+
 ?>

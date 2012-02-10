@@ -20,7 +20,7 @@ limitations under the License.
 /**
  * Encapsulates web service calls regarding PagSeguro payment requests
  */
-class PaymentService {
+class PagSeguroPaymentService {
 	
 	const serviceName = 'paymentService';
 	
@@ -35,42 +35,42 @@ class PaymentService {
 	// createCheckoutRequest is the actual implementation of the Register method
 	// This separation serves as test hook to validate the Uri
 	// against the code returned by the service
-	public static function createCheckoutRequest(Credentials $credentials, PaymentRequest $paymentRequest) {
+	public static function createCheckoutRequest(PagSeguroCredentials $credentials, PagSeguroPaymentRequest $paymentRequest) {
 		
-		LogPagSeguro::info("PaymentService.Register(".$paymentRequest->toString().") - begin");
+		LogPagSeguro::info("PagSeguroPaymentService.Register(".$paymentRequest->toString().") - begin");
 		
 		$connectionData = new PagSeguroConnectionData($credentials, self::serviceName);
 		
 		try {
 			
-			$connection = new HttpConnection();
+			$connection = new PagSeguroHttpConnection();
 			$connection->post(
 				self::buildCheckoutRequestUrl($connectionData),
-				PaymentParser::getData($paymentRequest),
+				PagSeguroPaymentParser::getData($paymentRequest),
 				$connectionData->getServiceTimeout(),
 				$connectionData->getCharset()
 			);
 			
-			$httpStatus = new HttpStatus($connection->getStatus());
+			$httpStatus = new PagSeguroHttpStatus($connection->getStatus());
 			
 			switch ($httpStatus->getType()) {
 				
 				case 'OK':
-					$PaymentParserData = PaymentParser::readSuccessXml($connection->getResponse());
+					$PaymentParserData = PagSeguroPaymentParser::readSuccessXml($connection->getResponse());
 					$paymentUrl = self::buildCheckoutUrl($connectionData, $PaymentParserData->getCode());
-					LogPagSeguro::info("PaymentService.Register(".$paymentRequest->toString().") - end {1}".$PaymentParserData->getCode());
+					LogPagSeguro::info("PagSeguroPaymentService.Register(".$paymentRequest->toString().") - end {1}".$PaymentParserData->getCode());
 					break;
 				
 				case 'BAD_REQUEST':
-					$errors = PaymentParser::readErrors($connection->getResponse());
+					$errors = PagSeguroPaymentParser::readErrors($connection->getResponse());
 					$e = new PagSeguroServiceException($httpStatus, $errors);
-					LogPagSeguro::error("PaymentService.Register(".$paymentRequest->toString().") - error ".$e->getOneLineMessage());
+					LogPagSeguro::error("PagSeguroPaymentService.Register(".$paymentRequest->toString().") - error ".$e->getOneLineMessage());
 					throw $e;
 					break;
 				
 				default:
 					$e = new PagSeguroServiceException($httpStatus);
-					LogPagSeguro::error("PaymentService.Register(".$paymentRequest->toString().") - error ".$e->getOneLineMessage());
+					LogPagSeguro::error("PagSeguroPaymentService.Register(".$paymentRequest->toString().") - error ".$e->getOneLineMessage());
 					throw $e;
 					break;
 					

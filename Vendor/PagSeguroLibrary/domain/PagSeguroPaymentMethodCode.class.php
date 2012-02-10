@@ -20,7 +20,7 @@ limitations under the License.
 /**
  * Defines a list of known payment method codes.
  */	
-class PaymentMethodCode {
+class PagSeguroPaymentMethodCode {
 	
 	private static $codeList = array(
 		
@@ -145,7 +145,7 @@ class PaymentMethodCode {
 	
 	/**
 	 * @param value
-	 * @return the PaymentMethodCode corresponding to the informed value
+	 * @return the PagSeguroPaymentMethodCode corresponding to the informed value
 	 */
 	public function getTypeFromValue($value = null) {
 		$value = ($value == null ? $this->value : $value);

@@ -20,7 +20,7 @@ limitations under the License.
 /**
 * Represents the party on the transaction that is sending the money
 */	
-class Sender {
+class PagSeguroSender {
 
 	/** Sender name */
 	private $name;
@@ -44,10 +44,10 @@ class Sender {
 			if (isset($data['email'])) {
 				$this->email = $data['email'];
 			}		
-			if (isset($data['phone']) && $data['phone'] instanceof Phone) {
+			if (isset($data['phone']) && $data['phone'] instanceof PagSeguroPhone) {
 				$this->phone = $data['phone'];
 			} else if (isset($data['areaCode']) && isset($data['number'])) {
-				$phone = new Phone($data['areaCode'], $data['number']);
+				$phone = new PagSeguroPhone($data['areaCode'], $data['number']);
 				$this->phone = $phone;
 			}
 		}
@@ -90,10 +90,10 @@ class Sender {
 	 */
 	public function setPhone($areaCode, $number= null) {
 		$param = $areaCode;
-		if ($param instanceof Phone) {
+		if ($param instanceof PagSeguroPhone) {
 			$this->phone = $param;
 		} elseif($number) {
-			$phone = new Phone();
+			$phone = new PagSeguroPhone();
 			$phone->setAreaCode($areaCode);
 			$phone->setNumber($number);
 			$this->phone = $phone;
@@ -102,7 +102,7 @@ class Sender {
 	
 	/**
 	 * @return the sender phone
-	 * @see Phone
+	 * @see PagSeguroPhone
 	 */
 	public function getPhone() {
 		return $this->phone;

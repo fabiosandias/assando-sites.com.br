@@ -28,7 +28,7 @@ class PagSeguroConnectionData{
 	private $serviceTimeout;
 	private $charset;
 	
-	public function __construct(Credentials $credentials, $serviceName) {
+	public function __construct(PagSeguroCredentials $credentials, $serviceName) {
 	
 		$this->credentials = $credentials;
 		$this->serviceName = $serviceName;
@@ -50,7 +50,7 @@ class PagSeguroConnectionData{
 	public function getCredentials() {
 		return $this->credentials;
 	}
-	public function setCredentials($credentials) {
+	public function setCredentials(PagSeguroCredentials $credentials) {
 		$this->credentials = $credentials;
 	}
 	

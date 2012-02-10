@@ -20,17 +20,17 @@ limitations under the License.
 /**
 * Shipping information
 */
-class Shipping {
+class PagSeguroShipping {
 
 	/**  
 	 * Shipping address
-	 * @see Address
+	 * @see PagSeguroAddress
 	 */
     private $address;
     
     /**
-    * Shipping type. See the ShippingType helper class for a list of known shipping types.
-    * @see ShippingType::
+    * Shipping type. See the PagSeguroShippingType class for a list of known shipping types.
+    * @see PagSeguroShippingType
     */
     private $type;
     
@@ -40,15 +40,15 @@ class Shipping {
     private $cost;
     
 	/**
-	 * Initializes a new instance of the Shipping class 
+	 * Initializes a new instance of the PagSeguroShipping class 
 	 * @param array $data
 	 */
 	public function __constuct(Array $data = null) {
 		if ($data) {
-			if (isset($data['address']) && $data['address'] instanceof Address) {
+			if (isset($data['address']) && $data['address'] instanceof PagSeguroAddress) {
 				$this->address = $data['address'];
 			}
-			if (isset($data['type']) && $data['type'] instanceof ShippingType) {
+			if (isset($data['type']) && $data['type'] instanceof PagSeguroShippingType) {
 				$this->type = $data['type'];
 			}
 			if (isset($data['cost'])) {
@@ -59,16 +59,16 @@ class Shipping {
 	
 	/**
 	 * Sets the shipping address
-	 * @see Address
-	 * @param Address $address
+	 * @see PagSeguroAddress
+	 * @param PagSeguroAddress $address
 	 */
-    public function setAddress(Address $address) {
+    public function setAddress(PagSeguroAddress $address) {
         $this->address = $address;
     }
 	
     /**
      * @return the shipping Address
-     * @see Address
+     * @see PagSeguroAddress
      */
     public function getAddress() {
         return $this->address;
@@ -76,16 +76,16 @@ class Shipping {
 
     /**
      * Sets the shipping type
-     * @param ShippingType $type
-     * @see ShippingType::
+     * @param PagSeguroShippingType $type
+     * @see PagSeguroShippingType
      */
-    public function setType(ShippingType $type) {
+    public function setType(PagSeguroShippingType $type) {
         $this->type = $type;
     }
 
     /**
      * @return the shipping type
-     * @see ShippingType::
+     * @see PagSeguroShippingType
      */
     public function getType() {
         return $this->type;

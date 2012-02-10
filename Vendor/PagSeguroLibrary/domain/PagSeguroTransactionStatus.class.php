@@ -18,25 +18,27 @@ limitations under the License.
 */
 
 /**
- * Defines a list of known transaction types.
+ * Defines a list of known transaction statuses.
  * This class is not an enum to enable the introduction of new shipping types
  * without breaking this version of the library.
- */
-class TransactionType {
+ */	
+class PagSeguroTransactionStatus {
 	
-	private static $typeList = array(
-		'PAYMENT' => 1,
-		'TRANSFER' => 2,
-		'FUND_ADDITION' => 3,
-		'WITHDRAW' => 4,
-		'CHARGE' => 5,
-		'DONATION' => 6,
-		'BONUS' => 7,
-		'BONUS_REPASS' => 8,
-		'OPERATIONAL' => 9,
-		'POLITICAL_DONATION' => 10
+	private static $statusList = array(
+		'INITIATED' => 0,
+		'WAITING_PAYMENT' => 1,
+		'IN_ANALYSIS' => 2,
+		'PAID' => 3,
+		'AVAILABLE' => 4,
+		'IN_DISPUTE' => 5,
+		'REFUNDED' => 6,
+		'CANCELLED' => 7
 	);
 	
+	/**
+	 * the value of the transaction status
+	 * Example: 3
+	 */
 	private $value;
 	
 	public function __construct($value = null){
@@ -50,26 +52,28 @@ class TransactionType {
 	}
 	
 	public function setByType($type) {
-		if (isset(self::$typeList[$type])) {
-			$this->value = self::$typeList[$type];
+		if (isset(self::$statusList[$type])) {
+			$this->value = self::$statusList[$type];
 		} else {
 			throw new Exception("undefined index $type");
 		}
-	}	
+	}
 	
+	/**
+	 * @return the status value.
+	 */
 	public function getValue(){
 		return $this->value;
 	}
 	
 	/**
 	 * @param value
-	 * @return the transaction type corresponding to the informed type value value
+	 * @return the transaction status corresponding to the informed status value
 	 */
 	public function getTypeFromValue($value = null) {
 		$value = ($value == null ? $this->value : $value);
-		return array_search($this->value, self::$typeList);
+		return array_search($this->value, self::$statusList);
 	}
-	
 	
 }
 

@@ -18,10 +18,10 @@ limitations under the License.
 */
 
 
-class ServiceParser{
+class PagSeguroServiceParser{
 	
 	public static function readErrors($str_xml) {
-		$parser = new xmlParser($str_xml);
+		$parser = new PagSeguroXmlParser($str_xml);
 		$data = $parser->getResult('errors');
 		$errors = array();
 		if (isset($data['error']) && is_array($data['error'])) {

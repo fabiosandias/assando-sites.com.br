@@ -1,4 +1,4 @@
-<?php if (!defined('PAGSEGURO_LIBRARY')) { die('No direct script access allowed'); }
+<?php if (!defined('PAGSEGURO_LIBRARY')) { die('NOT ALLOWED'); }
 /*
 ************************************************************************
 Copyright [2011] [PagSeguro Internet Ltda.]
@@ -18,20 +18,29 @@ limitations under the License.
 */
 
 /**
-* Defines a list of known shipping types.
-* this class is not an enum to enable the introduction of new shipping types
-* without breaking this version of the library.
-*/	
-class ShippingType {
+ * Defines a list of known payment method types.
+ */
+class PagSeguroPaymentMethodType {
 	
 	private static $typeList = array(
-		'PAC' => 1,
-		'SEDEX' => 2,
-		'NOT_SPECIFIED' => 3
+		/** Credit card */
+		'CREDIT_CARD' => 1,
+		
+		/** Boleto - is a form of invoicing in Brazil */
+		'BOLETO' => 2,
+		
+		/** Online transfer */
+		'ONLINE_TRANSFER' => 3,
+		
+		/** PagSeguro account balance */
+		'BALANCE' => 4,
+		
+		/** OiPaggo */
+		'OI_PAGGO' => 5
 	);
 	
 	/**
-	 * the shipping type value
+	 * Payment method type value
 	 * Example: 1
 	 */
 	private $value;
@@ -55,7 +64,8 @@ class ShippingType {
 	}
 	
 	/**
-	 * @return the value of the shipping type
+	 * @return payment method type value
+	 * Example: 1
 	 */
 	public function getValue(){
 		return $this->value;
@@ -63,34 +73,13 @@ class ShippingType {
 	
 	/**
 	 * @param value
-	 * @return the ShippingType corresponding to the informed value
-	*/
-	public function getTypeFromValue($value = null) {
-		$value = ($value === null ? $this->value : $value);
-		return array_search($value, self::$typeList);
-	}
-	
-	/**
-	 * @param type
-	 * @return the code corresponding to the informed shipping type
+	 * @return the PagSeguroPaymentMethodType corresponding to the informed value
 	 */
-	public static function getCodeByType($type){
-		if (isset(self::$typeList[$type])) {
-			return self::$typeList[$type];
-		} else {
-			return false;
-		}
+	public function getTypeFromValue($value = null) {
+		$value = ($value == null ? $this->value : $value);
+		return array_search($this->value, self::$typeList);
 	}
 	
-	/**
-	 * @param type
-	 * @return a ShippingType object corresponding to the informed type
-	*/
-	public static function createByType($type){
-		$ShippingType = new ShippingType();
-		$ShippingType->setByType($type);
-		return $ShippingType;
-	}	
 	
 }
 

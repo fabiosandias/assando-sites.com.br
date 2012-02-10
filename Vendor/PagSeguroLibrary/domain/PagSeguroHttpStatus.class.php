@@ -17,25 +17,46 @@ limitations under the License.
 ************************************************************************
 */
 
-class PaymentParserData{
+/**
+* HTTP status that PagSeguro web services can return.
+*/
+class PagSeguroHttpStatus {
 	
-	private $code;
-	private $registrationDate;
+	private $typeList = array(
+		200 => 'OK',
+		400 => 'BAD_REQUEST',
+		401 => 'UNAUTHORIZED',
+		403 => 'FORBIDDEN',
+		404 => 'NOT_FOUND',
+		500 => 'INTERNAL_SERVER_ERROR',
+		502 => 'BAD_GATEWAY'
+	);
+	private $status;
+	private $type;
 	
-	public function getCode(){
-		return $this->code;
+	public function __construct($status) {
+		if ($status) {
+			$this->status  = (int)$status;
+			$this->type    = $this->getTypeByStatus($this->status);
+		}
 	}
-	public function setCode($code){
-		$this->code = $code;
+	
+	public function getType(){
+		return $this->type;
 	}
 	
-	public function getRegistrationDate(){
-		return $this->registrationDate;
-	}		
-	public function setRegistrationDate($registrationDate){
-		$this->registrationDate = $registrationDate;
-	}		
+	public function getStatus(){
+		return $this->status;
+	}
+	
+	private function getTypeByStatus($status) {
+		if (isset($this->typeList[(int)$status])) {
+			return $this->typeList[(int)$status];
+		} else {
+			return false;
+		}
+	}
 	
 }
-
+	
 ?>

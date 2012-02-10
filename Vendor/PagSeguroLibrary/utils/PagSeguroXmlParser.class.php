@@ -17,14 +17,14 @@ limitations under the License.
 ************************************************************************
 */
 
-class xmlParser {
+class PagSeguroXmlParser {
 	
 	private $dom;
 	
 	public function __construct($xml) {
 		$parser = xml_parser_create();
 		if (!xml_parse($parser, $xml)) {
-			throw new Exception ("XML parsing error: (". xml_get_error_code($parser) .") " . xml_error_string (xml_get_error_code($parser)));
+			throw new Exception ("PagSeguroLibrary XML parsing error: (". xml_get_error_code($parser) .") " . xml_error_string (xml_get_error_code($parser)));
 		} else {
 			$this->dom = new DOMDocument();
 			$this->dom->loadXml($xml);
@@ -37,7 +37,7 @@ class xmlParser {
 			if (isset($result[$node])) {
 				return $result[$node];
 			} else {
-				throw new Exception ("XML parsing error: undefined index [$node]");
+				throw new Exception ("PagSeguroLibrary XML parsing error: undefined index [$node]");
 			}
 		} else {
 			return $result;
