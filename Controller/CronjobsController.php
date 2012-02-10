@@ -68,7 +68,13 @@ class CronjobsController extends AppController {
 		$pageNumber = 1;
 		$maxPageResults = 30;
 		
-		$Transactions = PagSeguroTransactionSearchService::searchByDate($AccountCredentials, $initialDate, $finalDate, $pageNumber, $maxPageResults);
+		$Transactions = PagSeguroTransactionSearchService::searchByDate(
+			$AccountCredentials,
+			$pageNumber,
+			$maxPageResults,
+			$initialDate,
+			$finalDate,
+		);
 		
 		foreach ($Transactions->getTransactions() AS $Transaction) {
 			$reference = $Transaction->getReference();
