@@ -9,6 +9,7 @@
  */
 
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Controller de pagamentos
@@ -65,7 +66,16 @@ class PaymentsController extends AppController {
 			$Transaction = PagSeguroNotificationService::checkTransaction(  
 				$AccountCredentials,  
 				$transactionCode
-			); 
+			);
+
+			$body = var_export($Transaction, true);
+
+			$CakeEmail = new CakeEmail('smtp');
+			$CakeEmail->to('contato@thiagobelem.net')
+					  ->from('contato@thiagobelem.net')
+					  ->subject('[PagSeguro] - Transaction: ' . $transactionCode)
+					  ->emailFormat('text')
+					  ->send($body);
 
 			$this->log('Transaction Object: ' . serialize($Transaction), 'PagSeguro');
 
