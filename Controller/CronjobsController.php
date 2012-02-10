@@ -60,7 +60,7 @@ class CronjobsController extends AppController {
 		App::import('Vendor', 'PagSeguro', array('file' => 'PagSeguroLibrary' . DS . 'PagSeguroLibrary.php'));
 		
 		// Objeto de credenciais
-		$AccountCredentials = new AccountCredentials(Configure::read('PagSeguro.API.email'), Configure::read('PagSeguro.API.token'));
+		$AccountCredentials = new PagSeguroAccountCredentials(Configure::read('PagSeguro.API.email'), Configure::read('PagSeguro.API.token'));
 		
 		$initialDate = date('c', strtotime('-1 month'));
 		$finalDate = date('c');
@@ -68,7 +68,7 @@ class CronjobsController extends AppController {
 		$pageNumber = 1;
 		$maxPageResults = 30;
 		
-		$Transactions = TransactionSearchService::searchByDate($AccountCredentials, $initialDate, $finalDate, $pageNumber, $maxPageResults);
+		$Transactions = PagSeguroTransactionSearchService::searchByDate($AccountCredentials, $initialDate, $finalDate, $pageNumber, $maxPageResults);
 		
 		foreach ($Transactions->getTransactions() AS $Transaction) {
 			$reference = $Transaction->getReference();
