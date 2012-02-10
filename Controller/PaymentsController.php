@@ -4,7 +4,7 @@
  * 
  * @author		Thiago Belem <contato@thiagobelem.net>
  * 
- * @package		AssandoSites
+ * @package	AssandoSites
  * @subpackage	Controller
  */
 
@@ -48,30 +48,23 @@ class PaymentsController extends AppController {
 		if (!$this->request->is('post'))
 			exit;
 
+		// PagSeguroLibrary
 		App::import('Vendor', 'PagSeguro', array('file' => 'PagSeguroLibrary' . DS . 'PagSeguroLibrary.php'));
 
+		// Login
 		$AccountCredentials = new AccountCredentials(Configure::read('PagSeguro.API.email'), Configure::read('PagSeguro.API.token'));
 
-		$this->log('POST:' . serialize($_POST), 'PagSeguro');
-		$this->log('Data:' . serialize($this->request->data), 'PagSeguro');
+		$transactionType = $this->request->data['notificationType'];
+		$transactionCode = $this->request->data['notificationCode']; 
 
-		/* Tipo de notificação recebida */  
-		$type = $_POST['notificationType'];  
+		if ($transactionType == 'transaction') {  
 
-		/* Código da notificação recebida */  
-		$code = $_POST['notificationCode'];  
-
-
-		/* Verificando tipo de notificação recebida */  
-		if ($type === 'transaction') {  
-
-			/* Obtendo o objeto PagSeguroTransaction a partir do código de notificação */  
-			$transaction = PagSeguroNotificationService::checkTransaction(  
+			$Transaction = PagSeguroNotificationService::checkTransaction(  
 				$AccountCredentials,  
-				$code // código de notificação  
+				$transactionCode
 			); 
 
-			$this->log('Transaction:' . serialize($transaction), 'PagSeguro');
+			$this->log('Transaction Object: ' . serialize($Transaction), 'PagSeguro');
 
 		}
 
