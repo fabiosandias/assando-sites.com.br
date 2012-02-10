@@ -4,7 +4,7 @@
  * 
  * @author		Thiago Belem <contato@thiagobelem.net>
  * 
- * @package	AssandoSites
+ * @package		AssandoSites
  * @subpackage	Controller
  */
 
@@ -54,10 +54,13 @@ class PaymentsController extends AppController {
 		// Login
 		$AccountCredentials = new AccountCredentials(Configure::read('PagSeguro.API.email'), Configure::read('PagSeguro.API.token'));
 
+		# $this->log('POST: ' . serialize($_POST), 'PagSeguro');
+		# $this->log('Data: ' . serialize($this->request->data), 'PagSeguro');
+
 		$transactionType = $this->request->data['notificationType'];
 		$transactionCode = $this->request->data['notificationCode']; 
 
-		if ($transactionType == 'transaction') {  
+		if ($transactionType === 'transaction') {  
 
 			$Transaction = PagSeguroNotificationService::checkTransaction(  
 				$AccountCredentials,  
