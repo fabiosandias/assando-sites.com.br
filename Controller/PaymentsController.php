@@ -71,6 +71,8 @@ class PaymentsController extends AppController {
 			if (empty($Transaction)) {
 				$this->log('Transação não encontrada: ' . $transactionCode, 'PagSeguro');
 				exit;
+			} else {
+				$this->log('Atualizando status da transação: ' . $transactionCode, 'PagSeguro');				
 			}
 
 			$reference = $Transaction->getReference();
