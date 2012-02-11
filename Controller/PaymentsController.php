@@ -135,6 +135,8 @@ class PaymentsController extends AppController {
 			}
 
 		}
+		
+		exit;
 
 	}
 	
