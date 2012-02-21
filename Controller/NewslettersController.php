@@ -22,8 +22,6 @@ class NewslettersController extends AppController {
 	 */
 	public function beforeFilter() {
 		parent::beforeFilter();
-		
-		$this->Security->requirePost('signup');
 	}
 	
 	/**
