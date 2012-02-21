@@ -36,6 +36,10 @@ class StudentsController extends AppController {
 	 * Inscrição de aluno
 	 */
 	public function signup() {
+		if (!$this->request->is('post')) {
+			throw new ForbiddenException('Escolha uma turma!');
+		}
+		
 		$this->helpers[] = 'Recaptcha';
 
 		// Veio da selação de turma
