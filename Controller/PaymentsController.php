@@ -17,16 +17,6 @@ App::uses('CakeEmail', 'Network/Email');
 class PaymentsController extends AppController {
 		
 	/**
-	 * Antes de filtar
-	 */
-	public function beforeFilter() {
-		if ($this->action == 'syncPayment_PagSeguro')
-			$this->Components->disable('Security');
-			
-		return parent::beforeFilter();
-	}
-		
-	/**
 	 * Lista de pagamentos
 	 */
 	public function admin_index() {
