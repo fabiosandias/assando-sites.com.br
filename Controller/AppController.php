@@ -20,7 +20,7 @@ class AppController extends Controller {
 	 * 
 	 * @var array
 	 */
-	public $components = array('Session', 'RequestHandler', 'Auth', 'Security', 'HtmlTidy.HtmlTidy');
+	public $components = array('Session', 'RequestHandler', 'Auth', 'HtmlTidy.HtmlTidy');
 	
 	/**
 	 * Helpers da aplicação
@@ -46,12 +46,7 @@ class AppController extends Controller {
 	 * 
 	 * Troca o layout do admin 
 	 */
-	public function beforeFilter() {
-		parent::beforeFilter();
-
-		if (Configure::read('debug'))
-			$this->Components->disable('Security');
-						
+	public function beforeFilter() {	
 		$this->Auth->authError = 'Área restrita';
 		$this->Auth->authorize = array('Controller');		
 		$this->Auth->logoutRedirect = array('controller' => 'pages', 'action' => 'display', 'home', 'aluno' => false, 'admin' => false);
@@ -91,18 +86,20 @@ class AppController extends Controller {
 		} else {
 			$this->Auth->allow();
 		}
+		
+		return parent::beforeFilter();					
 	}
 	
 	/**
 	 * Antes de renderizar as actions da aplicação
 	 */
 	public function beforeRender() {
-		parent::beforeRender();
-		
 		$this->set(array(
 			'isPainelAdmin' => $this->isPrefix('admin'),
 			'isPainelAluno' => $this->isPrefix('aluno')
 		));
+		
+		return parent::beforeRender();
 	}
 	
 	/**
