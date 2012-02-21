@@ -29,13 +29,7 @@ class StudentsController extends AppController {
 		parent::beforeFilter();
 		
 		// Esqueci minha senha
-		$this->Auth->allow('aluno_reset_password');
-		
-		// Cadastro de aluno
-		$this->Security->requirePost('signup');
-
-		if ($this->action == 'signup')
-			$this->Security->validatePost = false;		
+		$this->Auth->allow('aluno_reset_password');	
 	}
 	
 	/**
