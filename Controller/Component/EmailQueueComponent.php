@@ -84,7 +84,7 @@ class EmailQueueComponent extends Component {
 		$view = '/Email/' . ($plain ? 'text' : 'html') . '/' . $this->settings['view'];
 		$layout = 'email/' . ($plain ? 'text' : 'html') . '/' . $this->settings['layout'];
 		
-		$View = new View('Email');
+		$View = new View($this->Controller);
 		$View->helpers = array('Html', 'Time', 'Number');
 		$View->viewVars = $this->settings['data'];
 		
@@ -95,7 +95,7 @@ class EmailQueueComponent extends Component {
 	 * Enfileira o email
 	 */
 	public function queue() {		
-		$this->settings['html'] = $this->render();	
+		$this->settings['html'] = $this->render();
 		$this->settings['plain'] = $this->render(true);
 		
 		$this->settings['send'] = date(DATE_ISO8601, $this->settings['send']);

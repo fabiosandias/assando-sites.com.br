@@ -337,6 +337,7 @@ class StudentsController extends AppController {
 		$this->EmailQueue->set('Student', $Student);
 		$this->EmailQueue->set('MyClass', $MyClass[0]);
 		$this->EmailQueue->set('token', sha1($Student['name'] . $Student['email']));
+		$this->EmailQueue->set('limit', strtotime('+2 week', strtotime($Student['created'])));
 		
 		$this->EmailQueue->queue();
 	}
