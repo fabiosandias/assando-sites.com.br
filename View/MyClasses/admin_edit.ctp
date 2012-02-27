@@ -69,6 +69,7 @@ $this->Bootstrap->addCrumb(isset($this->data['MyClass']['id']) ? $this->data['My
 	
 	<div class="actions">
 		<?php echo $this->Form->submit('Salvar', array('class' => 'btn primary', 'div' => false)) ?>	
+		<?php echo $this->Html->link('Exportar lista de emails', array('action' => 'mail_list', $this->data['MyClass']['id']), array('class' => 'btn', 'div' => false)) ?>	
 		<?php if (isset($this->data['MyClass']['id']) && !empty($this->data['MyClass']['id'])) echo $this->Html->link('Deletar turma', array('action' => 'delete', (int)$this->data['MyClass']['id']), array('class' => 'red right'), 'Deseja realmente deletar esta turma? Toda as informações relacionadas serão apagadas!') ?>			
 	</div>
 <?php echo $this->Form->end() ?>

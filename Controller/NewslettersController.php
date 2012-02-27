@@ -44,5 +44,21 @@ class NewslettersController extends AppController {
 			$this->flash($message, $this->referer());
 		}
 	}
+
+	/**
+	 * Exporta lista de contatos
+	 */
+	public function admin_export() {
+		$this->layout = 'default';
+
+		$params = array(
+			'fields' => array('id', 'name', 'email', 'created'),
+			'order' => array('created' => 'DESC')
+		);
+
+		$contacts = $this->Newsletter->find('all', $params);
+
+		$this->set('contacts', $contacts);
+	}
 	
 }	
