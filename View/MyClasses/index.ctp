@@ -2,6 +2,8 @@
 			<h2>Escolha uma turma</h2>
 			<p>As turmas duram cerca de <strong>cinco semanas</strong>, mas você sempre vai ter acesso à todo o material compartilhado durante as aulas e suporte através da lista de discussão do curso</p>
 			
+			<div class="atencao">Você pode pagar em até <strong>12x</strong> no <strong>cartão de crédito</strong>, com boleto ou transferência bancária</div>
+			
 			<?php echo $this->Form->create('MyClass', array('url' => array('controller' => 'students', 'action' => 'signup'))) ?>
 			<?php
 			#App::import('Inflector');

@@ -5,6 +5,7 @@ $this->set(array(
 ))
 ?>
 		<section class="conteudo grid_9">
+			
 			<h2>O CakePHP</h2>
 			
 			<p>O <a rel="reference external" href="http://www.cakephp.org/">CakePHP</a>&trade; é um
@@ -15,6 +16,8 @@ $this->set(array(
 			<a rel="reference external" href="http://pt.wikipedia.org/wiki/Código_aberto">código aberto</a>. Seu principal
 			objetivo é permitir que você trabalhe de forma estruturada e rápida sem perder a
 			flexibilidade.</p>
+
+			<?php echo $this->Html->image('http://cakephp.org/img/logo/cakephp_logo_250_trans.png', array('width' => 150, 'height' => 150, 'class' => 'cakephp-logo')) ?>
 			
 			<p>O CakePHP tira a monotonia do desenvolvimento web. Ele fornece todas as
 			ferramentas que você precisa para começar programando o que realmente deseja: a

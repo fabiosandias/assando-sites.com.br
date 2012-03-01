@@ -17,7 +17,7 @@
 	
 	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-	<?php echo $this->Html->css('http://fonts.googleapis.com/css?family=Delius|Rosario') ?>
+	<?php echo $this->Html->css('http://fonts.googleapis.com/css?family=Delius|Rosario|Asap|Economica') ?>
 <?php if (Configure::read('debug')) { ?>	
 	<?php echo $this->Html->css(array('reset.css', '960.css', 'animate-custom.css')) ?>
 
