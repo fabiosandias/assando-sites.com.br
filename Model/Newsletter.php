@@ -64,5 +64,31 @@ class Newsletter extends AppModel {
 			),	
 		)
 	);
+
+	
+	/**
+	 * Depois de cadastrar um novo inscrito
+	 *
+	 * 1 - Envia os dados pro MailChimp
+	 */
+	public function afterSave($created = false) {
+		if ($created) {
+			App::uses('MCAPI', 'Vendor');
+
+			$key = Configure::read('MailChimp.key');
+			$list_id = Configure::read('MailChimp.list');
+
+			$merge_vars = array(
+				'FNAME'=> $this->data[$this->alias]['name'],
+				'OPTIN_IP' => getenv('REMOTE_ADDR'),
+				'OPTIN_TIME' => date('Y-m-d H:i:s')
+			);
+			
+			$api = new MCAPI($key);
+			$api->listSubscribe($list_id, $this->data[$this->alias]['email'], $merge_vars, 'html', false);
+		}
+
+		return parent::afterSave($created);
+	}
 	
 }
