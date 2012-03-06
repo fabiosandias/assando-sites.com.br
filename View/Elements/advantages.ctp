@@ -7,8 +7,8 @@
 </article>
 
 <article class="grid_3 cakephp">
-	<?php echo $this->Html->image('pictures/cakephp.jpg', array('width' => 200, 'height' => 128, 'alt' => 'CakePHP 2.0+')) ?>
-	<h3>CakePHP 2.0+</h3>
+	<?php echo $this->Html->image('pictures/cakephp.jpg', array('width' => 200, 'height' => 128, 'alt' => 'CakePHP 2.1+')) ?>
+	<h3>CakePHP 2.1+</h3>
 	<p>O conteúdo do curso foi reformulado para ensinar tudo sobre a <strong>última versão</strong>, e você não vai ficar pra trás</p>
 </article>
 
