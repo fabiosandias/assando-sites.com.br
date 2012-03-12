@@ -15,6 +15,8 @@ App::uses('CakeEmail', 'Network/Email');
  * Controller de pagamentos
  */
 class PaymentsController extends AppController {
+	
+	public $components = array('EmailQueue');
 		
 	/**
 	 * Lista de pagamentos
