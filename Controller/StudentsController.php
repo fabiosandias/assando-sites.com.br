@@ -337,7 +337,11 @@ class StudentsController extends AppController {
 		$this->EmailQueue->set('Student', $Student);
 		$this->EmailQueue->set('MyClass', $MyClass[0]);
 		$this->EmailQueue->set('token', sha1($Student['name'] . $Student['email']));
-		$this->EmailQueue->set('limit', strtotime('+2 week', strtotime($Student['created'])));
+		
+		$limit = strtotime('+2 weeks', strtotime($Student['created']));
+		$limit = min($limit, $MyClass[0]['signup_limit']);
+		
+		$this->EmailQueue->set('limit', $limit);
 		
 		$this->EmailQueue->queue();
 	}
