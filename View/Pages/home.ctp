@@ -12,7 +12,7 @@ $this->set(array(
 			<?php echo $this->element('testmonials') ?>			
 		</section>
 
-		<section class="container_12">
+		<section class="container_12" id="novas-turmas">
 			<?php echo $this->Form->create('Newsletter', array('action' => 'signup', 'class' => 'faixa verde grid_12')) ?>
 				<h4 class="grid_5 suffix_1">Quer ser avisado sobre as promoções e novas turmas do Assando Sites?</h4>
 

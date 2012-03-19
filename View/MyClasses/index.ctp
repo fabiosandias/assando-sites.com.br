@@ -1,6 +1,8 @@
 		<section class="conteudo grid_8">
 			<h2>Escolha uma turma</h2>
 			<p>As turmas duram cerca de <strong>cinco semanas</strong>, mas você sempre vai ter acesso à todo o material compartilhado durante as aulas e suporte através da lista de discussão do curso</p>
+
+			<?php if (!empty($data)) { ?>
 			
 			<div class="atencao">Você pode pagar em até <strong>12x</strong> no <strong>cartão de crédito</strong>, com boleto ou transferência bancária</div>
 			
@@ -35,6 +37,12 @@
 			<?php echo $this->Form->end() ?>
 			
 			<div class="atencao">Curso voltado para <strong>Desenvolvedores</strong> e <strong>Programadores</strong> que trabalham com PHP e conhecem os conceitos da <em>Orientação à Objetos</em></div>
+
+			<?php } else { ?>
+			
+			<div class="atencao">Inscrições encerradas! <?php echo $this->Html->link('Seja avisado quando a próxima turma abrir', '/#novas-turmas') ?></div>
+
+			<?php } ?>
 		
 		</section>
 
