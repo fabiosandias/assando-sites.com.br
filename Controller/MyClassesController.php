@@ -152,4 +152,25 @@ class MyClassesController extends AppController {
 		$this->set('Students', $MyClass['Student']);
 	}
 	
+	/**
+	 * Cria uma lista CSV de alunos
+	 * 
+	 * @param integer $id
+	 */
+	public function admin_adobe_csv($id) {		
+		$this->layout = 'ajax';
+		
+		$MyClass = $this->MyClass->find('first', array(
+			'conditions' => array('MyClass.id' => $id),
+			'contain' => array(
+				'Student' => array(
+					'conditions' => array('Student.status_id' => STATUS_STUDENT_INSCRICAO_CONFIRMADA),
+					'order' => array('Student.name' => 'ASC')
+				)
+			)
+		));
+		
+		$this->set('Students', $MyClass['Student']);
+	}
+	
 }
